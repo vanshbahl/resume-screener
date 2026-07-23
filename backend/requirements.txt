@@ -21,3 +21,4 @@ fpdf2
 passlib[argon2]
 PyJWT
 email-validator
+Jinja2

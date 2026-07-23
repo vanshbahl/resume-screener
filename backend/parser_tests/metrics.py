@@ -12,6 +12,7 @@ def calculate_field_match(expected: Any, actual: Any, fuzzy_threshold: float = 9
         return True
     if expected is None and actual is not None:
         return False
+        
     if expected is not None and actual is None:
         return False
         

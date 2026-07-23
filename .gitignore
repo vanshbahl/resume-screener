@@ -55,6 +55,9 @@ htmlcov/
 # Database
 *.db
 *.sqlite3
+*.milvus/
+*.qdrant/
+*.chroma/
 
 # Alembic
 alembic/versions/*.pyc

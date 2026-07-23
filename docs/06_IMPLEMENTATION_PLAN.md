@@ -9,14 +9,18 @@
 
 ## ✅ Completed Milestones
 
-### Phase 2 — Information Extraction (Phase 2.1 - 2.2.5)
-- **Goal:** Improve resume parsing and entity extraction via Hybrid AI and establish a robust benchmarking framework.
+### Phase 2 — Recruitment Intelligence Engine (Phase 2.1 - 2.6)
+- **Goal:** Improve resume parsing via Hybrid AI, build a deterministic intelligence core, search engine, and recommendation layer.
 - **Deliverables:**
   - ✅ Deterministic Extractor Improvements
   - ✅ Hybrid NER Integration (spaCy + HuggingFace)
   - ✅ Domain-Specific Extraction Engine
   - ✅ Parser Evaluation & Regression Framework
   - ✅ Benchmark Resume Dataset Generator (50 resumes)
+  - ✅ Intelligence Core (Matching, Scoring, Gap Analysis)
+  - ✅ Candidate & Job Feature Vectors
+  - ✅ Deterministic Search & Retrieval Engine
+  - ✅ Recommendation & Decision Engine
   - ✅ Production Repository Reorganization
 
 ---
@@ -47,15 +51,15 @@
   - Similarity Search
 
 ### Phase 4 — Resume Scoring Engine
-- **Goal:** Implement deterministic scoring.
+- **Goal:** Completed implicitly via Phase 2 Intelligence & Decision Engines.
 - **Deliverables:**
-  - Skills Match
-  - Experience Match
-  - Education Match
-  - Project Match
-  - Semantic Similarity Score
-  - Weighted Overall Score
-  - Candidate Ranking
+  - ✅ Skills Match
+  - ✅ Experience Match
+  - ✅ Education Match
+  - ✅ Project Match
+  - ⚪ Semantic Similarity Score (Pending Phase 3)
+  - ✅ Weighted Overall Score
+  - ✅ Candidate Ranking
 
 ### Phase 5 — Frontend Dashboard
 - **Goal:** Build the complete user interface.

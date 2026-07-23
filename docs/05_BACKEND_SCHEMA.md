@@ -16,7 +16,9 @@
 │   ├── database/        # Database session management
 │   ├── models/          # SQLAlchemy table definitions
 │   ├── schemas/         # Pydantic data validation (Request/Response)
-│   ├── services/        # Business logic orchestration
+│   ├── intelligence/    # Intelligence Core (Matching, Scoring, Insights)
+│   ├── search/          # Deterministic Search & Retrieval Engine
+│   ├── decision/        # Recommendation & Risk Engine
 │   ├── ai/              # AI and ML components (Phase 2)
 │   │   ├── extractors/  # Domain Extractors (Skills, Experience, etc.)
 │   │   └── models/      # Local model management
@@ -97,6 +99,9 @@ classDiagram
 - `GET /jobs/`: Retrieve all active jobs.
 - `POST /jobs/{id}/resumes/`: Upload a resume document for a job.
 - `GET /resumes/{id}`: Retrieve parsed resume JSON.
+- `POST /intelligence/match`: Execute gap and heuristic matching.
+- `POST /search/candidates`: Structured candidate retrieval.
+- `POST /decision/hire`: Produce deterministic hiring decisions.
 
 ## 5. Storage
 - **Relational**: PostgreSQL.

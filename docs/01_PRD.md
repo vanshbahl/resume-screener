@@ -63,9 +63,11 @@ To build a scalable, offline-capable, and privacy-first Document Intelligence Pl
 - ✅ Deterministic Parsing Rules
 - ✅ Hybrid AI Parsing (spaCy + Hugging Face)
 - ✅ Automated Parser Benchmarking
-- 🟡 Local pgvector setup
-- ⚪ Dashboard & UI
-- ⚪ Candidate Ranking
+- ✅ Deterministic Candidate Matching & Ranking (Phase 2)
+- ✅ Search & Retrieval Engine (Phase 2)
+- ✅ Configurable Recommendation & Decision Engine (Phase 2)
+- 🟡 Local pgvector setup (Phase 3)
+- ⚪ Dashboard & UI (Phase 5)
 
 ## 10. Future Scope
 - Generic Invoice and Purchase order parsing using GLiNER (Zero-shot NER).

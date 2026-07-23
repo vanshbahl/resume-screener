@@ -35,7 +35,7 @@ The AI Document Intelligence Platform is designed to automate the arduous task o
 - **Generic Core**: Polymorphic architecture designed to scale beyond resumes to Invoices and POs.
 
 ## Current Status
-**Phase 2 Complete**: We have finalized a Hybrid Information Extraction Engine leveraging spaCy and Hugging Face models (`dslim/bert-base-NER`) alongside domain-specific regex extractors. A robust programmatic testing environment has been established, including an automated parser evaluation framework, a regression guard, and a synthesizer that generated a 50-resume benchmark dataset.
+**Phase 2 Complete (v1.0 Release Candidate)**: We have finalized a Hybrid Information Extraction Engine leveraging spaCy and Hugging Face models, alongside a robust programmatic testing environment. Furthermore, the backend now supports a production-grade Recruitment Intelligence Engine, delivering Candidate-to-Job Matching, Gap Analysis, a high-performance In-Memory Search Engine, and a deterministic Recommendation & Decision Engine without relying on LLMs.
 
 ## Architecture Overview
 The system relies on a monolithic FastAPI backend that handles both web requests and async AI processing via `BackgroundTasks`. A PostgreSQL database stores relational data alongside `JSONB` for unstructured extracted entities and `VECTOR` types for dense semantic embeddings.
@@ -50,10 +50,15 @@ The system relies on a monolithic FastAPI backend that handles both web requests
 ```text
 /
 ├── backend/
-│   ├── app/parsers/     # Object-Oriented Document Pipeline
-│   ├── config/          # PyYAML Rules & Regex Configs
-│   ├── development/     # Sandbox tools, experiments, scratch scripts
-│   └── parser_tests/    # Benchmarking Framework & Dataset Generator
+│   ├── app/
+│   │   ├── intelligence/ # Matching, Scoring, Ontology, Gap Analysis
+│   │   ├── search/       # In-Memory Deterministic Candidate & Job Search
+│   │   ├── decision/     # Hiring Recommendations and Risk Analysis
+│   │   ├── parsers/      # Object-Oriented Document Pipeline
+│   │   └── api/          # RESTful Endpoints
+│   ├── config/           # PyYAML Rules, Thresholds, & Configurations
+│   ├── development/      # Sandbox tools, experiments, scratch scripts
+│   └── parser_tests/     # Benchmarking Framework & Dataset Generator
 ├── frontend/            # React Web Client
 ├── docs/                # Project Documentation
 ├── docker-compose.yml   # Local Database Deployment

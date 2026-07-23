@@ -18,7 +18,9 @@ The platform utilizes a monolithic, single-process architecture for the MVP (YAG
 ## 3. System Components
 - **API Router**: Handles HTTP Request/Response lifecycles and input validation.
 - **Pipeline Service**: Orchestrates text extraction and NLP via an Object-Oriented Pipeline (`BaseParserStage`).
-- **Scoring Engine**: Evaluates candidate metrics deterministically.
+- **Intelligence Engine**: Evaluates candidate metrics deterministically via Matching, Scoring, and Gap Analysis Services.
+- **Search Engine**: In-memory inverted index supporting heuristic keyword filtering and semantic sorting.
+- **Decision Engine**: Generates hiring recommendations and analyzes heuristic risk (e.g., job hopping, overqualification).
 - **Data Layer**: Manages relational records, JSONB metadata, and vector embeddings.
 
 ## 4. AI Components

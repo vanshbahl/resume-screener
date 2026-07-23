@@ -104,3 +104,21 @@ flowchart LR
     E -->|Fuzzy Match & Struct Diff| F[report_generator.py]
     F -->|Markdown, CSV, Charts| G[(results/)]
 ```
+
+## 6. Recruitment Intelligence Engine (Phase 2.6)
+```mermaid
+flowchart TD
+    A[Parsed Resume] --> B[CandidateProfile & FeatureVector]
+    C[Parsed Job] --> D[JobProfile & FeatureVector]
+    
+    B --> E[MatchingService]
+    D --> E
+    
+    E --> F[ScoringService]
+    E --> G[GapAnalysisService]
+    
+    F --> H[RiskAnalysisService]
+    H --> I[DecisionEngine]
+    
+    I --> J[DecisionResult]
+```

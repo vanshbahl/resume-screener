@@ -15,8 +15,7 @@ class JobResponse(JobBase):
     id: int
     created_at: datetime
     
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}
 
 class ResumeBase(BaseModel):
     filename: str
@@ -29,5 +28,4 @@ class ResumeResponse(ResumeBase):
     final_score: Optional[float] = None
     created_at: datetime
     
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

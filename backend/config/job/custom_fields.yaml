@@ -1,0 +1,38 @@
+# Custom Fields Configuration for Jobs
+# Defines organizational metadata tracked on a Job
+
+custom_fields:
+  cost_center:
+    type: "string"
+    label: "Cost Center"
+    required: false
+    
+  budget_code:
+    type: "string"
+    label: "Budget Code"
+    required: false
+    
+  hiring_quarter:
+    type: "string"
+    label: "Hiring Quarter"
+    required: false
+    options:
+      - "Q1"
+      - "Q2"
+      - "Q3"
+      - "Q4"
+      
+  client_name:
+    type: "string"
+    label: "Client / Customer"
+    required: false
+    
+  internal_reference:
+    type: "string"
+    label: "Internal Requisition ID"
+    required: false
+    
+  approval_id:
+    type: "string"
+    label: "Workday / Greenhouse Approval ID"
+    required: false

@@ -1,0 +1,45 @@
+# Job Lifecycle Pipeline Configuration
+# Defines the ordered pipeline for a Job in the ATS
+
+statuses:
+  draft:
+    label: "Draft"
+    description: "Job is being prepared and is not yet visible."
+    is_terminal: false
+    order: 1
+    
+  pending_approval:
+    label: "Pending Approval"
+    description: "Job is awaiting headcount or budgetary approval."
+    is_terminal: false
+    order: 2
+    
+  open:
+    label: "Open"
+    description: "Job is active and accepting candidates."
+    is_terminal: false
+    order: 3
+    
+  paused:
+    label: "Paused"
+    description: "Job is temporarily paused (e.g. reviewing candidates)."
+    is_terminal: false
+    order: 4
+    
+  filled:
+    label: "Filled"
+    description: "Candidate has been hired."
+    is_terminal: true
+    order: 5
+    
+  closed:
+    label: "Closed"
+    description: "Job is closed without a hire."
+    is_terminal: true
+    order: 6
+    
+  cancelled:
+    label: "Cancelled"
+    description: "Job requisition was cancelled."
+    is_terminal: true
+    order: 7

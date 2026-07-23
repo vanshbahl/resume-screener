@@ -1,0 +1,26 @@
+# Standard Job System Tags Configuration
+
+tags:
+  - id: "tag_urgent"
+    name: "Urgent"
+    color: "red"
+    
+  - id: "tag_campus"
+    name: "Campus"
+    color: "green"
+    
+  - id: "tag_lateral"
+    name: "Lateral"
+    color: "blue"
+    
+  - id: "tag_confidential"
+    name: "Confidential"
+    color: "purple"
+    
+  - id: "tag_remote"
+    name: "Remote"
+    color: "gray"
+    
+  - id: "tag_executive"
+    name: "Executive"
+    color: "yellow"

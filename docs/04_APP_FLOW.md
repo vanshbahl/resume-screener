@@ -44,14 +44,17 @@ journey
       View Ranked List: 5: Recruiter
 ```
 
-## 3. Document Processing Pipeline (Phase 1)
+## 3. Document Processing Pipeline (Phase 1D)
 ```mermaid
 flowchart TD
     A[Resume Upload] --> B[PDF Storage]
-    B --> C[Text Extraction]
-    C --> D[Text Cleaning]
-    D --> E[Structured JSON]
-    E --> F[(Database)]
+    B --> C[PDFExtractionStage]
+    C --> D[TextCleaningStage]
+    D --> E[SectionDetectionStage]
+    E --> F[EntityExtractionStage]
+    F --> G[NormalizationStage]
+    G --> H[ValidationStage]
+    H --> I[(Database JSONB)]
 ```
 
 ## 4. Request Lifecycle (Phase 1)

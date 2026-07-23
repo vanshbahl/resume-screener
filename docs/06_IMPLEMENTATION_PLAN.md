@@ -7,21 +7,17 @@
 
 ---
 
-## 🟡 In Progress Milestones
+## ✅ Completed Milestones
 
-### Phase 1 — Backend Foundation & Resume Parsing
-- **Goal:** Build a reliable resume ingestion pipeline capable of accepting resumes, extracting text, normalizing it, converting it into structured JSON, and storing it in the database.
+### Phase 1 — Backend Foundation & Deterministic Parser (Phases 1A - 1D)
+- **Goal:** Build a robust, object-oriented ingestion pipeline capable of extracting, cleaning, detecting sections, extracting entities, and validating PDF resumes deterministically without AI.
 - **Deliverables:**
-  - CRUD operations for Jobs
-  - Resume Upload
-  - PDF Validation
-  - Resume Storage
-  - Resume Metadata Storage
-  - PDF Text Extraction
-  - Text Cleaning
-  - Resume JSON Generation
-  - Resume Retrieval API
-- **Note:** No AI models, embeddings, semantic search, ranking, or frontend implementation in this phase.
+  - ✅ CRUD operations for Jobs
+  - ✅ Resume Upload & PDF Extraction
+  - ✅ Modular Pipeline Architecture (`BaseParserStage`)
+  - ✅ Config-driven Rules (`PyYAML`)
+  - ✅ Telemetry & Observability
+  - ✅ Benchmarking Suite
 
 ---
 

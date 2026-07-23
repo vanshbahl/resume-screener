@@ -10,7 +10,7 @@ The platform utilizes a monolithic, single-process architecture for the MVP (YAG
 
 ## 2. Technology Stack
 - **Frontend**: React, TypeScript, Vite, TailwindCSS, shadcn/ui.
-- **Backend API**: FastAPI, Pydantic, SQLAlchemy.
+- **Backend API**: FastAPI, Pydantic, SQLAlchemy, PyYAML.
 - **Database**: PostgreSQL.
 - **Vector Extension**: `pgvector`.
 - **Text Extraction**: `PyMuPDF`, `PaddleOCR`.
@@ -18,7 +18,7 @@ The platform utilizes a monolithic, single-process architecture for the MVP (YAG
 
 ## 3. System Components
 - **API Router**: Handles HTTP Request/Response lifecycles and input validation.
-- **Pipeline Service**: Orchestrates text extraction, cleaning, and model inference.
+- **Pipeline Service**: Orchestrates text extraction and NLP via an Object-Oriented Pipeline (`BaseParserStage`).
 - **Scoring Engine**: Evaluates candidate metrics deterministically.
 - **Data Layer**: Manages relational records, JSONB metadata, and vector embeddings.
 

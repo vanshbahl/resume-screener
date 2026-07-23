@@ -15,9 +15,13 @@
 │   ├── models/          # SQLAlchemy table definitions
 │   ├── schemas/         # Pydantic data validation (Request/Response)
 │   ├── services/        # Business logic orchestration
-│   ├── parsers/         # Text and PDF extraction tools
+│   ├── parsers/         # Document Processing Engine
+│   │   ├── core/        # Pipeline orchestration and models
+│   │   └── stages/      # OOP parser stages (Extraction, Cleaning, etc.)
 │   ├── storage/         # Local file storage handlers
 │   └── utils/           # Helper functions
+├── config/              # YAML rules and regex definitions
+└── development/         # Benchmarking and Sandbox tools
 ```
 *(Note: The `ai/` directory will be introduced in Phase 3)*
 
@@ -50,7 +54,36 @@ erDiagram
 - **jobs**: Stores the target job requirements.
 - **resumes**: Uses a flexible `JSONB` column (`parsed_metadata`) to avoid complex relational joins for dynamic data like skills and education.
 
-## 4. API Modules
+## 4. Parser Architecture (Phase 1D)
+The backend utilizes an Object-Oriented pipeline for document processing.
+
+```mermaid
+classDiagram
+    class ParserPipeline {
+        +run(document) ResumeDocument
+    }
+    class BaseParserStage {
+        <<interface>>
+        +run(document, context)
+    }
+    class ResumeDocument {
+        +raw_lines
+        +cleaned_lines
+        +sections
+        +extracted_entities
+        +final_json
+    }
+    class PipelineContext {
+        +warnings
+        +execution_timestamps
+        +config
+    }
+    ParserPipeline --> BaseParserStage : "executes"
+    BaseParserStage ..> ResumeDocument : "mutates"
+    BaseParserStage ..> PipelineContext : "logs to"
+```
+
+## 5. API Modules
 - `POST /jobs/`: Create a new job requirement.
 - `GET /jobs/`: Retrieve all active jobs.
 - `POST /jobs/{id}/resumes/`: Upload a resume document for a job.

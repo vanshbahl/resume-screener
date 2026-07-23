@@ -3,65 +3,87 @@
 ## Revision History
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
-| 2026-07-23 | 1.0     | Tracking MVP Progress         |
-
----
-
-## ✅ Completed Milestones
-
-### Milestone 1: Ingestion Foundation
-- **Objective:** Establish the backend framework and document processing infrastructure.
-- **Deliverables:**
-  - FastAPI application structure.
-  - PostgreSQL + pgvector database models (SQLAlchemy).
-  - Pydantic schemas.
-  - PyMuPDF and PaddleOCR fallback extraction logic.
-  - Asynchronous background task routing.
-
-### Milestone 2: AI Pipeline Integration
-- **Objective:** Process text locally without third-party APIs.
-- **Deliverables:**
-  - `spaCy` text cleaning.
-  - Hardcoded skills dictionary for `RapidFuzz` extraction.
-  - Semantic vector generation via `BAAI/bge-small-en-v1.5`.
-  - JSONB database integration.
-
-### Milestone 3: Semantic Search & Scoring
-- **Objective:** Evaluate candidates against job requirements.
-- **Deliverables:**
-  - Deterministic Python scoring algorithm.
-  - 60% weight to hard skill fuzzy matches.
-  - 40% weight to soft skill semantic vector matching.
-  - `/rankings/` REST endpoint.
+| 2026-07-23 | 1.1     | Updated to 7-Phase Strategy   |
 
 ---
 
 ## 🟡 In Progress Milestones
 
-### Milestone 4: Frontend Development
-- **Objective:** Build a React application for recruiters to interface with the platform.
-- **Current Status:** Scaffolding complete (Vite, React, TypeScript). TailwindCSS installation encountered a minor issue and requires resolution.
+### Phase 1 — Backend Foundation & Resume Parsing
+- **Goal:** Build a reliable resume ingestion pipeline capable of accepting resumes, extracting text, normalizing it, converting it into structured JSON, and storing it in the database.
 - **Deliverables:**
-  - shadcn/ui component library integration.
-  - Dashboard view for active Jobs.
-  - Drag-and-drop resume upload portal.
-  - Candidate ranking table with score breakdown.
+  - CRUD operations for Jobs
+  - Resume Upload
+  - PDF Validation
+  - Resume Storage
+  - Resume Metadata Storage
+  - PDF Text Extraction
+  - Text Cleaning
+  - Resume JSON Generation
+  - Resume Retrieval API
+- **Note:** No AI models, embeddings, semantic search, ranking, or frontend implementation in this phase.
 
 ---
 
 ## ⚪ Planned Milestones
 
-### Milestone 5: Containerization & Deployment
-- **Objective:** Prepare the application for production deployment.
+### Phase 2 — Information Extraction
+- **Goal:** Improve resume parsing and entity extraction.
 - **Deliverables:**
-  - Dockerfile for the FastAPI backend (including AI model weights).
-  - Multi-stage Dockerfile for React frontend.
-  - Nginx reverse proxy configuration.
-  - Documentation on VPS deployment.
+  - Skills Extraction
+  - Experience Extraction
+  - Education Extraction
+  - Project Extraction
+  - Certifications Extraction
+  - Better normalization
 
-### Milestone 6: Version 2 Enhancements
-- **Objective:** Scale the system to new document types.
+### Phase 3 — AI Semantic Matching
+- **Goal:** Introduce HuggingFace models for semantic understanding.
 - **Deliverables:**
-  - Celery / Redis background workers for heavy concurrency.
-  - GLiNER Zero-Shot NER for dynamic entity extraction (Invoices/Medical).
-  - Polymorphic parsing architecture.
+  - Sentence Transformers
+  - Embeddings
+  - pgvector integration
+  - Job Description embeddings
+  - Resume embeddings
+  - Similarity Search
+
+### Phase 4 — Resume Scoring Engine
+- **Goal:** Implement deterministic scoring.
+- **Deliverables:**
+  - Skills Match
+  - Experience Match
+  - Education Match
+  - Project Match
+  - Semantic Similarity Score
+  - Weighted Overall Score
+  - Candidate Ranking
+
+### Phase 5 — Frontend Dashboard
+- **Goal:** Build the complete user interface.
+- **Deliverables:**
+  - Dashboard
+  - Job Management
+  - Resume Upload
+  - Candidate List
+  - Resume Viewer
+  - Ranking Dashboard
+  - Candidate Details
+
+### Phase 6 — AI Enhancements
+- **Goal:** Improve intelligence.
+- **Deliverables:**
+  - Resume Summaries
+  - Interview Question Generation
+  - Skill Gap Analysis
+  - AI Insights
+  - Recommendation Engine
+
+### Phase 7 — Production Readiness
+- **Goal:** Prepare the project for production.
+- **Deliverables:**
+  - Performance Optimization
+  - Logging
+  - Error Handling
+  - Deployment
+  - Monitoring
+  - Documentation Polish

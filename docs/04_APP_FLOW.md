@@ -3,96 +3,75 @@
 ## Revision History
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
-| 2026-07-23 | 1.0     | Initial MVP Document Creation |
+| 2026-07-23 | 1.1     | Updated to reflect Phase 1 Architecture |
 
 ## 1. Overall System Architecture
 ```mermaid
 graph TD
-    subgraph Frontend [React Web Client]
+    subgraph Frontend [React Web Client - Planned Phase 5]
         UI[User Interface]
         Dashboard[Recruiter Dashboard]
     end
 
-    subgraph Backend [FastAPI Server]
+    subgraph Backend [FastAPI Server - Phase 1]
         API[API Router]
-        Pipeline[Background AI Pipeline]
-        Scoring[Scoring Engine]
+        Pipeline[Ingestion Pipeline]
     end
 
-    subgraph DB [Database Layer]
+    subgraph DB [Database Layer - Phase 1]
         PG[(PostgreSQL Relational)]
         JSON[(JSONB Metadata)]
-        Vec[(pgvector Embeddings)]
     end
 
-    UI -->|Upload Resume| API
-    Dashboard -->|Query Rankings| API
+    UI -.->|Upload Resume| API
     
     API -->|Save Job/Status| PG
-    API -->|Trigger Task| Pipeline
+    API -->|Trigger Extraction| Pipeline
     
-    Pipeline -->|Store Entities| JSON
-    Pipeline -->|Store Vectors| Vec
-    
-    Scoring -->|Fuzzy Match| JSON
-    Scoring -->|Cosine Similarity| Vec
-    Scoring -->|Update Score| PG
+    Pipeline -->|Store JSON Metadata| JSON
 ```
 
 ## 2. User Journey
 ```mermaid
 journey
     title Recruiter Workflow
-    section Job Creation
+    section Job Creation (Phase 1)
       Create Job: 5: Recruiter
-      Define Required Skills: 4: Recruiter
-    section Ingestion
-      Drag & Drop Resumes: 5: Recruiter
+    section Ingestion (Phase 1)
+      Upload Resumes: 5: Recruiter
       Wait for Processing: 3: Recruiter
-    section Evaluation
+    section Evaluation (Phase 4 & 5)
       View Ranked List: 5: Recruiter
-      Analyze Candidate Score Breakdown: 4: Recruiter
 ```
 
-## 3. Document Processing Pipeline
+## 3. Document Processing Pipeline (Phase 1)
 ```mermaid
 flowchart TD
-    A[Upload PDF] --> B(FastAPI Endpoint)
-    B --> C{PyMuPDF Extraction}
-    C -->|Text found| D[Clean Text - spaCy]
-    C -->|Sparse text| E[PaddleOCR Extraction]
-    E --> D
-    
-    D --> F[Fuzzy Match Skills - RapidFuzz]
-    D --> G[Generate Embeddings - bge-small]
-    
-    F --> H[Save to JSONB]
-    G --> I[Save to pgvector]
-    
-    H --> J(Calculate Final Score)
-    I --> J
+    A[Resume Upload] --> B[PDF Storage]
+    B --> C[Text Extraction]
+    C --> D[Text Cleaning]
+    D --> E[Structured JSON]
+    E --> F[(Database)]
 ```
 
-## 4. Request Lifecycle
+## 4. Request Lifecycle (Phase 1)
 ```mermaid
 sequenceDiagram
     participant User
     participant FastAPI
-    participant BackgroundWorker
+    participant IngestionPipeline
     participant PostgreSQL
 
     User->>FastAPI: POST /jobs/{id}/resumes/ (PDF)
     FastAPI->>PostgreSQL: INSERT Resume (status: PENDING)
-    FastAPI->>BackgroundWorker: Enqueue process_resume_background()
+    FastAPI->>IngestionPipeline: extract_and_store()
     FastAPI-->>User: 202 Accepted (Resume ID)
     
-    BackgroundWorker->>BackgroundWorker: Extract Text & Run AI
-    BackgroundWorker->>PostgreSQL: UPDATE parsed_metadata & embedding
-    BackgroundWorker->>BackgroundWorker: score_resume()
-    BackgroundWorker->>PostgreSQL: UPDATE final_score (status: PROCESSED)
+    IngestionPipeline->>IngestionPipeline: Extract Text & Clean
+    IngestionPipeline->>PostgreSQL: UPDATE structured JSON
+    IngestionPipeline->>PostgreSQL: UPDATE status (PROCESSED)
     
-    User->>FastAPI: GET /jobs/{id}/rankings/
-    FastAPI->>PostgreSQL: SELECT Resumes ORDER BY final_score DESC
-    PostgreSQL-->>FastAPI: Ranked List
+    User->>FastAPI: GET /resumes/{id}
+    PostgreSQL-->>FastAPI: Resume JSON
     FastAPI-->>User: JSON Response
 ```

@@ -30,6 +30,7 @@ from app.interview.api.router import router as interview_router
 from app.analytics.api.router import router as analytics_router
 from app.identity.api.router import router as identity_router
 from app.communication.api.router import router as communication_router
+from app.ai.api.router import router as ai_router
 
 
 def get_default_pipeline() -> ParserPipeline:
@@ -126,3 +127,4 @@ app.include_router(interview_router)
 app.include_router(analytics_router)
 app.include_router(identity_router)
 app.include_router(communication_router)
+app.include_router(ai_router)

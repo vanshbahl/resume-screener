@@ -7,7 +7,7 @@
 | 2026-07-23 | 2.5     | Updated TRD for Phase 3 Backend Completion |
 
 ## 1. Architecture Overview
-The platform utilizes a monolithic, domain-driven architecture. The FastAPI application serves REST endpoints organized by strict business boundaries (Candidate, Job, Workflow, Workspace, Interview, Analytics). Operations are strongly decoupled, utilizing Timeline Event logs to synchronize distributed state changes, while relying on `MemoryCacheRepository` to speed up analytical read operations.
+The platform utilizes a monolithic, domain-driven architecture. The FastAPI application serves REST endpoints organized by strict business boundaries (Candidate, Job, Workflow, Workspace, Interview, Analytics, Identity, Communication, AI). Operations are strongly decoupled, utilizing Timeline Event logs and the Communication Hub to synchronize distributed state changes, while relying on `MemoryCacheRepository` to speed up analytical read operations.
 
 ## 2. Technology Stack
 - **Frontend (Planned)**: React, TypeScript, Vite, TailwindCSS, shadcn/ui.
@@ -26,6 +26,9 @@ The platform utilizes a monolithic, domain-driven architecture. The FastAPI appl
   - `Interview Management` handles scheduling, panels, and dynamic JSONB feedback scorecards.
   - `Workspace` provides caching and user-specific states.
   - `Analytics` aggregates data from all layers to calculate KPIs and build exportable CSV reports.
+  - `Identity` provides Organizations, Users, Roles, and Multi-Tenant RBAC security.
+  - `Communication` acts as a centralized notification hub for all asynchronous messaging.
+  - `AI Platform` provides Copilot orchestration, memory management, and deterministic tool execution.
 - **Data Layer**: Manages relational records, JSONB metadata, and vector embeddings via standard Repository patterns.
 
 ## 4. AI Components
@@ -36,7 +39,7 @@ The platform utilizes a monolithic, domain-driven architecture. The FastAPI appl
 ## 5. Security
 - **Data Isolation**: All AI models run locally; zero third-party API exposure.
 - **Input Validation**: Strict typing enforced by Pydantic API boundaries.
-- **Future Readiness**: The `user_id` context is already baked into Workspaces and Analytics, preparing the architecture for imminent Multi-Tenant RBAC implementations.
+- **RBAC**: The `Identity` module fully implements Multi-Tenant RBAC, ensuring strict data isolation and authorization across the entire application based on organizational boundaries and user roles.
 
 ## 6. Performance
 - **Caching**: Endpoints that hit heavy aggregations (`AnalyticsService`) are proxied through a globally injected `MemoryCacheRepository`.

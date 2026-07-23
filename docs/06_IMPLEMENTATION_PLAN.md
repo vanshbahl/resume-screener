@@ -19,6 +19,9 @@
   - ✅ Recruiter Workspace (Dashboards & Queues)
   - ✅ Interview Management (Scorecards & Panels)
   - ✅ Analytics & Reporting Platform (KPIs & CSV Exports)
+  - ✅ Identity, Organizations & Access Control (RBAC & Multi-Tenancy)
+  - ✅ Communication & Notification Hub (Centralized Messaging)
+  - ✅ AI Platform & Copilot (Agents, Memory, Tools, Prompts)
 
 ---
 
@@ -44,14 +47,7 @@
 
 ## ⚪ Planned Milestones
 
-### Phase 4 — Organizations & Multi-Tenancy (RBAC)
-- **Goal:** Introduce Role-Based Access Control to support multiple companies inside the same backend.
-- **Deliverables:**
-  - Organizations & Tenants
-  - Roles (Admin, Recruiter, Hiring Manager)
-  - Data isolation layer
-
-### Phase 5 — Frontend React Dashboard
+### Phase 4 — Frontend React Dashboard
 - **Goal:** Build the complete user interface to consume the API.
 - **Deliverables:**
   - Main Dashboard
@@ -61,14 +57,14 @@
   - Interview Scorecard UI
   - Analytics Visualizations
 
-### Phase 6 — Generative AI Enhancements (Optional)
+### Phase 5 — Generative AI Enhancements (Future / Phase 3.9)
 - **Goal:** Augment existing deterministic intelligence with local generative capabilities.
 - **Deliverables:**
   - Resume Summaries (Local LLM)
   - Automated Interview Question Generation
   - Custom Cover Letter insights
 
-### Phase 7 — Scale & Production Deployment
+### Phase 6 — Scale & Production Deployment
 - **Goal:** Prepare the project for internet-scale production.
 - **Deliverables:**
   - Celery / Redis distributed workers

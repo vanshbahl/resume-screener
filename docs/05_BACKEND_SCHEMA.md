@@ -17,6 +17,9 @@
 │   ├── search/          # Candidate & Job Retrieval Engine
 │   ├── workflow/        # Configurable Pipelines & Timeline Events
 │   ├── workspace/       # Caching, Dashboards, & Notifications
+│   ├── identity/        # Users, Organizations, Auth, RBAC
+│   ├── communication/   # Notification Hub, Email, SMS Templates
+│   ├── ai/              # AI Agents, Tools, Memory, Prompts
 │   ├── parsers/         # Document Processing Engine
 │   ├── models/          # Shared SQLAlchemy Base & Enums
 │   └── main.py          # FastAPI Entrypoint
@@ -81,6 +84,9 @@ The backend utilizes strict Domain-Driven Design (DDD).
 - `/interviews/*`: Scheduling, panels, feedback execution.
 - `/workspace/*`: Cached notifications, activities, dashboard feeds.
 - `/analytics/*`: Csv reports, KPIs, time-series trends.
+- `/identity/*`: Auth, Organizations, Users, Roles, Auditing.
+- `/communication/*`: Message Hub, Notifications, Templates.
+- `/ai/*`: Copilot Chats, Feedback, Trace Observability.
 
 ## 6. Storage & Caching
 - **Relational**: PostgreSQL.

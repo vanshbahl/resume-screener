@@ -72,10 +72,12 @@ To build a scalable, offline-capable, and privacy-first Document Intelligence Pl
 - ✅ Interview Management (Logistics, Scorecards)
 - ✅ Recruiter Workspace & Caching
 - ✅ Analytics & Reporting Platform (Dashboards, CSV Exports)
-- ⚪ Organizations & RBAC (Multi-Tenancy)
-- ⚪ Frontend React Dashboard (Phase 5)
+- ✅ Identity, Organizations & Access Control (Multi-Tenancy & RBAC)
+- ✅ Communication & Notification Hub
+- ✅ AI Platform & Copilot (Agents, Tools, Orchestrator)
+- ⚪ Frontend React Dashboard (Phase 4)
 
 ## 10. Future Scope
-- Multi-tenant RBAC platform capabilities.
+- Frontend User Interface construction.
 - Generic Invoice and Purchase order parsing using GLiNER.
 - Real-time event-sourcing for extreme analytic scaling.

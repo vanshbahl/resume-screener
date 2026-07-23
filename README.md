@@ -34,10 +34,12 @@ The AI Document Intelligence Platform is designed to automate candidate evaluati
 - **Intelligent Core**: Math-based candidate ranking, feature vectors, semantic similarity, and deterministic gap analysis.
 - **Enterprise ATS Domains**: Independent modules for Job Management, Candidate Management, Workflow Pipelines, Interview Logistics, and Analytics.
 - **Privacy First**: No data leaves your servers. No external LLM calls.
-- **Generic Architecture**: Built with Domain-Driven Design (DDD) to effortlessly expand to multi-tenant scaling and additional document types.
+- **Identity & Security**: Multi-tenant RBAC, Organizations, and Audit Logging built-in.
+- **AI Copilot**: Provider-agnostic AI agent orchestrator with memory and deterministic tool execution.
+- **Generic Architecture**: Built with Domain-Driven Design (DDD) to effortlessly expand to additional document types.
 
 ## Current Status
-**Phase 3 Complete (v2.5 Release Candidate 2)**: The platform has achieved complete stability across the core Applicant Tracking System. We have fully implemented Candidate Management, Job Management, configurable Pipeline Workflow Engines, the Recruiter Workspace, Interview Management (with JSONB Scorecards), and a comprehensive Analytics & Reporting Platform. The system is backed by a robust PostgreSQL testing infrastructure and automated CI/CD quality gates.
+**Phase 3 Complete (v2.5 Release Candidate 2)**: The platform has achieved complete stability across the core Applicant Tracking System. We have fully implemented Candidate Management, Job Management, configurable Pipeline Workflow Engines, the Recruiter Workspace, Interview Management, Analytics & Reporting, Identity & Access Control (RBAC), the Communication Hub, and the AI Copilot Platform. The system is backed by a robust PostgreSQL testing infrastructure and automated CI/CD quality gates.
 
 ## Architecture Overview
 The system relies on a monolithic FastAPI backend that processes AI tasks asynchronously while serving REST endpoints. A PostgreSQL database stores relational domain data alongside `JSONB` for unstructured extracted entities (resumes, scorecards, layouts) and `VECTOR` types for dense semantic embeddings. A strict Domain-Driven structure keeps the core modules decoupled.
@@ -53,17 +55,20 @@ The system relies on a monolithic FastAPI backend that processes AI tasks asynch
 /
 ├── backend/
 │   ├── app/
-│   │   ├── intelligence/ # Matching, Scoring, Gap Analysis
-│   │   ├── search/       # Candidate & Job Search Engine
-│   │   ├── parsers/      # OOP Document Ingestion Pipeline
-│   │   ├── candidate/    # Candidate Domain
-│   │   ├── job/          # Job Domain
-│   │   ├── workflow/     # Configurable Hiring Pipelines & Timelines
-│   │   ├── interview/    # Scheduling, Panels, & Scorecards
-│   │   ├── workspace/    # Recruiter Dashboards & Queues
-│   │   ├── analytics/    # Aggregations, KPIs, CSV Reports
-│   │   ├── models/       # Shared SQLAlchemy Base
-│   │   └── main.py       # FastAPI Entrypoint
+│   │   ├── intelligence/    # Matching, Scoring, Gap Analysis
+│   │   ├── search/          # Candidate & Job Search Engine
+│   │   ├── parsers/         # OOP Document Ingestion Pipeline
+│   │   ├── candidate/       # Candidate Domain
+│   │   ├── job/             # Job Domain
+│   │   ├── workflow/        # Configurable Hiring Pipelines & Timelines
+│   │   ├── interview/       # Scheduling, Panels, & Scorecards
+│   │   ├── workspace/       # Recruiter Dashboards & Queues
+│   │   ├── analytics/       # Aggregations, KPIs, CSV Reports
+│   │   ├── identity/        # Users, Organizations, Auth, RBAC
+│   │   ├── communication/   # Notification Hub, Email, SMS Templates
+│   │   ├── ai/              # AI Agents, Tools, Memory, Prompts
+│   │   ├── models/          # Shared SQLAlchemy Base
+│   │   └── main.py          # FastAPI Entrypoint
 │   ├── config/           # YAML Rules & Configs
 │   └── parser_tests/     # Comprehensive PyTest Integration & Benchmarking Suite
 ├── docs/                 # Project Documentation
@@ -107,7 +112,6 @@ To prevent repository bloat and accidental data leaks, our `.gitignore` explicit
 See [06_IMPLEMENTATION_PLAN.md](docs/06_IMPLEMENTATION_PLAN.md) for detailed milestone tracking.
 
 ## Future Plans
-- Organizations & RBAC (Multi-Tenancy).
 - Full React Frontend Dashboard implementation.
 - Distributed Celery/Redis worker node architecture.
 

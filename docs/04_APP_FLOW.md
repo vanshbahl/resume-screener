@@ -28,6 +28,9 @@ graph TD
         I[Interview Logistics]
         A[Analytics Aggregator]
         INT[Intelligence & Parsing Engine]
+        ID[Identity & RBAC]
+        COM[Communication Hub]
+        AI[AI Copilot Platform]
     end
 
     subgraph Database [PostgreSQL]
@@ -37,12 +40,16 @@ graph TD
     end
 
     UI --> API
+    API --> ID
     API --> Domains
     Domains --> Database
     C & J <--> INT
     W --> C & J
     I --> W
     A --> W & I & C & J
+    ID -.-> Domains
+    Domains -.-> COM
+    AI -.-> Domains
 ```
 
 ## 2. Core Object Lifecycle

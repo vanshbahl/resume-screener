@@ -172,11 +172,12 @@ def process_resume_background(resume_id: int, file_path: str, job_id: int):
             raw_pdf_text = ""
         
         # Milestone 5: Persist everything (Text, JSON, Metadata)
-        existing_metadata = resume.parsed_metadata or {}
-        existing_metadata["structured_data"] = structured_data
+        import copy
+        new_metadata = copy.deepcopy(resume.parsed_metadata) if resume.parsed_metadata else {}
+        new_metadata["structured_data"] = structured_data
         
         resume.raw_text = clean_pdf_text
-        resume.parsed_metadata = existing_metadata
+        resume.parsed_metadata = new_metadata
         resume.status = ResumeStatus.PROCESSED
         
         db.commit()

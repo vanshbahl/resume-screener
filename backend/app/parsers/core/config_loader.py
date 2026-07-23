@@ -17,5 +17,6 @@ def get_parser_config() -> dict:
         "sections": load_config("section_patterns.yaml").get("sections", {}),
         "skill_categories": load_config("section_patterns.yaml").get("skill_categories", {}),
         "weights": load_config("confidence_weights.yaml").get("field_weights", {}),
-        "date_patterns": load_config("date_patterns.yaml").get("date_patterns", {})
+        "date_patterns": load_config("date_patterns.yaml").get("date_patterns", {}),
+        "skills_kb": load_config("skills_kb.yaml").get("categories", {})
     }

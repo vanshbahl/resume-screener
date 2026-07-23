@@ -4,6 +4,8 @@
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 1.1     | Updated folder structure and removed AI for Phase 1 |
+| 2026-07-23 | 2.2     | Added Hybrid NER and Entity Fusion (Phase 2) |
+| 2026-07-23 | 2.2.1   | Added Domain Extractors for Granular Parsing |
 
 ## 1. Folder Structure
 ```text
@@ -15,6 +17,9 @@
 │   ├── models/          # SQLAlchemy table definitions
 │   ├── schemas/         # Pydantic data validation (Request/Response)
 │   ├── services/        # Business logic orchestration
+│   ├── ai/              # AI and ML components (Phase 2)
+│   │   ├── extractors/  # Domain Extractors (Skills, Experience, etc.)
+│   │   └── models/      # Local model management
 │   ├── parsers/         # Document Processing Engine
 │   │   ├── core/        # Pipeline orchestration and models
 │   │   └── stages/      # OOP parser stages (Extraction, Cleaning, etc.)
@@ -54,8 +59,8 @@ erDiagram
 - **jobs**: Stores the target job requirements.
 - **resumes**: Uses a flexible `JSONB` column (`parsed_metadata`) to avoid complex relational joins for dynamic data like skills and education.
 
-## 4. Parser Architecture (Phase 1D)
-The backend utilizes an Object-Oriented pipeline for document processing.
+## 4. Parser Architecture (Phase 2.2.1)
+The backend utilizes an Object-Oriented pipeline with Hybrid AI Information Extraction.
 
 ```mermaid
 classDiagram

@@ -1,0 +1,83 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "John Doe Resume",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "deterministic"
+    },
+    "email": null,
+    "phone": null,
+    "linkedin": null,
+    "github": null,
+    "portfolio": null,
+    "website": null,
+    "location": null
+  },
+  "summary": null,
+  "skills": [],
+  "languages": [],
+  "spoken_languages": [],
+  "frameworks": [],
+  "tools": [],
+  "concepts": [],
+  "soft_skills": [],
+  "education": [],
+  "experience": [],
+  "projects": [],
+  "certifications": [],
+  "achievements": [],
+  "raw_data": {
+    "sections": {
+      "personal_info": {
+        "lines": [
+          {
+            "text": "John Doe Resume",
+            "page": 1,
+            "line_no": 0
+          }
+        ],
+        "confidence": 1.0
+      }
+    }
+  },
+  "metadata": {
+    "parser_version": "1.3.0",
+    "schema_version": "1.0.0",
+    "parsed_at": "2026-07-23T12:02:20.782562Z",
+    "processing_time_ms": 2358,
+    "ai_inference_time_ms": 2351,
+    "page_count": 1,
+    "word_count": 3,
+    "sections_detected": [
+      "personal_info"
+    ],
+    "entities_detected": 1,
+    "entities_added_by_ai": 0,
+    "entities_modified_by_ai": 0,
+    "parsing_confidence": 0.11,
+    "model_versions": {
+      "spacy": "en_core_web_trf",
+      "hf_ner": "dslim/bert-base-NER"
+    },
+    "resume_id": null,
+    "job_id": null,
+    "warnings": [],
+    "recoverable_errors": [],
+    "execution_timestamps": {
+      "PDFExtractionStage": 3.7610530853271484,
+      "TextCleaningStage": 0.006198883056640625,
+      "SectionDetectionStage": 0.5779266357421875,
+      "EntityExtractionStage": 2.354145050048828,
+      "SpacyNERStage": 1088.2210731506348,
+      "HuggingFaceNERStage": 1263.3709907531738,
+      "EntityFusionStage": 0.0030994415283203125,
+      "NormalizationStage": 0.003814697265625,
+      "ValidationStage": 0.10204315185546875
+    }
+  }
+}

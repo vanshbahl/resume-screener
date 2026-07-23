@@ -4,6 +4,7 @@
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 1.1     | Updated to reflect Phase 1 Architecture |
+| 2026-07-23 | 2.2     | Updated to reflect Phase 2.2 Hybrid Pipeline |
 
 ## 1. Overall System Architecture
 ```mermaid
@@ -44,17 +45,28 @@ journey
       View Ranked List: 5: Recruiter
 ```
 
-## 3. Document Processing Pipeline (Phase 1D)
+## 3. Document Processing Pipeline (Phase 2.2.1)
 ```mermaid
 flowchart TD
     A[Resume Upload] --> B[PDF Storage]
     B --> C[PDFExtractionStage]
     C --> D[TextCleaningStage]
     D --> E[SectionDetectionStage]
-    E --> F[EntityExtractionStage]
-    F --> G[NormalizationStage]
-    G --> H[ValidationStage]
-    H --> I[(Database JSONB)]
+    
+    subgraph EntityExtractionStage [Domain Extractors]
+        F1[SkillsExtractor]
+        F2[ExperienceExtractor]
+        F3[ProjectExtractor]
+        F4[EducationExtractor]
+    end
+    
+    E --> EntityExtractionStage
+    EntityExtractionStage --> G[SpacyNERStage]
+    G --> H[HuggingFaceNERStage]
+    H --> I[EntityFusionStage]
+    I --> J[NormalizationStage]
+    J --> K[ValidationStage]
+    K --> L[(Database JSONB)]
 ```
 
 ## 4. Request Lifecycle (Phase 1)

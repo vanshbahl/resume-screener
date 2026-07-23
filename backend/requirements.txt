@@ -13,3 +13,6 @@ spacy
 rapidfuzz
 sentence-transformers
 python-multipart
+spacy-transformers
+matplotlib
+pandas

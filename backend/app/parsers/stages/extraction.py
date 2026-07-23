@@ -29,7 +29,7 @@ class PDFExtractionStage(BaseParserStage):
                             "line_no": line_index
                         })
                         word_count += len(cleaned_line.split())
-                        line_index += 1
+                    line_index += 1  # Always increment — blank lines create gaps in line_no for block-splitting
             
             if page_count == 0 or len(lines) == 0:
                 context.log_warning("EmptyResume", "No text could be extracted from PDF.")

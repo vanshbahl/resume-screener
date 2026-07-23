@@ -1,0 +1,188 @@
+{
+  "summary": {
+    "total_resumes": 1,
+    "overall_accuracy": 0.9375,
+    "total_parsing_time_sec": 1.98,
+    "avg_parsing_time_sec": 1.98
+  },
+  "resumes": {
+    "dummy.pdf": {
+      "metrics": {
+        "parsing_time_sec": 1.98,
+        "confidence": 0.0,
+        "entities_detected": 0,
+        "sections": {
+          "personal_info": {
+            "accuracy": 0.8571428571428571,
+            "fields": {
+              "name": false,
+              "email": true,
+              "phone": true,
+              "github": true,
+              "linkedin": true,
+              "portfolio": true,
+              "location": true
+            }
+          },
+          "skills": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "languages": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "frameworks": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "tools": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "concepts": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "soft_skills": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "tp": 0,
+            "fp": 0,
+            "fn": 0
+          },
+          "experience": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "accuracy": 1.0,
+            "details": [],
+            "item_count_diff": 0
+          },
+          "projects": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "accuracy": 1.0,
+            "details": [],
+            "item_count_diff": 0
+          },
+          "education": {
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0,
+            "accuracy": 1.0,
+            "details": [],
+            "item_count_diff": 0
+          }
+        },
+        "overall_accuracy": 0.9375
+      },
+      "actual_data": {
+        "personal_info": {
+          "name": {
+            "value": "John Doe Resume",
+            "confidence": 0.9,
+            "source": {
+              "page": 1,
+              "section": "personal_info",
+              "line": 0
+            },
+            "origin_model": "deterministic"
+          },
+          "email": null,
+          "phone": null,
+          "linkedin": null,
+          "github": null,
+          "portfolio": null,
+          "website": null,
+          "location": null
+        },
+        "summary": null,
+        "skills": [],
+        "languages": [],
+        "spoken_languages": [],
+        "frameworks": [],
+        "tools": [],
+        "concepts": [],
+        "soft_skills": [],
+        "education": [],
+        "experience": [],
+        "projects": [],
+        "certifications": [],
+        "achievements": [],
+        "raw_data": {
+          "sections": {
+            "personal_info": {
+              "lines": [
+                {
+                  "text": "John Doe Resume",
+                  "page": 1,
+                  "line_no": 0
+                }
+              ],
+              "confidence": 1.0
+            }
+          }
+        },
+        "metadata": {
+          "parser_version": "1.3.0",
+          "schema_version": "1.0.0",
+          "parsed_at": "2026-07-23T12:03:43.795819Z",
+          "processing_time_ms": 1973,
+          "ai_inference_time_ms": 1967,
+          "page_count": 1,
+          "word_count": 3,
+          "sections_detected": [
+            "personal_info"
+          ],
+          "entities_detected": 1,
+          "entities_added_by_ai": 0,
+          "entities_modified_by_ai": 0,
+          "parsing_confidence": 0.11,
+          "model_versions": {
+            "spacy": "en_core_web_trf",
+            "hf_ner": "dslim/bert-base-NER"
+          },
+          "resume_id": null,
+          "job_id": null,
+          "warnings": [],
+          "recoverable_errors": [],
+          "execution_timestamps": {
+            "PDFExtractionStage": 3.3380985260009766,
+            "TextCleaningStage": 0.025987625122070312,
+            "SectionDetectionStage": 0.5676746368408203,
+            "EntityExtractionStage": 2.3190975189208984,
+            "SpacyNERStage": 981.0729026794434,
+            "HuggingFaceNERStage": 986.220121383667,
+            "EntityFusionStage": 0.0050067901611328125,
+            "NormalizationStage": 0.003814697265625,
+            "ValidationStage": 0.12540817260742188
+          }
+        }
+      }
+    }
+  },
+  "warnings": []
+}

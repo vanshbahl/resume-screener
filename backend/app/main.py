@@ -20,6 +20,9 @@ from app.parsers.stages.extraction import PDFExtractionStage
 from app.parsers.stages.cleaning import TextCleaningStage
 from app.parsers.stages.section_detection import SectionDetectionStage
 from app.parsers.stages.entity_extraction import EntityExtractionStage
+from app.parsers.stages.spacy_ner import SpacyNERStage
+from app.parsers.stages.hf_ner import HuggingFaceNERStage
+from app.parsers.stages.entity_fusion import EntityFusionStage
 from app.parsers.stages.normalization import NormalizationStage
 from app.parsers.stages.validation import ValidationStage
 
@@ -29,6 +32,9 @@ def get_default_pipeline() -> ParserPipeline:
         TextCleaningStage(),
         SectionDetectionStage(),
         EntityExtractionStage(),
+        SpacyNERStage(),
+        HuggingFaceNERStage(),
+        EntityFusionStage(),
         NormalizationStage(),
         ValidationStage()
     ])

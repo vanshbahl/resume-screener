@@ -33,6 +33,9 @@ class ResumeDocument:
         self.cleaned_lines: List[Dict[str, Any]] = []
         self.sections: Dict[str, dict] = {}
         self.extracted_entities: Dict[str, Any] = {}
+        self.spacy_entities: Dict[str, Any] = {}
+        self.hf_entities: Dict[str, Any] = {}
+        self.fusion_entities: Dict[str, Any] = {}
         self.normalized_entities: Dict[str, Any] = {}
         self.validation_results: bool = False
         self.final_json: Dict[str, Any] = {}

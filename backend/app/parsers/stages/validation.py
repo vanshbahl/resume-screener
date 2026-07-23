@@ -12,6 +12,7 @@ class ValidationStage(BaseParserStage):
             "summary": extracted.get("summary"),
             "skills": extracted.get("skills", []),
             "languages": extracted.get("languages", []),
+            "spoken_languages": extracted.get("spoken_languages", []),
             "frameworks": extracted.get("frameworks", []),
             "tools": extracted.get("tools", []),
             "concepts": extracted.get("concepts", []),
@@ -29,11 +30,15 @@ class ValidationStage(BaseParserStage):
                 "schema_version": "1.0.0",
                 "parsed_at": datetime.utcnow().isoformat() + "Z",
                 "processing_time_ms": 0,
+                "ai_inference_time_ms": document.metadata.get("ai_inference_time_ms", 0),
                 "page_count": document.metadata.get("page_count", 0),
                 "word_count": document.metadata.get("word_count", 0),
                 "sections_detected": list(document.sections.keys()),
                 "entities_detected": 0,
+                "entities_added_by_ai": document.metadata.get("entities_added_by_ai", 0),
+                "entities_modified_by_ai": document.metadata.get("entities_modified_by_ai", 0),
                 "parsing_confidence": 0.0,
+                "model_versions": document.metadata.get("model_versions", {}),
                 "resume_id": document.resume_id,
                 "job_id": document.job_id
             }

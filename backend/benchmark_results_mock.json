@@ -1,0 +1,1328 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "John Doe",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 1
+      },
+      "origin_model": "deterministic"
+    },
+    "email": {
+      "value": "johndoe@email.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 3
+      },
+      "origin_model": "deterministic"
+    },
+    "phone": {
+      "value": "+1 (555) 123-4567",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 3
+      },
+      "origin_model": "deterministic"
+    },
+    "linkedin": {
+      "value": "linkedin.com/in/johndoe",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 4
+      },
+      "origin_model": "deterministic"
+    },
+    "github": {
+      "value": "github.com/johndoe",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 4
+      },
+      "origin_model": "deterministic"
+    },
+    "portfolio": null,
+    "website": null,
+    "location": {
+      "value": "San Francisco, CA",
+      "confidence": 0.8,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 3
+      },
+      "origin_model": "deterministic"
+    }
+  },
+  "summary": {
+    "value": "Highly motivated senior backend engineer with 5 years of experience building scalable microservices and APIs.",
+    "confidence": 0.9,
+    "source": {
+      "page": 1,
+      "section": "summary",
+      "line": 7
+    },
+    "origin_model": "deterministic"
+  },
+  "skills": [
+    {
+      "value": "JavaScript",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Python",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Go",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "C++",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "SQL",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "HTML",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "React",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 52
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Django",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 52
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "FastAPI",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 52
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "PostgreSQL",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 53
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "MongoDB",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 53
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Redis",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 53
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "AWS",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Docker",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Kubernetes",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Git",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Leadership",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 55
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Communication",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 55
+      },
+      "origin_model": "deterministic"
+    }
+  ],
+  "languages": [
+    {
+      "value": "JavaScript",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Python",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Go",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "C++",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "SQL",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "HTML",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 51
+      },
+      "origin_model": "deterministic"
+    }
+  ],
+  "spoken_languages": [
+    {
+      "name": {
+        "value": "English",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "languages",
+          "line": 48
+        },
+        "origin_model": "deterministic"
+      },
+      "fluency": {
+        "value": "Native",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "languages",
+          "line": 48
+        },
+        "origin_model": "deterministic"
+      },
+      "confidence": 0.9
+    },
+    {
+      "name": {
+        "value": "Spanish",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "languages",
+          "line": 48
+        },
+        "origin_model": "deterministic"
+      },
+      "fluency": {
+        "value": "Fluent",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "languages",
+          "line": 48
+        },
+        "origin_model": "deterministic"
+      },
+      "confidence": 0.9
+    }
+  ],
+  "frameworks": [
+    {
+      "value": "React",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 52
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Django",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 52
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "FastAPI",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 52
+      },
+      "origin_model": "deterministic"
+    }
+  ],
+  "tools": [
+    {
+      "value": "PostgreSQL",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 53
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "MongoDB",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 53
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Redis",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 53
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "AWS",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Docker",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Kubernetes",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Git",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 54
+      },
+      "origin_model": "deterministic"
+    }
+  ],
+  "concepts": [],
+  "soft_skills": [
+    {
+      "value": "Leadership",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 55
+      },
+      "origin_model": "deterministic"
+    },
+    {
+      "value": "Communication",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 55
+      },
+      "origin_model": "deterministic"
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "value": "University of Technology",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 25
+        },
+        "origin_model": "deterministic"
+      },
+      "degree": {
+        "value": "B.S.",
+        "confidence": 0.85,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 24
+        },
+        "origin_model": "deterministic"
+      },
+      "field_of_study": {
+        "value": "Computer Science",
+        "confidence": 0.85,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 24
+        },
+        "origin_model": "deterministic"
+      },
+      "cgpa": {
+        "value": "3.8",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 27
+        },
+        "origin_model": "deterministic"
+      },
+      "percentage": {
+        "value": "85",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 28
+        },
+        "origin_model": "deterministic"
+      },
+      "start_date": {
+        "value": "Sep 2014",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 26
+        },
+        "origin_model": "deterministic"
+      },
+      "end_date": {
+        "value": "May 2018",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 26
+        },
+        "origin_model": "deterministic"
+      },
+      "graduation_year": {
+        "value": "May 2018",
+        "confidence": 0.85,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 26
+        },
+        "origin_model": "deterministic"
+      },
+      "expected_graduation": null,
+      "current_semester": null,
+      "location": null,
+      "description": {
+        "value": "B.S. in Computer Science\nUniversity of Technology\nSep 2014 - May 2018\nCGPA: 3.8/4.0\n85%",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 24
+        },
+        "origin_model": "deterministic"
+      },
+      "confidence": 0.8
+    }
+  ],
+  "experience": [
+    {
+      "company": {
+        "value": "Tech Innovations Inc.",
+        "confidence": 0.7,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 10
+        },
+        "origin_model": "deterministic"
+      },
+      "title": {
+        "value": "Senior Software Engineer",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 11
+        },
+        "origin_model": "deterministic"
+      },
+      "location": {
+        "value": "Djan",
+        "confidence": 0.51,
+        "source": {
+          "page": 1,
+          "section": "unknown",
+          "line": 15
+        },
+        "origin_model": "huggingface"
+      },
+      "employment_type": null,
+      "start_date": {
+        "value": "January 2021",
+        "confidence": 0.95,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 12
+        },
+        "origin_model": "deterministic"
+      },
+      "end_date": {
+        "value": "Present",
+        "confidence": 0.95,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 12
+        },
+        "origin_model": "deterministic"
+      },
+      "duration": null,
+      "description": {
+        "value": "Tech Innovations Inc.\nSenior Software Engineer\nJanuary 2021 - Present\n- Architected a distributed messaging queue handling 1M+ req/sec.\n- Reduced latency by 40% using Redis and Golang.\n- Developed REST APIs in FastAPI and Django.",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 10
+        },
+        "origin_model": "deterministic"
+      },
+      "skills_used": [
+        {
+          "value": "Go",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 14
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "Redis",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 14
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "Django",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 15
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "FastAPI",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 15
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "RESTful API",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 15
+          },
+          "origin_model": "deterministic"
+        }
+      ],
+      "responsibilities": [
+        {
+          "value": "Architected a distributed messaging queue handling 1M+ req/sec.",
+          "confidence": 0.9,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 13
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "Reduced latency by 40% using Redis and Golang.",
+          "confidence": 0.9,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 14
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "Developed REST APIs in FastAPI and Django.",
+          "confidence": 0.9,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 15
+          },
+          "origin_model": "deterministic"
+        }
+      ],
+      "confidence": 0.8
+    },
+    {
+      "company": {
+        "value": "Acme Corp",
+        "confidence": 0.7,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 17
+        },
+        "origin_model": "deterministic"
+      },
+      "title": {
+        "value": "Software Engineer II",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 18
+        },
+        "origin_model": "deterministic"
+      },
+      "location": null,
+      "employment_type": null,
+      "start_date": {
+        "value": "Feb 2018",
+        "confidence": 0.95,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 19
+        },
+        "origin_model": "deterministic"
+      },
+      "end_date": {
+        "value": "Dec 2020",
+        "confidence": 0.95,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 19
+        },
+        "origin_model": "deterministic"
+      },
+      "duration": {
+        "value": "2 years 10 months",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 19
+        },
+        "origin_model": "deterministic"
+      },
+      "description": {
+        "value": "Acme Corp\nSoftware Engineer II\nFeb 2018 - Dec 2020 (2 years 10 months)\n- Built REST APIs in Django.\n- Migrated monolith to Kubernetes and AWS.",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 17
+        },
+        "origin_model": "deterministic"
+      },
+      "skills_used": [
+        {
+          "value": "Django",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 20
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "RESTful API",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 20
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "AWS",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 21
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "Kubernetes",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 21
+          },
+          "origin_model": "deterministic"
+        }
+      ],
+      "responsibilities": [
+        {
+          "value": "Built REST APIs in Django.",
+          "confidence": 0.9,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 20
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "Migrated monolith to Kubernetes and AWS.",
+          "confidence": 0.9,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 21
+          },
+          "origin_model": "deterministic"
+        }
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "projects": [
+    {
+      "name": {
+        "value": "OpenSource Analytics",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 31
+        },
+        "origin_model": "deterministic"
+      },
+      "description": {
+        "value": "OpenSource Analytics\n- Built a highly scalable analytics engine using Python and Postgres.\n- https://github.com/johndoe/analytics\n- Duration: 3 months\n- Winner of the regional hackathon 2022",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 31
+        },
+        "origin_model": "deterministic"
+      },
+      "technologies": [
+        {
+          "value": "Python",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 32
+          },
+          "origin_model": "deterministic"
+        },
+        {
+          "value": "PostgreSQL",
+          "confidence": 0.95,
+          "source": {
+            "page": 1,
+            "section": "skills",
+            "line": 32
+          },
+          "origin_model": "deterministic"
+        }
+      ],
+      "link": {
+        "value": "https://github.com",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 33
+        },
+        "origin_model": "deterministic"
+      },
+      "duration": {
+        "value": "3 months",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 34
+        },
+        "origin_model": "deterministic"
+      },
+      "role": null,
+      "awards": [
+        {
+          "value": "- Winner of the regional hackathon 2022",
+          "confidence": 0.8,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 35
+          },
+          "origin_model": "deterministic"
+        }
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "certifications": [
+    {
+      "name": {
+        "value": "AWS Certified Solutions Architect",
+        "confidence": 0.8,
+        "source": {
+          "page": 1,
+          "section": "certifications",
+          "line": 38
+        },
+        "origin_model": "deterministic"
+      },
+      "issuer": {
+        "value": "AWS",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "certifications",
+          "line": 38
+        },
+        "origin_model": "deterministic"
+      },
+      "date": {
+        "value": "2021",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "certifications",
+          "line": 40
+        },
+        "origin_model": "deterministic"
+      },
+      "description": {
+        "value": "AWS Certified Solutions Architect\nAmazon Web Services\n2021",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "certifications",
+          "line": 38
+        },
+        "origin_model": "deterministic"
+      },
+      "confidence": 0.8
+    }
+  ],
+  "achievements": [
+    {
+      "competition": {
+        "value": "Smart India Hackathon 2nd runner up",
+        "confidence": 0.7,
+        "source": {
+          "page": 1,
+          "section": "achievements",
+          "line": 45
+        },
+        "origin_model": "deterministic"
+      },
+      "award": null,
+      "rank": {
+        "value": "1st",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "achievements",
+          "line": 43
+        },
+        "origin_model": "deterministic"
+      },
+      "position": null,
+      "organizer": null,
+      "year": {
+        "value": "2020",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "achievements",
+          "line": 44
+        },
+        "origin_model": "deterministic"
+      },
+      "description": {
+        "value": "1st Place in Global Coding Challenge\n2020\nSmart India Hackathon 2nd runner up",
+        "confidence": 0.9,
+        "source": {
+          "page": 1,
+          "section": "achievements",
+          "line": 43
+        },
+        "origin_model": "deterministic"
+      },
+      "confidence": 0.8
+    }
+  ],
+  "raw_data": {
+    "sections": {
+      "personal_info": {
+        "lines": [
+          {
+            "text": "John Doe",
+            "page": 1,
+            "line_no": 1
+          },
+          {
+            "text": "Senior Software Engineer",
+            "page": 1,
+            "line_no": 2
+          },
+          {
+            "text": "johndoe@email.com | +1 (555) 123-4567 | San Francisco, CA",
+            "page": 1,
+            "line_no": 3
+          },
+          {
+            "text": "github.com/johndoe | linkedin.com/in/johndoe | myportfolio.com",
+            "page": 1,
+            "line_no": 4
+          }
+        ],
+        "confidence": 1.0
+      },
+      "summary": {
+        "lines": [
+          {
+            "text": "Highly motivated senior backend engineer with 5 years of experience building scalable microservices and APIs.",
+            "page": 1,
+            "line_no": 7
+          }
+        ],
+        "confidence": 0.95
+      },
+      "experience": {
+        "lines": [
+          {
+            "text": "Tech Innovations Inc.",
+            "page": 1,
+            "line_no": 10
+          },
+          {
+            "text": "Senior Software Engineer",
+            "page": 1,
+            "line_no": 11
+          },
+          {
+            "text": "January 2021 - Present",
+            "page": 1,
+            "line_no": 12
+          },
+          {
+            "text": "- Architected a distributed messaging queue handling 1M+ req/sec.",
+            "page": 1,
+            "line_no": 13
+          },
+          {
+            "text": "- Reduced latency by 40% using Redis and Golang.",
+            "page": 1,
+            "line_no": 14
+          },
+          {
+            "text": "- Developed REST APIs in FastAPI and Django.",
+            "page": 1,
+            "line_no": 15
+          },
+          {
+            "text": "Acme Corp",
+            "page": 1,
+            "line_no": 17
+          },
+          {
+            "text": "Software Engineer II",
+            "page": 1,
+            "line_no": 18
+          },
+          {
+            "text": "Feb 2018 - Dec 2020 (2 years 10 months)",
+            "page": 1,
+            "line_no": 19
+          },
+          {
+            "text": "- Built REST APIs in Django.",
+            "page": 1,
+            "line_no": 20
+          },
+          {
+            "text": "- Migrated monolith to Kubernetes and AWS.",
+            "page": 1,
+            "line_no": 21
+          }
+        ],
+        "confidence": 0.95
+      },
+      "education": {
+        "lines": [
+          {
+            "text": "B.S. in Computer Science",
+            "page": 1,
+            "line_no": 24
+          },
+          {
+            "text": "University of Technology",
+            "page": 1,
+            "line_no": 25
+          },
+          {
+            "text": "Sep 2014 - May 2018",
+            "page": 1,
+            "line_no": 26
+          },
+          {
+            "text": "CGPA: 3.8/4.0",
+            "page": 1,
+            "line_no": 27
+          },
+          {
+            "text": "85%",
+            "page": 1,
+            "line_no": 28
+          }
+        ],
+        "confidence": 0.95
+      },
+      "projects": {
+        "lines": [
+          {
+            "text": "OpenSource Analytics",
+            "page": 1,
+            "line_no": 31
+          },
+          {
+            "text": "- Built a highly scalable analytics engine using Python and Postgres.",
+            "page": 1,
+            "line_no": 32
+          },
+          {
+            "text": "- https://github.com/johndoe/analytics",
+            "page": 1,
+            "line_no": 33
+          },
+          {
+            "text": "- Duration: 3 months",
+            "page": 1,
+            "line_no": 34
+          },
+          {
+            "text": "- Winner of the regional hackathon 2022",
+            "page": 1,
+            "line_no": 35
+          }
+        ],
+        "confidence": 0.95
+      },
+      "certifications": {
+        "lines": [
+          {
+            "text": "AWS Certified Solutions Architect",
+            "page": 1,
+            "line_no": 38
+          },
+          {
+            "text": "Amazon Web Services",
+            "page": 1,
+            "line_no": 39
+          },
+          {
+            "text": "2021",
+            "page": 1,
+            "line_no": 40
+          }
+        ],
+        "confidence": 0.95
+      },
+      "achievements": {
+        "lines": [
+          {
+            "text": "1st Place in Global Coding Challenge",
+            "page": 1,
+            "line_no": 43
+          },
+          {
+            "text": "2020",
+            "page": 1,
+            "line_no": 44
+          },
+          {
+            "text": "Smart India Hackathon 2nd runner up",
+            "page": 1,
+            "line_no": 45
+          }
+        ],
+        "confidence": 0.95
+      },
+      "languages": {
+        "lines": [
+          {
+            "text": "English (Native), Spanish (Fluent)",
+            "page": 1,
+            "line_no": 48
+          }
+        ],
+        "confidence": 0.95
+      },
+      "skills": {
+        "lines": [
+          {
+            "text": "Languages: Python, Go, JavaScript, SQL, C++, HTML",
+            "page": 1,
+            "line_no": 51
+          },
+          {
+            "text": "Frameworks: FastAPI, ReactJS, Django",
+            "page": 1,
+            "line_no": 52
+          },
+          {
+            "text": "Databases: PostgreSQL, MongoDB, Redis",
+            "page": 1,
+            "line_no": 53
+          },
+          {
+            "text": "Tools: Docker, Kubernetes, AWS, Git",
+            "page": 1,
+            "line_no": 54
+          },
+          {
+            "text": "Soft Skills: Leadership, Excellent Communication",
+            "page": 1,
+            "line_no": 55
+          }
+        ],
+        "confidence": 0.95
+      }
+    }
+  },
+  "metadata": {
+    "parser_version": "1.3.0",
+    "schema_version": "1.0.0",
+    "parsed_at": "2026-07-23T11:24:33.511563Z",
+    "processing_time_ms": 2677,
+    "ai_inference_time_ms": 2670,
+    "page_count": 1,
+    "word_count": 196,
+    "sections_detected": [
+      "personal_info",
+      "summary",
+      "experience",
+      "education",
+      "projects",
+      "certifications",
+      "achievements",
+      "languages",
+      "skills"
+    ],
+    "entities_detected": 42,
+    "entities_added_by_ai": 1,
+    "entities_modified_by_ai": 0,
+    "parsing_confidence": 0.91,
+    "model_versions": {
+      "spacy": "en_core_web_trf",
+      "hf_ner": "dslim/bert-base-NER"
+    },
+    "resume_id": null,
+    "job_id": null,
+    "warnings": [],
+    "recoverable_errors": [],
+    "execution_timestamps": {
+      "PDFExtractionStage": 0.0,
+      "TextCleaningStage": 0.05793571472167969,
+      "SectionDetectionStage": 0.3757476806640625,
+      "EntityExtractionStage": 5.187034606933594,
+      "SpacyNERStage": 1135.854721069336,
+      "HuggingFaceNERStage": 1535.7022285461426,
+      "EntityFusionStage": 0.013828277587890625,
+      "NormalizationStage": 0.0,
+      "ValidationStage": 0.3609657287597656
+    }
+  }
+}

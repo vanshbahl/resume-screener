@@ -11,6 +11,7 @@ class ExtractedField(BaseModel):
     value: Any
     confidence: float = 0.0
     source: Optional[SourceInfo] = None
+    origin_model: str = "deterministic"
 
 class PersonalInfo(BaseModel):
     name: Optional[ExtractedField] = None
@@ -19,15 +20,20 @@ class PersonalInfo(BaseModel):
     linkedin: Optional[ExtractedField] = None
     github: Optional[ExtractedField] = None
     portfolio: Optional[ExtractedField] = None
+    website: Optional[ExtractedField] = None
     location: Optional[ExtractedField] = None
 
 class ExperienceEntry(BaseModel):
     company: Optional[ExtractedField] = None
     title: Optional[ExtractedField] = None
     location: Optional[ExtractedField] = None
+    employment_type: Optional[ExtractedField] = None
     start_date: Optional[ExtractedField] = None
     end_date: Optional[ExtractedField] = None
+    duration: Optional[ExtractedField] = None
     description: Optional[ExtractedField] = None
+    skills_used: List[ExtractedField] = Field(default_factory=list)
+    responsibilities: List[ExtractedField] = Field(default_factory=list)
     confidence: float = 0.0
 
 class EducationEntry(BaseModel):
@@ -35,8 +41,13 @@ class EducationEntry(BaseModel):
     degree: Optional[ExtractedField] = None
     field_of_study: Optional[ExtractedField] = None
     cgpa: Optional[ExtractedField] = None
+    percentage: Optional[ExtractedField] = None
     start_date: Optional[ExtractedField] = None
     end_date: Optional[ExtractedField] = None
+    graduation_year: Optional[ExtractedField] = None
+    expected_graduation: Optional[ExtractedField] = None
+    current_semester: Optional[ExtractedField] = None
+    location: Optional[ExtractedField] = None
     description: Optional[ExtractedField] = None
     confidence: float = 0.0
 
@@ -47,6 +58,7 @@ class ProjectEntry(BaseModel):
     link: Optional[ExtractedField] = None
     duration: Optional[ExtractedField] = None
     role: Optional[ExtractedField] = None
+    awards: List[ExtractedField] = Field(default_factory=list)
     confidence: float = 0.0
 
 class CertificationEntry(BaseModel):
@@ -57,7 +69,18 @@ class CertificationEntry(BaseModel):
     confidence: float = 0.0
 
 class AchievementEntry(BaseModel):
-    description: ExtractedField
+    competition: Optional[ExtractedField] = None
+    award: Optional[ExtractedField] = None
+    rank: Optional[ExtractedField] = None
+    position: Optional[ExtractedField] = None
+    organizer: Optional[ExtractedField] = None
+    year: Optional[ExtractedField] = None
+    description: Optional[ExtractedField] = None
+    confidence: float = 0.0
+
+class SpokenLanguageEntry(BaseModel):
+    name: ExtractedField
+    fluency: Optional[ExtractedField] = None
     confidence: float = 0.0
 
 class Metadata(BaseModel):
@@ -65,11 +88,15 @@ class Metadata(BaseModel):
     schema_version: str = "1.0.0"
     parsed_at: str
     processing_time_ms: int = 0
+    ai_inference_time_ms: int = 0
     page_count: int = 0
     word_count: int = 0
     sections_detected: List[str] = Field(default_factory=list)
     entities_detected: int = 0
+    entities_added_by_ai: int = 0
+    entities_modified_by_ai: int = 0
     parsing_confidence: float = 0.0
+    model_versions: Dict[str, str] = Field(default_factory=dict)
     resume_id: Optional[int] = None
     job_id: Optional[int] = None
 
@@ -78,6 +105,7 @@ class ParsedResumeSchema(BaseModel):
     summary: Optional[ExtractedField] = None
     skills: List[ExtractedField] = Field(default_factory=list)
     languages: List[ExtractedField] = Field(default_factory=list)
+    spoken_languages: List[SpokenLanguageEntry] = Field(default_factory=list)
     frameworks: List[ExtractedField] = Field(default_factory=list)
     tools: List[ExtractedField] = Field(default_factory=list)
     concepts: List[ExtractedField] = Field(default_factory=list)

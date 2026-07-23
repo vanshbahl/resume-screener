@@ -31,6 +31,11 @@ def run_benchmark():
             "experience": 0,
             "skills": 0
         },
+        "ai_metrics": {
+            "total_inference_time_ms": 0,
+            "total_entities_added": 0,
+            "total_entities_modified": 0
+        },
         "failures": []
     }
     total_conf = 0.0
@@ -112,6 +117,12 @@ Soft Skills: Leadership, Communication
             if result.get("experience"): metrics["extraction_rates"]["experience"] += 1
             if result.get("skills"): metrics["extraction_rates"]["skills"] += 1
             
+            # AI Tracking
+            meta = result.get("metadata", {})
+            metrics["ai_metrics"]["total_inference_time_ms"] += meta.get("ai_inference_time_ms", 0)
+            metrics["ai_metrics"]["total_entities_added"] += meta.get("entities_added_by_ai", 0)
+            metrics["ai_metrics"]["total_entities_modified"] += meta.get("entities_modified_by_ai", 0)
+            
             total_resumes += 1
             
         except Exception as e:
@@ -121,6 +132,10 @@ Soft Skills: Leadership, Communication
     if total_resumes > 0:
         metrics["average_processing_time_ms"] = round(metrics["total_processing_time_ms"] / total_resumes, 2)
         metrics["average_confidence"] = round(total_conf / total_resumes, 2)
+        
+        metrics["ai_metrics"]["average_inference_time_ms"] = round(metrics["ai_metrics"]["total_inference_time_ms"] / total_resumes, 2)
+        metrics["ai_metrics"]["average_entities_added"] = round(metrics["ai_metrics"]["total_entities_added"] / total_resumes, 2)
+        metrics["ai_metrics"]["average_entities_modified"] = round(metrics["ai_metrics"]["total_entities_modified"] / total_resumes, 2)
         
         for k in metrics["extraction_rates"]:
             metrics["extraction_rates"][k] = round((metrics["extraction_rates"][k] / total_resumes) * 100, 2)

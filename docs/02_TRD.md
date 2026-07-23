@@ -14,8 +14,7 @@ The platform utilizes a monolithic, single-process architecture for the MVP (YAG
 - **Database**: PostgreSQL.
 - **Vector Extension**: `pgvector`.
 - **Text Extraction**: `PyMuPDF`, `PaddleOCR`.
-- **NLP / ML**: `spaCy`, `sentence-transformers` (`BAAI/bge-small-en-v1.5`), `RapidFuzz`.
-
+- **NLP / ML**: `spaCy` (`en_core_web_trf`), HuggingFace NER (`dslim/bert-base-NER`), `sentence-transformers` (`BAAI/bge-small-en-v1.5`), `RapidFuzz`.
 ## 3. System Components
 - **API Router**: Handles HTTP Request/Response lifecycles and input validation.
 - **Pipeline Service**: Orchestrates text extraction and NLP via an Object-Oriented Pipeline (`BaseParserStage`).
@@ -24,7 +23,8 @@ The platform utilizes a monolithic, single-process architecture for the MVP (YAG
 
 ## 4. AI Components
 - **Embedder**: `BAAI/bge-small-en-v1.5` (~130MB). Generates 384-dimensional dense vectors.
-- **NLP Cleaner**: `en_core_web_sm` (spaCy). Performs sentence boundary detection and normalization.
+- **NLP Cleaner & Baseline NER**: `en_core_web_trf` (spaCy). Performs sentence boundary detection, normalization, and broad entity recognition.
+- **Specialized NER**: `dslim/bert-base-NER` (HuggingFace). For high-precision extraction of ORG, PER, LOC.
 - **OCR Engine**: `PaddleOCR` (English Light). Handles scanned documents where PyMuPDF fails.
 
 ## 5. Security
@@ -48,3 +48,8 @@ The platform utilizes a monolithic, single-process architecture for the MVP (YAG
 - PEP 8 for Python.
 - Prettier & ESLint for React/TypeScript.
 - Clean Architecture (separation of API, Services, and Data layers).
+
+## 10. Evaluation & Benchmarking
+- **Parser Evaluation**: A custom benchmarking suite resides in `parser_tests/framework/` capable of automated metric generation (Precision, Recall, F1) using a fuzzy-matching evaluation strategy.
+- **Regression Guard**: All iterations of the AI models and parser extractors are protected by a CLI tool that halts updates if overall parsing accuracy regresses.
+- **Dataset Generator**: A scalable, pure-Python generator `dataset_generator` synthesizes edge-case resumes to feed the benchmark suite.

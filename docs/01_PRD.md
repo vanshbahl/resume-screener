@@ -58,7 +58,16 @@ To build a scalable, offline-capable, and privacy-first Document Intelligence Pl
 - **Parsing Accuracy:** Highly stylized resumes may break extraction order.
 - **Model Size:** Downloading and caching Hugging Face models requires significant initial bandwidth and disk space.
 
-## 9. Future Scope
+## 9. Feature Status
+- ✅ Basic PDF Upload & Text Extraction
+- ✅ Deterministic Parsing Rules
+- ✅ Hybrid AI Parsing (spaCy + Hugging Face)
+- ✅ Automated Parser Benchmarking
+- 🟡 Local pgvector setup
+- ⚪ Dashboard & UI
+- ⚪ Candidate Ranking
+
+## 10. Future Scope
 - Generic Invoice and Purchase order parsing using GLiNER (Zero-shot NER).
 - Advanced BI Analytics dashboard.
 - Email integration to auto-ingest resumes from an inbox.

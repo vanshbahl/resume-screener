@@ -9,6 +9,18 @@
 
 ## ✅ Completed Milestones
 
+### Phase 2 — Information Extraction (Phase 2.1 - 2.2.5)
+- **Goal:** Improve resume parsing and entity extraction via Hybrid AI and establish a robust benchmarking framework.
+- **Deliverables:**
+  - ✅ Deterministic Extractor Improvements
+  - ✅ Hybrid NER Integration (spaCy + HuggingFace)
+  - ✅ Domain-Specific Extraction Engine
+  - ✅ Parser Evaluation & Regression Framework
+  - ✅ Benchmark Resume Dataset Generator (50 resumes)
+  - ✅ Production Repository Reorganization
+
+---
+
 ### Phase 1 — Backend Foundation & Deterministic Parser (Phases 1A - 1D)
 - **Goal:** Build a robust, object-oriented ingestion pipeline capable of extracting, cleaning, detecting sections, extracting entities, and validating PDF resumes deterministically without AI.
 - **Deliverables:**
@@ -23,15 +35,6 @@
 
 ## ⚪ Planned Milestones
 
-### Phase 2 — Information Extraction
-- **Goal:** Improve resume parsing and entity extraction.
-- **Deliverables:**
-  - Skills Extraction
-  - Experience Extraction
-  - Education Extraction
-  - Project Extraction
-  - Certifications Extraction
-  - Better normalization
 
 ### Phase 3 — AI Semantic Matching
 - **Goal:** Introduce HuggingFace models for semantic understanding.

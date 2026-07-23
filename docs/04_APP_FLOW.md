@@ -90,3 +90,17 @@ sequenceDiagram
     PostgreSQL-->>FastAPI: Resume JSON
     FastAPI-->>User: JSON Response
 ```
+
+## 5. Parser Evaluation Pipeline (Phase 2.2.5)
+```mermaid
+flowchart LR
+    A[Benchmark Dataset] -->|Iterate Resumes| B[benchmark_runner.py]
+    B -->|Ingest PDF| C[evaluate_resume.py]
+    C -->|Extract Metadata| D[Pipeline Config]
+    C -->|Output JSON| E[metrics.py]
+    
+    A2[Expected JSON Truth] --> E
+    
+    E -->|Fuzzy Match & Struct Diff| F[report_generator.py]
+    F -->|Markdown, CSV, Charts| G[(results/)]
+```

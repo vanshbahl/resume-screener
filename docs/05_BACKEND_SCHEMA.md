@@ -26,9 +26,13 @@
 │   ├── storage/         # Local file storage handlers
 │   └── utils/           # Helper functions
 ├── config/              # YAML rules and regex definitions
-└── development/         # Benchmarking and Sandbox tools
+├── development/         # Sandbox tools, scratch scripts, experiments, and archives
+└── parser_tests/        # Parser Evaluation & Regression Framework
+    ├── framework/       # Benchmark runner, evaluation metrics, reporting
+    ├── generator/       # Programmatic dataset generator
+    ├── datasets/        # Sample resumes (PDFs) and expected ground truth (JSON)
+    └── results/         # Benchmark logs, CSV accuracy tables, charts
 ```
-*(Note: The `ai/` directory will be introduced in Phase 3)*
 
 ## 2. Entity Relationships (ER Diagram)
 ```mermaid

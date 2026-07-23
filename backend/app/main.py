@@ -8,8 +8,8 @@ from app.core.config import settings
 from app.core.database import Base, engine, get_db
 from app.models.domain import Job, Resume, ResumeEmbedding, ResumeStatus
 from app.schemas.domain import JobCreate, JobUpdate, JobResponse, ResumeResponse
-from app.services.pipeline import process_resume, generate_embeddings
-from app.services.scoring import score_resume
+from app.parsers.pdf_parser import extract_text_from_pdf
+from app.parsers.text_cleaner import clean_text
 
 # In a real app we'd use Alembic. For V1 MVP local dev without Alembic ready, we can uncomment this:
 # Base.metadata.create_all(bind=engine)
@@ -82,32 +82,11 @@ def process_resume_background(resume_id: int, file_path: str, job_id: int):
         if not resume or not job:
             return
             
-        # 1. Run AI Pipeline
-        result = process_resume(file_path)
+        # Milestone 3: Extract and Clean Text (No AI yet)
+        raw_pdf_text = extract_text_from_pdf(file_path)
+        clean_pdf_text = clean_text(raw_pdf_text)
         
-        resume.raw_text = result["raw_text"]
-        resume.parsed_metadata = result["parsed_metadata"]
-        
-        # 2. Generate Job Embedding (Caching this would be better in prod)
-        job_embedding = generate_embeddings(job.description or job.title)
-        
-        # 3. Save Vector
-        db_embedding = ResumeEmbedding(
-            resume_id=resume.id,
-            chunk_text=result["raw_text"][:2000],
-            embedding=result["embedding"]
-        )
-        db.add(db_embedding)
-        
-        # 4. Score against job
-        score = score_resume(
-            job_skills=job.required_skills,
-            resume_skills=result["parsed_metadata"]["skills"],
-            job_embedding=job_embedding,
-            resume_embedding=result["embedding"]
-        )
-        
-        resume.final_score = score
+        resume.raw_text = clean_pdf_text
         resume.status = ResumeStatus.PROCESSED
         
         db.commit()

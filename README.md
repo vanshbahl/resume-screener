@@ -96,7 +96,7 @@ Contributions are welcome! Please read `CONTRIBUTING.md` for details on our code
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Author
-Maintained by the Core Engineering Team.
+Maintained by Vansh Bahl
 
 ## Acknowledgements
 - Hugging Face community

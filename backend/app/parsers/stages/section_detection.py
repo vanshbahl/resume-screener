@@ -14,11 +14,14 @@ class SectionDetectionStage(BaseParserStage):
             text = re.sub(r':$', '', text)
             
             matched_section = None
-            for sec_name, pattern in section_patterns.items():
-                if re.match(pattern, text):
-                    matched_section = sec_name
-                    break
-                    
+            
+            # Heuristic: Section headers are usually short lines.
+            if len(text) < 40:
+                for sec_name, pattern in section_patterns.items():
+                    if re.match(pattern, text):
+                        matched_section = sec_name
+                        break
+                        
             if matched_section:
                 current_section = matched_section
                 if current_section not in sections:

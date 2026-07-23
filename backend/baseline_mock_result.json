@@ -1,0 +1,482 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "John Doe",
+      "confidence": 0.85,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 1
+      }
+    },
+    "email": {
+      "value": "johndoe@email.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 3
+      }
+    },
+    "phone": {
+      "value": "+1 (555) 123-4567",
+      "confidence": 0.95,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 3
+      }
+    },
+    "linkedin": {
+      "value": "linkedin.com/in/johndoe",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 4
+      }
+    },
+    "github": {
+      "value": "github.com/johndoe",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 4
+      }
+    },
+    "portfolio": null,
+    "location": null
+  },
+  "summary": {
+    "value": "Highly motivated senior backend engineer with 5 years of experience building scalable microservices and APIs.",
+    "confidence": 0.9,
+    "source": {
+      "page": 1,
+      "section": "summary",
+      "line": 7
+    }
+  },
+  "skills": [
+    {
+      "value": "Languages: Python",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 35
+      }
+    },
+    {
+      "value": "Go",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 35
+      }
+    },
+    {
+      "value": "JavaScript",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 35
+      }
+    },
+    {
+      "value": "SQL",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 35
+      }
+    },
+    {
+      "value": "Frameworks: FastAPI",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 36
+      }
+    },
+    {
+      "value": "React",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 36
+      }
+    },
+    {
+      "value": "Django",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 36
+      }
+    },
+    {
+      "value": "Databases: PostgreSQL",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 37
+      }
+    },
+    {
+      "value": "MongoDB",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 37
+      }
+    },
+    {
+      "value": "Redis",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 37
+      }
+    },
+    {
+      "value": "Tools: Docker",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 38
+      }
+    },
+    {
+      "value": "Kubernetes",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 38
+      }
+    },
+    {
+      "value": "AWS",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 38
+      }
+    },
+    {
+      "value": "Git",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 38
+      }
+    },
+    {
+      "value": "Soft Skills: Leadership",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 39
+      }
+    },
+    {
+      "value": "Communication",
+      "confidence": 0.9,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 39
+      }
+    }
+  ],
+  "education": [
+    {
+      "institution": null,
+      "degree": null,
+      "field_of_study": null,
+      "start_date": null,
+      "end_date": null,
+      "description": {
+        "value": "B.S. in Computer Science\nUniversity of Technology\nSep 2014 - May 2018\nCGPA: 3.8/4.0",
+        "confidence": 0.5,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 23
+        }
+      },
+      "confidence": 0.5
+    }
+  ],
+  "experience": [
+    {
+      "company": null,
+      "title": null,
+      "start_date": null,
+      "end_date": null,
+      "description": {
+        "value": "Senior Software Engineer\nTech Innovations Inc.\nJanuary 2021 - Present\n- Architected a distributed messaging queue handling 1M+ req/sec.\n- Reduced latency by 40% using Redis and Golang.",
+        "confidence": 0.5,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 10
+        }
+      },
+      "confidence": 0.5
+    },
+    {
+      "company": null,
+      "title": null,
+      "start_date": null,
+      "end_date": null,
+      "description": {
+        "value": "Software Engineer II\nAcme Corp\nFeb 2018 - Dec 2020\n- Built REST APIs in Django.\n- Migrated monolith to Kubernetes.",
+        "confidence": 0.5,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 16
+        }
+      },
+      "confidence": 0.5
+    }
+  ],
+  "projects": [
+    {
+      "name": null,
+      "description": {
+        "value": "OpenSource Analytics\n- Built a highly scalable analytics engine.\n- https://github.com/johndoe/analytics\n- Duration: 3 months",
+        "confidence": 0.5,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 29
+        }
+      },
+      "link": null,
+      "confidence": 0.5
+    }
+  ],
+  "certifications": [],
+  "achievements": [],
+  "languages": [],
+  "raw_data": {
+    "sections": {
+      "personal_info": {
+        "lines": [
+          {
+            "text": "John Doe",
+            "page": 1,
+            "line_no": 1
+          },
+          {
+            "text": "Software Engineer",
+            "page": 1,
+            "line_no": 2
+          },
+          {
+            "text": "johndoe@email.com | +1 (555) 123-4567 | San Francisco, CA",
+            "page": 1,
+            "line_no": 3
+          },
+          {
+            "text": "github.com/johndoe | linkedin.com/in/johndoe | myportfolio.com",
+            "page": 1,
+            "line_no": 4
+          }
+        ],
+        "confidence": 1.0
+      },
+      "summary": {
+        "lines": [
+          {
+            "text": "Highly motivated senior backend engineer with 5 years of experience building scalable microservices and APIs.",
+            "page": 1,
+            "line_no": 7
+          }
+        ],
+        "confidence": 0.95
+      },
+      "experience": {
+        "lines": [
+          {
+            "text": "Senior Software Engineer",
+            "page": 1,
+            "line_no": 10
+          },
+          {
+            "text": "Tech Innovations Inc.",
+            "page": 1,
+            "line_no": 11
+          },
+          {
+            "text": "January 2021 - Present",
+            "page": 1,
+            "line_no": 12
+          },
+          {
+            "text": "- Architected a distributed messaging queue handling 1M+ req/sec.",
+            "page": 1,
+            "line_no": 13
+          },
+          {
+            "text": "- Reduced latency by 40% using Redis and Golang.",
+            "page": 1,
+            "line_no": 14
+          },
+          {
+            "text": "Software Engineer II",
+            "page": 1,
+            "line_no": 16
+          },
+          {
+            "text": "Acme Corp",
+            "page": 1,
+            "line_no": 17
+          },
+          {
+            "text": "Feb 2018 - Dec 2020",
+            "page": 1,
+            "line_no": 18
+          },
+          {
+            "text": "- Built REST APIs in Django.",
+            "page": 1,
+            "line_no": 19
+          },
+          {
+            "text": "- Migrated monolith to Kubernetes.",
+            "page": 1,
+            "line_no": 20
+          }
+        ],
+        "confidence": 0.95
+      },
+      "education": {
+        "lines": [
+          {
+            "text": "B.S. in Computer Science",
+            "page": 1,
+            "line_no": 23
+          },
+          {
+            "text": "University of Technology",
+            "page": 1,
+            "line_no": 24
+          },
+          {
+            "text": "Sep 2014 - May 2018",
+            "page": 1,
+            "line_no": 25
+          },
+          {
+            "text": "CGPA: 3.8/4.0",
+            "page": 1,
+            "line_no": 26
+          }
+        ],
+        "confidence": 0.95
+      },
+      "projects": {
+        "lines": [
+          {
+            "text": "OpenSource Analytics",
+            "page": 1,
+            "line_no": 29
+          },
+          {
+            "text": "- Built a highly scalable analytics engine.",
+            "page": 1,
+            "line_no": 30
+          },
+          {
+            "text": "- https://github.com/johndoe/analytics",
+            "page": 1,
+            "line_no": 31
+          },
+          {
+            "text": "- Duration: 3 months",
+            "page": 1,
+            "line_no": 32
+          }
+        ],
+        "confidence": 0.95
+      },
+      "skills": {
+        "lines": [
+          {
+            "text": "Languages: Python, Go, JavaScript, SQL",
+            "page": 1,
+            "line_no": 35
+          },
+          {
+            "text": "Frameworks: FastAPI, React, Django",
+            "page": 1,
+            "line_no": 36
+          },
+          {
+            "text": "Databases: PostgreSQL, MongoDB, Redis",
+            "page": 1,
+            "line_no": 37
+          },
+          {
+            "text": "Tools: Docker, Kubernetes, AWS, Git",
+            "page": 1,
+            "line_no": 38
+          },
+          {
+            "text": "Soft Skills: Leadership, Communication",
+            "page": 1,
+            "line_no": 39
+          }
+        ],
+        "confidence": 0.95
+      }
+    }
+  },
+  "metadata": {
+    "parser_version": "1.3.0",
+    "schema_version": "1.0.0",
+    "parsed_at": "2026-07-23T10:46:50.792991Z",
+    "processing_time_ms": 0,
+    "page_count": 1,
+    "word_count": 138,
+    "sections_detected": [
+      "personal_info",
+      "summary",
+      "experience",
+      "education",
+      "projects",
+      "skills"
+    ],
+    "entities_detected": 22,
+    "parsing_confidence": 0.78,
+    "resume_id": null,
+    "job_id": null,
+    "warnings": [],
+    "recoverable_errors": [],
+    "execution_timestamps": {
+      "PDFExtractionStage": 0.00095367431640625,
+      "TextCleaningStage": 0.07796287536621094,
+      "SectionDetectionStage": 0.36597251892089844,
+      "EntityExtractionStage": 0.3597736358642578,
+      "NormalizationStage": 0.0,
+      "ValidationStage": 0.15282630920410156
+    }
+  }
+}

@@ -7,3 +7,5 @@ date_patterns:
     mm_yyyy: "^(0?[1-9]|1[0-2])/\\d{4}$"
     yyyy: "^\\d{4}$"
     mon_yyyy: "^(january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)[-\\s]\\d{4}$"
+    # Matches "Month YYYY - Month YYYY" or "YYYY - YYYY" or "Month YYYY - Present"
+    range_regex: "((?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)?\\s*\\d{4})\\s*(?:-|to|–|—)\\s*((?:january|february|march|april|may|june|july|august|september|october|november|december|jan|feb|mar|apr|jun|jul|aug|sep|oct|nov|dec)?\\s*\\d{4}|present|current|now)"

@@ -24,6 +24,7 @@ class PersonalInfo(BaseModel):
 class ExperienceEntry(BaseModel):
     company: Optional[ExtractedField] = None
     title: Optional[ExtractedField] = None
+    location: Optional[ExtractedField] = None
     start_date: Optional[ExtractedField] = None
     end_date: Optional[ExtractedField] = None
     description: Optional[ExtractedField] = None
@@ -33,6 +34,7 @@ class EducationEntry(BaseModel):
     institution: Optional[ExtractedField] = None
     degree: Optional[ExtractedField] = None
     field_of_study: Optional[ExtractedField] = None
+    cgpa: Optional[ExtractedField] = None
     start_date: Optional[ExtractedField] = None
     end_date: Optional[ExtractedField] = None
     description: Optional[ExtractedField] = None
@@ -41,7 +43,10 @@ class EducationEntry(BaseModel):
 class ProjectEntry(BaseModel):
     name: Optional[ExtractedField] = None
     description: Optional[ExtractedField] = None
+    technologies: List[ExtractedField] = Field(default_factory=list)
     link: Optional[ExtractedField] = None
+    duration: Optional[ExtractedField] = None
+    role: Optional[ExtractedField] = None
     confidence: float = 0.0
 
 class CertificationEntry(BaseModel):
@@ -72,12 +77,16 @@ class ParsedResumeSchema(BaseModel):
     personal_info: PersonalInfo = Field(default_factory=PersonalInfo)
     summary: Optional[ExtractedField] = None
     skills: List[ExtractedField] = Field(default_factory=list)
+    languages: List[ExtractedField] = Field(default_factory=list)
+    frameworks: List[ExtractedField] = Field(default_factory=list)
+    tools: List[ExtractedField] = Field(default_factory=list)
+    concepts: List[ExtractedField] = Field(default_factory=list)
+    soft_skills: List[ExtractedField] = Field(default_factory=list)
     education: List[EducationEntry] = Field(default_factory=list)
     experience: List[ExperienceEntry] = Field(default_factory=list)
     projects: List[ProjectEntry] = Field(default_factory=list)
     certifications: List[CertificationEntry] = Field(default_factory=list)
     achievements: List[AchievementEntry] = Field(default_factory=list)
-    languages: List[ExtractedField] = Field(default_factory=list)
     raw_data: Dict[str, Any] = Field(default_factory=dict)
     metadata: Metadata
 
@@ -94,21 +103,34 @@ def validate_and_score(parsed_dict: dict) -> dict:
         if field and field.value:
             total_confidence += (field.confidence * weight)
             entities_detected += 1
-
-    add_score(schema.personal_info.name)
-    add_score(schema.personal_info.email)
-    add_score(schema.personal_info.phone)
+            
+    # Core fields are heavily weighted
+    add_score(schema.personal_info.name, weight=2.0)
+    add_score(schema.personal_info.email, weight=2.0)
+    add_score(schema.personal_info.phone, weight=1.5)
     
-    if schema.skills:
-        skill_conf = sum(s.confidence for s in schema.skills) / len(schema.skills)
+    # Penalize if name or email is missing
+    penalty = 0.0
+    if not schema.personal_info.name or not schema.personal_info.name.value:
+        penalty += 0.2
+    if not schema.personal_info.email or not schema.personal_info.email.value:
+        penalty += 0.1
+    
+    if schema.skills or schema.languages or schema.frameworks or schema.tools or schema.concepts or schema.soft_skills:
+        all_skills = schema.skills + schema.languages + schema.frameworks + schema.tools + schema.concepts + schema.soft_skills
+        skill_conf = sum(s.confidence for s in all_skills) / len(all_skills)
         total_confidence += skill_conf
-        entities_detected += len(schema.skills)
+        entities_detected += len(all_skills)
     total_fields += 1
     
     if schema.experience:
         exp_conf = sum(e.confidence for e in schema.experience) / len(schema.experience)
         total_confidence += exp_conf
         entities_detected += len(schema.experience)
+        # Check if experience descriptions are missing
+        for exp in schema.experience:
+            if not exp.description or not exp.description.value:
+                penalty += 0.05
     total_fields += 1
         
     if schema.education:
@@ -117,6 +139,9 @@ def validate_and_score(parsed_dict: dict) -> dict:
         entities_detected += len(schema.education)
     total_fields += 1
         
-    schema.metadata.parsing_confidence = round(total_confidence / total_fields, 2) if total_fields else 0.0
+    base_confidence = total_confidence / total_fields if total_fields else 0.0
+    final_confidence = max(0.0, base_confidence - penalty)
+    
+    schema.metadata.parsing_confidence = round(final_confidence, 2)
     schema.metadata.entities_detected = entities_detected
     return schema.model_dump()

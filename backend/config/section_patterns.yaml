@@ -7,3 +7,11 @@ sections:
   certifications: "^(certifications|licenses|courses)$"
   achievements: "^(achievements|awards|honors|publications)$"
   languages: "^(languages)$"
+
+skill_categories:
+  languages: "^(languages|programming languages)$"
+  frameworks: "^(frameworks|libraries|frameworks & libraries)$"
+  tools: "^(tools|developer tools|technologies|software)$"
+  databases: "^(databases|datastore)$"
+  concepts: "^(concepts|methodologies|core competencies)$"
+  soft_skills: "^(soft skills|personal skills)$"

@@ -1,0 +1,15 @@
+{
+  "total_resumes": 1,
+  "total_processing_time_ms": 1,
+  "average_processing_time_ms": 1.0,
+  "average_confidence": 0.91,
+  "extraction_rates": {
+    "name": 100.0,
+    "email": 100.0,
+    "phone": 100.0,
+    "education": 100.0,
+    "experience": 100.0,
+    "skills": 0.0
+  },
+  "failures": []
+}

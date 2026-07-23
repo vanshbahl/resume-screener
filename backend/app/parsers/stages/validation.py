@@ -11,12 +11,16 @@ class ValidationStage(BaseParserStage):
             "personal_info": extracted.get("personal_info", {}),
             "summary": extracted.get("summary"),
             "skills": extracted.get("skills", []),
+            "languages": extracted.get("languages", []),
+            "frameworks": extracted.get("frameworks", []),
+            "tools": extracted.get("tools", []),
+            "concepts": extracted.get("concepts", []),
+            "soft_skills": extracted.get("soft_skills", []),
             "education": extracted.get("education", []),
             "experience": extracted.get("experience", []),
             "projects": extracted.get("projects", []),
             "certifications": extracted.get("certifications", []),
             "achievements": extracted.get("achievements", []),
-            "languages": extracted.get("languages", []),
             "raw_data": {
                 "sections": document.sections
             },

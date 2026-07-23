@@ -3,122 +3,124 @@
 ## Revision History
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
-| 2026-07-23 | 1.1     | Updated to reflect Phase 1 Architecture |
-| 2026-07-23 | 2.2     | Updated to reflect Phase 2.2 Hybrid Pipeline |
+| 2026-07-23 | 2.5     | Updated to reflect Phase 3 Domain Architecture |
 
 ## 1. Overall System Architecture
 ```mermaid
 graph TD
     subgraph Frontend [React Web Client - Planned Phase 5]
         UI[User Interface]
-        Dashboard[Recruiter Dashboard]
+        Dash[Recruiter Dashboards]
     end
 
-    subgraph Backend [FastAPI Server - Phase 1]
-        API[API Router]
-        Pipeline[Ingestion Pipeline]
+    subgraph API [FastAPI Server - Core API]
+        R1[Candidate Router]
+        R2[Job Router]
+        R3[Workflow Router]
+        R4[Interview Router]
+        R5[Analytics Router]
     end
 
-    subgraph DB [Database Layer - Phase 1]
-        PG[(PostgreSQL Relational)]
-        JSON[(JSONB Metadata)]
+    subgraph Domains [Business Logic]
+        C[Candidate Service]
+        J[Job Service]
+        W[Workflow Engine]
+        I[Interview Logistics]
+        A[Analytics Aggregator]
+        INT[Intelligence & Parsing Engine]
     end
 
-    UI -.->|Upload Resume| API
-    
-    API -->|Save Job/Status| PG
-    API -->|Trigger Extraction| Pipeline
-    
-    Pipeline -->|Store JSON Metadata| JSON
+    subgraph Database [PostgreSQL]
+        PG[(Relational Data)]
+        JS[(JSONB Artifacts)]
+        VEC[(PGVector)]
+    end
+
+    UI --> API
+    API --> Domains
+    Domains --> Database
+    C & J <--> INT
+    W --> C & J
+    I --> W
+    A --> W & I & C & J
 ```
 
-## 2. User Journey
+## 2. Core Object Lifecycle
 ```mermaid
 journey
-    title Recruiter Workflow
-    section Job Creation (Phase 1)
-      Create Job: 5: Recruiter
-    section Ingestion (Phase 1)
-      Upload Resumes: 5: Recruiter
-      Wait for Processing: 3: Recruiter
-    section Evaluation (Phase 4 & 5)
-      View Ranked List: 5: Recruiter
+    title Candidate Hiring Journey
+    section Ingestion
+      Parser extracts Resume: 5: Candidate
+      Vector Mapping & Intelligence: 5: System
+    section Workflow Pipeline
+      Candidate enters Job Pipeline: 5: Recruiter
+      Moved to Technical Screen: 4: Recruiter
+    section Interview
+      Schedule Interview: 4: Recruiter
+      Interviewer fills JSON Scorecard: 5: Interviewer
+    section Hire
+      Final Decision Engine: 5: System
+      Analytics & KPIs update: 5: System
 ```
 
-## 3. Document Processing Pipeline (Phase 2.2.1)
+## 3. Workflow Engine State Transitions
+```mermaid
+stateDiagram-v2
+    [*] --> Applied
+    Applied --> Screening
+    Screening --> Interview
+    Interview --> Offer
+    Interview --> Rejected
+    Offer --> Hired
+    Offer --> Withdrawn
+    Hired --> [*]
+    Rejected --> [*]
+    Withdrawn --> [*]
+```
+
+## 4. Analytics Aggregation Flow
+```mermaid
+sequenceDiagram
+    participant Client
+    participant AnalyticsRouter
+    participant AnalyticsService
+    participant MemoryCache
+    participant Database
+
+    Client->>AnalyticsRouter: GET /analytics/kpis
+    AnalyticsRouter->>AnalyticsService: get_core_kpis()
+    AnalyticsService->>MemoryCache: Check "analytics:core_kpis"
+    
+    alt Cache Miss
+        MemoryCache-->>AnalyticsService: None
+        AnalyticsService->>Database: Execute Cross-Domain Aggregations
+        Database-->>AnalyticsService: Raw Metrics
+        AnalyticsService->>AnalyticsService: Compute KPIs
+        AnalyticsService->>MemoryCache: Set Cache (300s TTL)
+    else Cache Hit
+        MemoryCache-->>AnalyticsService: JSON Payload
+    end
+    
+    AnalyticsService-->>AnalyticsRouter: KPIResponse
+    AnalyticsRouter-->>Client: 200 OK
+```
+
+## 5. Document Processing Pipeline (Intelligence Core)
 ```mermaid
 flowchart TD
-    A[Resume Upload] --> B[PDF Storage]
-    B --> C[PDFExtractionStage]
-    C --> D[TextCleaningStage]
-    D --> E[SectionDetectionStage]
+    A[Resume Upload] --> B[PDFExtractionStage]
+    B --> C[TextCleaningStage]
+    C --> D[SectionDetectionStage]
     
     subgraph EntityExtractionStage [Domain Extractors]
         F1[SkillsExtractor]
         F2[ExperienceExtractor]
-        F3[ProjectExtractor]
-        F4[EducationExtractor]
     end
     
-    E --> EntityExtractionStage
+    D --> EntityExtractionStage
     EntityExtractionStage --> G[SpacyNERStage]
     G --> H[HuggingFaceNERStage]
     H --> I[EntityFusionStage]
     I --> J[NormalizationStage]
-    J --> K[ValidationStage]
-    K --> L[(Database JSONB)]
-```
-
-## 4. Request Lifecycle (Phase 1)
-```mermaid
-sequenceDiagram
-    participant User
-    participant FastAPI
-    participant IngestionPipeline
-    participant PostgreSQL
-
-    User->>FastAPI: POST /jobs/{id}/resumes/ (PDF)
-    FastAPI->>PostgreSQL: INSERT Resume (status: PENDING)
-    FastAPI->>IngestionPipeline: extract_and_store()
-    FastAPI-->>User: 202 Accepted (Resume ID)
-    
-    IngestionPipeline->>IngestionPipeline: Extract Text & Clean
-    IngestionPipeline->>PostgreSQL: UPDATE structured JSON
-    IngestionPipeline->>PostgreSQL: UPDATE status (PROCESSED)
-    
-    User->>FastAPI: GET /resumes/{id}
-    PostgreSQL-->>FastAPI: Resume JSON
-    FastAPI-->>User: JSON Response
-```
-
-## 5. Parser Evaluation Pipeline (Phase 2.2.5)
-```mermaid
-flowchart LR
-    A[Benchmark Dataset] -->|Iterate Resumes| B[benchmark_runner.py]
-    B -->|Ingest PDF| C[evaluate_resume.py]
-    C -->|Extract Metadata| D[Pipeline Config]
-    C -->|Output JSON| E[metrics.py]
-    
-    A2[Expected JSON Truth] --> E
-    
-    E -->|Fuzzy Match & Struct Diff| F[report_generator.py]
-    F -->|Markdown, CSV, Charts| G[(results/)]
-```
-
-## 6. Recruitment Intelligence Engine (Phase 2.6)
-```mermaid
-flowchart TD
-    A[Parsed Resume] --> B[CandidateProfile & FeatureVector]
-    C[Parsed Job] --> D[JobProfile & FeatureVector]
-    
-    B --> E[MatchingService]
-    D --> E
-    
-    E --> F[ScoringService]
-    E --> G[GapAnalysisService]
-    
-    F --> H[RiskAnalysisService]
-    H --> I[DecisionEngine]
-    
-    I --> J[DecisionResult]
+    J --> K[(Database JSONB & Vectors)]
 ```

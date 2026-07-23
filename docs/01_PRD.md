@@ -4,72 +4,78 @@
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 1.0     | Initial MVP Document Creation |
+| 2026-07-23 | 2.5     | Updated to reflect Phase 3 ATS completion |
 
 ## 1. Vision
-To build a scalable, offline-capable, and privacy-first Document Intelligence Platform that eliminates the manual burden of parsing and evaluating structured/unstructured documents, beginning with Resume Screening.
+To build a scalable, offline-capable, and privacy-first Document Intelligence Platform and Applicant Tracking System (ATS) that eliminates the manual burden of sourcing, tracking, and evaluating candidates throughout the entire hiring lifecycle.
 
 ## 2. Goals
 - Automate resume screening against specific job descriptions.
 - Eliminate dependency on paid third-party LLMs (OpenAI, Claude) to ensure data privacy and zero inference costs.
+- Provide a robust Enterprise Backend supporting Candidates, Jobs, Workflows, Interviews, and Analytics.
 - Lay a generic foundation capable of parsing Invoices and Purchase Orders in the future.
 
 ## 3. Scope
 **In Scope (MVP):**
-- PDF Resume ingestion and text extraction.
-- Hard skill extraction and fuzzy matching.
-- Dense vector generation for semantic similarity scoring.
-- Deterministic ranking engine.
+- PDF Resume ingestion and hybrid AI text extraction.
+- Hard skill extraction, dense vector generation, and semantic similarity scoring.
+- Deterministic candidate ranking and recommendation engine.
+- Complete ATS Backend (Jobs, Candidates, Workflows, Interviews, Workspaces, Analytics).
 - Local PostgreSQL + pgvector storage.
-- Web dashboard for uploading jobs/resumes and viewing scores.
+- Automated CI/CD Testing Infrastructure.
 
 **Out of Scope (MVP):**
-- Invoice/PO processing.
+- Complex frontend web dashboard (Planned for Phase 5).
 - Multi-node distributed workers (Celery).
-- Complex authentication (SSO/OAuth).
+- Invoice/PO processing.
 
 ## 4. User Personas
 **1. Recruiter / HR Manager (Primary)**
-- Needs to rapidly filter 100s of resumes for a role.
-- Wants transparent, explainable scoring metrics.
-- Not technical; requires an intuitive web dashboard.
+- Needs to rapidly filter 100s of resumes for a role and track them across a custom hiring pipeline.
+- Requires transparent, explainable scoring metrics.
+- Utilizes customized analytics dashboards and CSV reports.
 
 **2. System Administrator (Secondary)**
-- Needs an application that is easy to deploy via Docker.
-- Prefers offline AI models to comply with company data policies.
+- Needs an application that is easy to deploy via Docker and test via CI/CD.
+- Prefers offline AI models to comply with strict internal data policies.
 
 ## 5. Functional Requirements
-- **FR1:** System must allow users to create a Job with a title and list of required skills.
-- **FR2:** System must accept PDF uploads for resumes.
-- **FR3:** System must extract text, fallback to OCR if necessary, and clean the output.
-- **FR4:** System must score the resume based on hard skills and semantic context.
-- **FR5:** System must display a ranked list of candidates per job.
+- **FR1:** System must allow users to create Jobs with specific requirements and track Candidates applying to them.
+- **FR2:** System must extract text from resumes, utilize local NLP to parse entities, and map them to Candidate Profiles.
+- **FR3:** System must execute semantic similarity scoring and heuristic gap analysis.
+- **FR4:** System must manage Candidates moving through dynamic Workflow Pipelines (e.g. Screen -> Technical -> Offer).
+- **FR5:** System must manage Interview scheduling, panel mapping, and JSONB scorecards.
+- **FR6:** System must provide cross-domain Analytics (Time-to-Hire, Conversion Rates).
 
 ## 6. Non-functional Requirements
-- **Performance:** A single resume should be processed in under 5 seconds locally.
+- **Performance:** Complex aggregations must be locally cached to ensure fast dashboard load times.
 - **Privacy:** 100% of data processing must occur locally. No data leaves the VPC/Host.
-- **Maintainability:** The architecture must adhere to SOLID principles for easy expansion.
+- **Maintainability:** The architecture must adhere to strict Domain-Driven Design (DDD) to support future RBAC.
 
 ## 7. Success Metrics
-- 95%+ accurate text extraction on standard PDFs.
+- Fully isolated domains working in harmony with zero duplicate logic.
 - >80% accuracy on skill matching vs manual human review.
-- Under 10 seconds total processing time per document on standard CPU hardware.
+- API requests execute efficiently with scalable database indexing and cached read models.
 
 ## 8. Risks
-- **Parsing Accuracy:** Highly stylized resumes may break extraction order.
 - **Model Size:** Downloading and caching Hugging Face models requires significant initial bandwidth and disk space.
+- **Complexity:** Keeping decoupled domains synchronized requires careful timeline and event logging.
 
 ## 9. Feature Status
 - ✅ Basic PDF Upload & Text Extraction
-- ✅ Deterministic Parsing Rules
 - ✅ Hybrid AI Parsing (spaCy + Hugging Face)
 - ✅ Automated Parser Benchmarking
-- ✅ Deterministic Candidate Matching & Ranking (Phase 2)
-- ✅ Search & Retrieval Engine (Phase 2)
-- ✅ Configurable Recommendation & Decision Engine (Phase 2)
-- 🟡 Local pgvector setup (Phase 3)
-- ⚪ Dashboard & UI (Phase 5)
+- ✅ Deterministic Candidate Matching & Ranking
+- ✅ Configurable Recommendation & Decision Engine
+- ✅ Candidate & Job Management Domains
+- ✅ Configurable Workflow Pipelines & Timeline Audit Logging
+- ✅ Interview Management (Logistics, Scorecards)
+- ✅ Recruiter Workspace & Caching
+- ✅ Analytics & Reporting Platform (Dashboards, CSV Exports)
+- ⚪ Organizations & RBAC (Multi-Tenancy)
+- ⚪ Frontend React Dashboard (Phase 5)
 
 ## 10. Future Scope
-- Generic Invoice and Purchase order parsing using GLiNER (Zero-shot NER).
-- Advanced BI Analytics dashboard.
-- Email integration to auto-ingest resumes from an inbox.
+- Multi-tenant RBAC platform capabilities.
+- Generic Invoice and Purchase order parsing using GLiNER.
+- Real-time event-sourcing for extreme analytic scaling.

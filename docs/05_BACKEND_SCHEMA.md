@@ -3,106 +3,86 @@
 ## Revision History
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
-| 2026-07-23 | 1.1     | Updated folder structure and removed AI for Phase 1 |
-| 2026-07-23 | 2.2     | Added Hybrid NER and Entity Fusion (Phase 2) |
-| 2026-07-23 | 2.2.1   | Added Domain Extractors for Granular Parsing |
+| 2026-07-23 | 2.5     | Updated schema for Phase 3 ATS Completion |
 
 ## 1. Folder Structure
 ```text
 /backend
 ├── app/
-│   ├── api/             # HTTP endpoints and routing
-│   ├── core/            # Config, DB connection
-│   ├── database/        # Database session management
-│   ├── models/          # SQLAlchemy table definitions
-│   ├── schemas/         # Pydantic data validation (Request/Response)
-│   ├── intelligence/    # Intelligence Core (Matching, Scoring, Insights)
-│   ├── search/          # Deterministic Search & Retrieval Engine
-│   ├── decision/        # Recommendation & Risk Engine
-│   ├── ai/              # AI and ML components (Phase 2)
-│   │   ├── extractors/  # Domain Extractors (Skills, Experience, etc.)
-│   │   └── models/      # Local model management
+│   ├── analytics/       # Aggregations, KPIs, CSV Exports
+│   ├── candidate/       # Candidate Models & Logic
+│   ├── intelligence/    # Intelligence Core (Matching, Scoring, Gap Analysis)
+│   ├── interview/       # Scheduling, Panels, & Scorecards
+│   ├── job/             # Job Models & Logic
+│   ├── search/          # Candidate & Job Retrieval Engine
+│   ├── workflow/        # Configurable Pipelines & Timeline Events
+│   ├── workspace/       # Caching, Dashboards, & Notifications
 │   ├── parsers/         # Document Processing Engine
-│   │   ├── core/        # Pipeline orchestration and models
-│   │   └── stages/      # OOP parser stages (Extraction, Cleaning, etc.)
-│   ├── storage/         # Local file storage handlers
-│   └── utils/           # Helper functions
-├── config/              # YAML rules and regex definitions
-├── development/         # Sandbox tools, scratch scripts, experiments, and archives
-└── parser_tests/        # Parser Evaluation & Regression Framework
-    ├── framework/       # Benchmark runner, evaluation metrics, reporting
-    ├── generator/       # Programmatic dataset generator
-    ├── datasets/        # Sample resumes (PDFs) and expected ground truth (JSON)
-    └── results/         # Benchmark logs, CSV accuracy tables, charts
+│   ├── models/          # Shared SQLAlchemy Base & Enums
+│   └── main.py          # FastAPI Entrypoint
+├── config/              # YAML rules (Workflow Pipelines, Parser Logic)
+└── parser_tests/        # Comprehensive PyTest Integration Suite
 ```
 
 ## 2. Entity Relationships (ER Diagram)
 ```mermaid
 erDiagram
-    JOB ||--o{ RESUME : "receives"
+    JOB ||--o{ WORKFLOW_INSTANCE : "contains"
+    CANDIDATE ||--o{ WORKFLOW_INSTANCE : "enters"
+    WORKFLOW_INSTANCE ||--o{ INTERVIEW : "schedules"
+    WORKFLOW_INSTANCE ||--o{ TIMELINE_EVENT : "logs"
 
     JOB {
         int id PK
         string title
-        text description
         json required_skills
-        datetime created_at
     }
 
-    RESUME {
+    CANDIDATE {
         int id PK
-        int job_id FK
-        string filename
-        string status "PENDING, PROCESSED, ERROR"
-        text raw_text
         jsonb parsed_metadata
-        datetime created_at
+        vector feature_vector
+    }
+    
+    WORKFLOW_INSTANCE {
+        int id PK
+        string status
+        int current_stage_id
+    }
+    
+    INTERVIEW {
+        int id PK
+        jsonb scorecard_criteria
+        datetime scheduled_start
+    }
+    
+    TIMELINE_EVENT {
+        int id PK
+        string event_type
+        json details
     }
 ```
-*(Note: Embeddings and Vector tables will be introduced in Phase 3. Scores will be added in Phase 4.)*
 
 ## 3. Database Tables
-- **jobs**: Stores the target job requirements.
-- **resumes**: Uses a flexible `JSONB` column (`parsed_metadata`) to avoid complex relational joins for dynamic data like skills and education.
+- **candidates / jobs**: Foundational models utilizing `JSONB` metadata and `VECTOR` types for semantic search.
+- **workflow_instances**: The connective tissue linking Candidates to Jobs via configurable pipelines.
+- **interviews**: Manage scheduling and customized `JSONB` scorecards.
+- **dashboard_configs / saved_reports**: Analytics tables persisting JSON dashboard layouts and user-specific report filters.
 
-## 4. Parser Architecture (Phase 2.2.1)
-The backend utilizes an Object-Oriented pipeline with Hybrid AI Information Extraction.
-
-```mermaid
-classDiagram
-    class ParserPipeline {
-        +run(document) ResumeDocument
-    }
-    class BaseParserStage {
-        <<interface>>
-        +run(document, context)
-    }
-    class ResumeDocument {
-        +raw_lines
-        +cleaned_lines
-        +sections
-        +extracted_entities
-        +final_json
-    }
-    class PipelineContext {
-        +warnings
-        +execution_timestamps
-        +config
-    }
-    ParserPipeline --> BaseParserStage : "executes"
-    BaseParserStage ..> ResumeDocument : "mutates"
-    BaseParserStage ..> PipelineContext : "logs to"
-```
+## 4. Cross-Domain Operations
+The backend utilizes strict Domain-Driven Design (DDD). 
+- To avoid tight coupling, domains broadcast state changes using the `TimelineService` (part of Workflow).
+- When a Candidate is hired, an event is logged in the timeline, which can asynchronously trigger caching updates in the `Workspace` or recalculations in `Analytics`.
 
 ## 5. API Modules
-- `POST /jobs/`: Create a new job requirement.
-- `GET /jobs/`: Retrieve all active jobs.
-- `POST /jobs/{id}/resumes/`: Upload a resume document for a job.
-- `GET /resumes/{id}`: Retrieve parsed resume JSON.
-- `POST /intelligence/match`: Execute gap and heuristic matching.
-- `POST /search/candidates`: Structured candidate retrieval.
-- `POST /decision/hire`: Produce deterministic hiring decisions.
+- `/candidates/*`: CRUD and parsing for resumes.
+- `/jobs/*`: CRUD for roles.
+- `/workflow/*`: Pipeline transitions, approvals, assignments.
+- `/interviews/*`: Scheduling, panels, feedback execution.
+- `/workspace/*`: Cached notifications, activities, dashboard feeds.
+- `/analytics/*`: Csv reports, KPIs, time-series trends.
 
-## 5. Storage
+## 6. Storage & Caching
 - **Relational**: PostgreSQL.
-- **Documents**: Uploaded PDFs are temporarily stored on local disk (`/uploads`) until processed.
+- **Vectors**: `pgvector`.
+- **Caching**: `MemoryCacheRepository` abstracts the caching interface for rapid analytics delivery. (Easily swappable with Redis for multi-node deployments).

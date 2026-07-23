@@ -1,9 +1,9 @@
 # AI Document Intelligence Platform
 
-A high-performance, offline-capable AI Resume Screening and Document Processing engine built for privacy and scale.
+A high-performance, offline-capable AI Resume Screening and Enterprise Applicant Tracking System (ATS) backend built for privacy and scale.
 
 [![CI/CD Pipeline](https://github.com/vanshbahl/resume-screener/actions/workflows/ci.yml/badge.svg)](https://github.com/vanshbahl/resume-screener/actions/workflows/ci.yml)
-![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)
+![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen.svg)
 ![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)
 ![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
@@ -27,24 +27,25 @@ A high-performance, offline-capable AI Resume Screening and Document Processing 
 - [Author](#author)
 
 ## Overview
-The AI Document Intelligence Platform is designed to automate the arduous task of evaluating candidate profiles against job requirements without incurring the latency, cost, or privacy risks of third-party LLM APIs (like OpenAI or Claude). It leverages state-of-the-art open-source Hugging Face models running locally.
+The AI Document Intelligence Platform is designed to automate candidate evaluation and manage the entire hiring lifecycle. By utilizing offline open-source models, it securely parses documents and scores candidates without external LLM API costs or privacy risks. The robust backend provides comprehensive tools for job matching, interview scheduling, pipeline workflow management, and organizational analytics.
 
 ## Features
-- **Offline AI Pipeline**: Entirely local execution using `bge-small-en-v1.5`, `PaddleOCR`, and `spaCy`.
-- **Deterministic Scoring**: Transparent, math-based candidate ranking using fuzzy matching and vector cosine similarity.
+- **Offline AI Pipeline**: Entirely local extraction and NLP execution using `bge-small-en-v1.5`, `PaddleOCR`, and `spaCy`.
+- **Intelligent Core**: Math-based candidate ranking, feature vectors, semantic similarity, and deterministic gap analysis.
+- **Enterprise ATS Domains**: Independent modules for Job Management, Candidate Management, Workflow Pipelines, Interview Logistics, and Analytics.
 - **Privacy First**: No data leaves your servers. No external LLM calls.
-- **Generic Core**: Polymorphic architecture designed to scale beyond resumes to Invoices and POs.
+- **Generic Architecture**: Built with Domain-Driven Design (DDD) to effortlessly expand to multi-tenant scaling and additional document types.
 
 ## Current Status
-**Phase 2 Complete (v1.0 Release Candidate)**: We have finalized a Hybrid Information Extraction Engine leveraging spaCy and Hugging Face models, alongside a robust programmatic testing environment. Furthermore, the backend now supports a production-grade Recruitment Intelligence Engine, delivering Candidate-to-Job Matching, Gap Analysis, a high-performance In-Memory Search Engine, and a deterministic Recommendation & Decision Engine without relying on LLMs.
+**Phase 3 Complete (v2.5 Release Candidate 2)**: The platform has achieved complete stability across the core Applicant Tracking System. We have fully implemented Candidate Management, Job Management, configurable Pipeline Workflow Engines, the Recruiter Workspace, Interview Management (with JSONB Scorecards), and a comprehensive Analytics & Reporting Platform. The system is backed by a robust PostgreSQL testing infrastructure and automated CI/CD quality gates.
 
 ## Architecture Overview
-The system relies on a monolithic FastAPI backend that handles both web requests and async AI processing via `BackgroundTasks`. A PostgreSQL database stores relational data alongside `JSONB` for unstructured extracted entities and `VECTOR` types for dense semantic embeddings.
+The system relies on a monolithic FastAPI backend that processes AI tasks asynchronously while serving REST endpoints. A PostgreSQL database stores relational domain data alongside `JSONB` for unstructured extracted entities (resumes, scorecards, layouts) and `VECTOR` types for dense semantic embeddings. A strict Domain-Driven structure keeps the core modules decoupled.
 
 ## Tech Stack
-- **Frontend**: React, TypeScript, TailwindCSS, shadcn/ui, Vite
-- **Backend**: FastAPI, Pydantic, SQLAlchemy, Alembic, PyYAML
-- **Database**: PostgreSQL with `pgvector`
+- **Frontend (Planned)**: React, TypeScript, TailwindCSS, shadcn/ui, Vite
+- **Backend API**: FastAPI, Pydantic, SQLAlchemy, Alembic, PyYAML
+- **Database & Testing**: PostgreSQL with `pgvector`, Pytest, GitHub Actions
 - **AI / NLP**: `spaCy`, `sentence-transformers`, `PaddleOCR`, `RapidFuzz`
 
 ## Folder Structure
@@ -52,24 +53,26 @@ The system relies on a monolithic FastAPI backend that handles both web requests
 /
 ├── backend/
 │   ├── app/
-│   │   ├── intelligence/ # Matching, Scoring, Ontology, Gap Analysis
-│   │   ├── search/       # In-Memory Deterministic Candidate & Job Search
-│   │   ├── decision/     # Hiring Recommendations and Risk Analysis
-│   │   ├── parsers/      # Object-Oriented Document Pipeline
-│   │   └── api/          # RESTful Endpoints
-│   ├── config/           # PyYAML Rules, Thresholds, & Configurations
-│   ├── development/      # Sandbox tools, experiments, scratch scripts
-│   └── parser_tests/     # Benchmarking Framework & Dataset Generator
-├── frontend/            # React Web Client
-├── docs/                # Project Documentation
-├── docker-compose.yml   # Local Database Deployment
+│   │   ├── intelligence/ # Matching, Scoring, Gap Analysis
+│   │   ├── search/       # Candidate & Job Search Engine
+│   │   ├── parsers/      # OOP Document Ingestion Pipeline
+│   │   ├── candidate/    # Candidate Domain
+│   │   ├── job/          # Job Domain
+│   │   ├── workflow/     # Configurable Hiring Pipelines & Timelines
+│   │   ├── interview/    # Scheduling, Panels, & Scorecards
+│   │   ├── workspace/    # Recruiter Dashboards & Queues
+│   │   ├── analytics/    # Aggregations, KPIs, CSV Reports
+│   │   ├── models/       # Shared SQLAlchemy Base
+│   │   └── main.py       # FastAPI Entrypoint
+│   ├── config/           # YAML Rules & Configs
+│   └── parser_tests/     # Comprehensive PyTest Integration & Benchmarking Suite
+├── docs/                 # Project Documentation
+├── docker-compose.yml    # Database Deployment
 └── README.md
 ```
 
 ## Screenshots
-
-![Dashboard](docs/assets/dashboard.png)
-*Figure 1: Candidate Ranking Dashboard*
+*(Frontend Implementation Pending Phase 5)*
 
 ## Documentation
 - [01_PRD.md](docs/01_PRD.md) - Product Requirements
@@ -83,13 +86,12 @@ The system relies on a monolithic FastAPI backend that handles both web requests
 
 ### Prerequisites
 - Docker (for PostgreSQL + pgvector)
-- Node.js 18+
 - Python 3.11+
 
 ### Local Setup
 1. Start the database: `docker compose up -d`
 2. Run Backend: `cd backend && source venv/bin/activate && pip install -r requirements.txt && uvicorn app.main:app --reload`
-3. Run Frontend: `cd frontend && npm run dev`
+3. Run Tests: `cd backend && PYTHONPATH=. pytest parser_tests/`
 
 ## Git Configuration
 This repository strictly tracks source code, documentation, and configuration files.
@@ -99,15 +101,15 @@ To prevent repository bloat and accidental data leaks, our `.gitignore` explicit
 - **Environment Variables (`.env`)**: Secrets and API keys must remain local to your machine.
 - **Hugging Face Caches & Model Weights**: AI models are large binaries that are downloaded dynamically at runtime and should not reside in Git.
 - **Uploads & Temporary Files**: Any user-uploaded resumes (`uploads/`) or temporary OS files (`.DS_Store`) are discarded.
-- **Generated Datasets**: The `parser_tests/datasets/` and `parser_tests/results/` folders (PDFs, JSONs, Benchmark Charts) are ignored. Only the testing *framework* code itself is committed.
+- **Generated Datasets**: The testing folders generating mock PDFs are ignored to prevent bloat. Only the framework code is committed.
 
 ## Roadmap
 See [06_IMPLEMENTATION_PLAN.md](docs/06_IMPLEMENTATION_PLAN.md) for detailed milestone tracking.
 
 ## Future Plans
-- Invoice and Purchase Order intelligent parsing.
-- Transition to Celery/Redis for distributed worker nodes.
-- HNSW indexing in pgvector for massive scale.
+- Organizations & RBAC (Multi-Tenancy).
+- Full React Frontend Dashboard implementation.
+- Distributed Celery/Redis worker node architecture.
 
 ## Contributing
 Contributions are welcome! Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.
@@ -117,13 +119,3 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Author
 Maintained by Vansh Bahl
-
-## Acknowledgements
-## Git Configuration
-This repository maintains a strict `.gitignore` policy to prevent sensitive or unnecessary files from being committed:
-- **Virtual Environments & Node Modules**: (`venv/`, `node_modules/`) are ignored to keep the repository lightweight and OS-agnostic.
-- **Environment Variables**: (`.env`) are ignored to prevent accidentally leaking API keys and database credentials.
-- **Model Weights & Cache**: Hugging Face caches and localized model weights (`.cache/`, `hf_cache/`) are ignored due to extreme file sizes.
-- **Uploaded Files**: Uploaded PDFs (`uploads/`) are ignored to protect PII and prevent repository bloat.
-
-**Only source code, configuration files, and documentation should be committed.**

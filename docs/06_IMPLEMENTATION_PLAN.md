@@ -3,90 +3,75 @@
 ## Revision History
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
-| 2026-07-23 | 1.1     | Updated to 7-Phase Strategy   |
+| 2026-07-23 | 2.5     | Updated to reflect completion of Phase 3 ATS |
 
 ---
 
 ## ✅ Completed Milestones
 
-### Phase 2 — Recruitment Intelligence Engine (Phase 2.1 - 2.6)
-- **Goal:** Improve resume parsing via Hybrid AI, build a deterministic intelligence core, search engine, and recommendation layer.
+### Phase 3 — Enterprise ATS Backend (Phase 3.1 - 3.6)
+- **Goal:** Transform the raw intelligence engine into a fully functional, production-ready Applicant Tracking System.
 - **Deliverables:**
-  - ✅ Deterministic Extractor Improvements
+  - ✅ Candidate Management Domain
+  - ✅ Job Management Domain
+  - ✅ Configurable Workflow Engine
+  - ✅ PostgreSQL Test Infrastructure & CI/CD
+  - ✅ Recruiter Workspace (Dashboards & Queues)
+  - ✅ Interview Management (Scorecards & Panels)
+  - ✅ Analytics & Reporting Platform (KPIs & CSV Exports)
+
+---
+
+### Phase 2 — Recruitment Intelligence Engine (Phase 2.1 - 2.6)
+- **Goal:** Build a deterministic intelligence core, search engine, and recommendation layer.
+- **Deliverables:**
   - ✅ Hybrid NER Integration (spaCy + HuggingFace)
-  - ✅ Domain-Specific Extraction Engine
   - ✅ Parser Evaluation & Regression Framework
-  - ✅ Benchmark Resume Dataset Generator (50 resumes)
-  - ✅ Intelligence Core (Matching, Scoring, Gap Analysis)
   - ✅ Candidate & Job Feature Vectors
   - ✅ Deterministic Search & Retrieval Engine
   - ✅ Recommendation & Decision Engine
-  - ✅ Production Repository Reorganization
 
 ---
 
 ### Phase 1 — Backend Foundation & Deterministic Parser (Phases 1A - 1D)
-- **Goal:** Build a robust, object-oriented ingestion pipeline capable of extracting, cleaning, detecting sections, extracting entities, and validating PDF resumes deterministically without AI.
+- **Goal:** Build a robust, object-oriented ingestion pipeline capable of extracting PDF resumes deterministically without AI.
 - **Deliverables:**
-  - ✅ CRUD operations for Jobs
   - ✅ Resume Upload & PDF Extraction
   - ✅ Modular Pipeline Architecture (`BaseParserStage`)
   - ✅ Config-driven Rules (`PyYAML`)
-  - ✅ Telemetry & Observability
-  - ✅ Benchmarking Suite
 
 ---
 
 ## ⚪ Planned Milestones
 
-
-### Phase 3 — AI Semantic Matching
-- **Goal:** Introduce HuggingFace models for semantic understanding.
+### Phase 4 — Organizations & Multi-Tenancy (RBAC)
+- **Goal:** Introduce Role-Based Access Control to support multiple companies inside the same backend.
 - **Deliverables:**
-  - Sentence Transformers
-  - Embeddings
-  - pgvector integration
-  - Job Description embeddings
-  - Resume embeddings
-  - Similarity Search
+  - Organizations & Tenants
+  - Roles (Admin, Recruiter, Hiring Manager)
+  - Data isolation layer
 
-### Phase 4 — Resume Scoring Engine
-- **Goal:** Completed implicitly via Phase 2 Intelligence & Decision Engines.
+### Phase 5 — Frontend React Dashboard
+- **Goal:** Build the complete user interface to consume the API.
 - **Deliverables:**
-  - ✅ Skills Match
-  - ✅ Experience Match
-  - ✅ Education Match
-  - ✅ Project Match
-  - ⚪ Semantic Similarity Score (Pending Phase 3)
-  - ✅ Weighted Overall Score
-  - ✅ Candidate Ranking
-
-### Phase 5 — Frontend Dashboard
-- **Goal:** Build the complete user interface.
-- **Deliverables:**
-  - Dashboard
+  - Main Dashboard
   - Job Management
-  - Resume Upload
-  - Candidate List
-  - Resume Viewer
-  - Ranking Dashboard
-  - Candidate Details
+  - Resume Upload (Drag & Drop)
+  - Candidate Ranking UI
+  - Interview Scorecard UI
+  - Analytics Visualizations
 
-### Phase 6 — AI Enhancements
-- **Goal:** Improve intelligence.
+### Phase 6 — Generative AI Enhancements (Optional)
+- **Goal:** Augment existing deterministic intelligence with local generative capabilities.
 - **Deliverables:**
-  - Resume Summaries
-  - Interview Question Generation
-  - Skill Gap Analysis
-  - AI Insights
-  - Recommendation Engine
+  - Resume Summaries (Local LLM)
+  - Automated Interview Question Generation
+  - Custom Cover Letter insights
 
-### Phase 7 — Production Readiness
-- **Goal:** Prepare the project for production.
+### Phase 7 — Scale & Production Deployment
+- **Goal:** Prepare the project for internet-scale production.
 - **Deliverables:**
-  - Performance Optimization
-  - Logging
-  - Error Handling
-  - Deployment
-  - Monitoring
-  - Documentation Polish
+  - Celery / Redis distributed workers
+  - AWS deployment architectures
+  - HNSW indexing in pgvector for massive scale
+  - Final performance load testing

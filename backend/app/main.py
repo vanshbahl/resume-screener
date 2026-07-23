@@ -14,9 +14,24 @@ from app.core.config import settings
 from app.core.database import Base, engine, get_db
 from app.models.domain import Job, Resume, ResumeStatus
 from app.schemas.domain import JobCreate, JobUpdate, JobResponse, ResumeResponse
-from app.parsers.pdf_parser import extract_text_from_pdf
-from app.parsers.text_cleaner import clean_text
-from app.parsers.json_generator import generate_structured_json
+from app.parsers.core.document import ResumeDocument
+from app.parsers.pipeline import ParserPipeline
+from app.parsers.stages.extraction import PDFExtractionStage
+from app.parsers.stages.cleaning import TextCleaningStage
+from app.parsers.stages.section_detection import SectionDetectionStage
+from app.parsers.stages.entity_extraction import EntityExtractionStage
+from app.parsers.stages.normalization import NormalizationStage
+from app.parsers.stages.validation import ValidationStage
+
+def get_default_pipeline() -> ParserPipeline:
+    return ParserPipeline([
+        PDFExtractionStage(),
+        TextCleaningStage(),
+        SectionDetectionStage(),
+        EntityExtractionStage(),
+        NormalizationStage(),
+        ValidationStage()
+    ])
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -141,12 +156,20 @@ def process_resume_background(resume_id: int, file_path: str, job_id: int):
             logger.warning(f"Background task aborted: Resume {resume_id} or Job {job_id} not found.")
             return
             
-        # Milestone 3: Extract and Clean Text (No AI yet)
-        raw_pdf_text = extract_text_from_pdf(file_path)
-        clean_pdf_text = clean_text(raw_pdf_text)
+        # Phase 1D: Execute OOP Pipeline
+        document = ResumeDocument(file_path=file_path, resume_id=resume_id, job_id=resume.job_id)
+        pipeline = get_default_pipeline()
         
-        # Milestone 4: Generate Structured JSON
-        structured_data = generate_structured_json(clean_pdf_text)
+        try:
+            document = pipeline.run(document)
+            structured_data = document.final_json
+            clean_pdf_text = "\n".join([line["text"] for line in document.cleaned_lines])
+            raw_pdf_text = "\n".join([line["text"] for line in document.raw_lines])
+        except Exception as e:
+            logger.error(f"Pipeline error for Resume {resume_id}: {e}")
+            structured_data = {"error": str(e)}
+            clean_pdf_text = ""
+            raw_pdf_text = ""
         
         # Milestone 5: Persist everything (Text, JSON, Metadata)
         existing_metadata = resume.parsed_metadata or {}

@@ -1,0 +1,9 @@
+sections:
+  summary: "^(summary|profile|professional summary|about me|executive summary)$"
+  experience: "^(experience|professional experience|work experience|employment history|work history|internships)$"
+  education: "^(education|academic background|academic record)$"
+  skills: "^(skills|technical skills|core competencies|technologies)$"
+  projects: "^(projects|personal projects|academic projects)$"
+  certifications: "^(certifications|licenses|courses)$"
+  achievements: "^(achievements|awards|honors|publications)$"
+  languages: "^(languages)$"

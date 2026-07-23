@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+venv/
+.env
+
+# Parser Testing Framework Generated Assets
+parser_tests/datasets/sample_resumes/*.pdf
+parser_tests/datasets/expected_outputs/*.json
+parser_tests/datasets/metadata/*.json
+parser_tests/datasets/notes/*.md
+parser_tests/results/
+parser_tests/logs/
+parser_tests/generator/output/
+
+# Ensure framework code is not ignored
+!parser_tests/framework/
+!parser_tests/generator/

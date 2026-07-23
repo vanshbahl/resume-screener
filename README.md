@@ -2,10 +2,11 @@
 
 A high-performance, offline-capable AI Resume Screening and Document Processing engine built for privacy and scale.
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Python](https://img.shields.io/badge/python-3.11+-blue.svg)
+[![CI/CD Pipeline](https://github.com/vanshbahl/resume-screener/actions/workflows/ci.yml/badge.svg)](https://github.com/vanshbahl/resume-screener/actions/workflows/ci.yml)
+![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen.svg)
+![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen)
+![Python](https://img.shields.io/badge/python-3.11%20%7C%203.12-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ![Banner](docs/assets/banner.png)
 

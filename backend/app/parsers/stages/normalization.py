@@ -1,6 +1,7 @@
-import re
+
 from app.parsers.core.base import BaseParserStage
 from app.parsers.core.document import BaseDocument, PipelineContext
+
 
 class NormalizationStage(BaseParserStage):
     def run(self, document: BaseDocument, context: PipelineContext) -> None:
@@ -30,7 +31,14 @@ class NormalizationStage(BaseParserStage):
                 field["value"] = field["value"].rstrip("/")
 
         # Deduplicate flat skills list by value (case-insensitive)
-        for cat in ["skills", "languages", "frameworks", "tools", "concepts", "soft_skills"]:
+        for cat in [
+            "skills",
+            "languages",
+            "frameworks",
+            "tools",
+            "concepts",
+            "soft_skills",
+        ]:
             seen = set()
             deduped = []
             for item in entities.get(cat, []):

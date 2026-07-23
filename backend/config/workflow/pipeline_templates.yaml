@@ -1,0 +1,60 @@
+# Configuration for default pipeline templates
+
+templates:
+  standard:
+    name: "Standard Engineering Pipeline"
+    description: "Default 5-stage pipeline for engineering roles."
+    stages:
+      - name: "Applied"
+        order: 1
+        requires_approval: false
+        is_terminal: false
+      - name: "Resume Screening"
+        order: 2
+        requires_approval: false
+        is_terminal: false
+      - name: "Technical Interview"
+        order: 3
+        requires_approval: false
+        is_terminal: false
+      - name: "Manager Interview"
+        order: 4
+        requires_approval: false
+        is_terminal: false
+      - name: "Offer"
+        order: 5
+        requires_approval: true
+        is_terminal: false
+      - name: "Hired"
+        order: 6
+        requires_approval: false
+        is_terminal: true
+
+  executive:
+    name: "Executive Pipeline"
+    description: "Multi-round pipeline for executive leadership roles."
+    stages:
+      - name: "Sourced"
+        order: 1
+        requires_approval: false
+        is_terminal: false
+      - name: "Initial Screening"
+        order: 2
+        requires_approval: false
+        is_terminal: false
+      - name: "Panel Interview"
+        order: 3
+        requires_approval: false
+        is_terminal: false
+      - name: "Board Interview"
+        order: 4
+        requires_approval: false
+        is_terminal: false
+      - name: "Offer"
+        order: 5
+        requires_approval: true
+        is_terminal: false
+      - name: "Hired"
+        order: 6
+        requires_approval: false
+        is_terminal: true

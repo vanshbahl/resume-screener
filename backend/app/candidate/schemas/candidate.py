@@ -1,6 +1,8 @@
-from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional
 from datetime import datetime
+from typing import Any, Dict, List, Optional
+
+from pydantic import BaseModel, Field
+
 
 # ---------------------------------------------------------
 # Notes
@@ -8,6 +10,7 @@ from datetime import datetime
 class CandidateNoteCreate(BaseModel):
     content: str
     visibility: str = "public"
+
 
 class CandidateNoteResponse(BaseModel):
     id: int
@@ -17,8 +20,9 @@ class CandidateNoteResponse(BaseModel):
     visibility: str
     created_at: datetime
     updated_at: datetime
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Timeline
@@ -30,8 +34,9 @@ class CandidateTimelineResponse(BaseModel):
     details: Dict[str, Any]
     timestamp: datetime
     user_id: Optional[str] = None
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Attachments
@@ -43,8 +48,9 @@ class CandidateAttachmentResponse(BaseModel):
     filename: str
     metadata_json: Dict[str, Any]
     created_at: datetime
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Resumes
@@ -58,8 +64,9 @@ class CandidateResumeResponse(BaseModel):
     created_at: datetime
     # We do NOT return the full parsed_metadata here to keep responses light.
     # It can be fetched via a dedicated /parsed endpoint if needed.
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Candidates
@@ -69,15 +76,19 @@ class CandidateCreate(BaseModel):
     custom_fields: Optional[Dict[str, Any]] = None
     tags: Optional[List[str]] = None
 
+
 class CandidateUpdate(BaseModel):
     custom_fields: Optional[Dict[str, Any]] = None
+
 
 class CandidateStatusUpdate(BaseModel):
     status: str
     reason: Optional[str] = None
 
+
 class CandidateTagsUpdate(BaseModel):
     tags: List[str]
+
 
 class CandidateResponse(BaseModel):
     id: str
@@ -87,8 +98,8 @@ class CandidateResponse(BaseModel):
     audit_data: Dict[str, Any]
     created_at: datetime
     updated_at: datetime
-    
+
     # Nested lists to provide a rich Candidate Entity
     resumes: List[CandidateResumeResponse] = Field(default_factory=list)
-    
+
     model_config = {"from_attributes": True}

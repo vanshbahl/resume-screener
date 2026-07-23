@@ -1,11 +1,13 @@
 import re
-from typing import List, Dict, Any
+from typing import Any, Dict, List
+
 from app.parsers.core.document import PipelineContext
 
 
 class ProjectExtractor:
     def __init__(self):
         from app.ai.extractors.skills_extractor import SkillsExtractor
+
         self.skills_extractor = SkillsExtractor()
 
         # A project name line is typically:
@@ -15,13 +17,16 @@ class ProjectExtractor:
         # - NOT a long description sentence
         # - Does NOT start with a lowercase letter (descriptions often do)
         self._stack_prefix = re.compile(
-            r'^(stack|tech|technologies|tools|built with|tech stack)\s*:', re.IGNORECASE
+            r"^(stack|tech|technologies|tools|built with|tech stack)\s*:", re.IGNORECASE
         )
         self._role_duration = re.compile(
-            r'\b(ongoing|lead developer|team leader|developer|contributor)\b', re.IGNORECASE
+            r"\b(ongoing|lead developer|team leader|developer|contributor)\b",
+            re.IGNORECASE,
         )
 
-    def _create_field(self, value: Any, conf: float, source_line: Dict, section: str = "projects") -> Dict:
+    def _create_field(
+        self, value: Any, conf: float, source_line: Dict, section: str = "projects"
+    ) -> Dict:
         if not value:
             return None
         return {
@@ -30,9 +35,9 @@ class ProjectExtractor:
             "source": {
                 "page": source_line["page"],
                 "section": section,
-                "line": source_line["line_no"]
+                "line": source_line["line_no"],
             },
-            "origin_model": "deterministic"
+            "origin_model": "deterministic",
         }
 
     def _is_project_name(self, text: str) -> bool:
@@ -53,20 +58,21 @@ class ProjectExtractor:
         if stripped[0].islower():
             return False
         # Lines that are purely a year or short number are not names
-        if re.match(r'^\d{4}$', stripped):
+        if re.match(r"^\d{4}$", stripped):
             return False
         # Role/duration summary lines ("Ongoing · Lead Developer") are NOT project names
         if self._role_duration.search(stripped):
             return False
         # Achievement/recognition lines are NOT project names
         if re.search(
-            r'\b(shortlisted|finalist|participant|winner|runner.up|place at|place in|'
-            r'hackathon|pitchcraft|presented at|codex)\b',
-            stripped, re.IGNORECASE
+            r"\b(shortlisted|finalist|participant|winner|runner.up|place at|place in|"
+            r"hackathon|pitchcraft|presented at|codex)\b",
+            stripped,
+            re.IGNORECASE,
         ):
             return False
         # Lines that start with "I " or "H " or single-letter prefix are PDF extraction artifacts
-        if re.match(r'^[A-Z]\s+\d', stripped):
+        if re.match(r"^[A-Z]\s+\d", stripped):
             return False
         return True
 
@@ -133,16 +139,20 @@ class ProjectExtractor:
 
                 # Full URL regex: captures scheme + host + path + query
                 link_match = re.search(
-                    r'https?://(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}'
-                    r'(?:[-a-zA-Z0-9()@:%_\+.~#?&/=]*)',
-                    text
+                    r"https?://(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}"
+                    r"(?:[-a-zA-Z0-9()@:%_\+.~#?&/=]*)",
+                    text,
                 )
                 if link_match and "link" not in entry:
                     entry["link"] = self._create_field(link_match.group(0), 0.9, line)
 
-                dur_match = re.search(r'(?:duration|timeline):\s*(.*)', text, re.IGNORECASE)
+                dur_match = re.search(
+                    r"(?:duration|timeline):\s*(.*)", text, re.IGNORECASE
+                )
                 if dur_match and "duration" not in entry:
-                    entry["duration"] = self._create_field(dur_match.group(1), 0.9, line)
+                    entry["duration"] = self._create_field(
+                        dur_match.group(1), 0.9, line
+                    )
 
                 # Extract inline role/duration markers like "Ongoing · Lead Developer"
                 if self._role_duration.search(text) and "role" not in entry:
@@ -150,7 +160,9 @@ class ProjectExtractor:
                     entry["role"] = self._create_field(role_val, 0.85, line)
 
                 award_match = re.search(
-                    r'(?:winner|1st|2nd|3rd|prize|hackathon|shortlisted|finalist)', text, re.IGNORECASE
+                    r"(?:winner|1st|2nd|3rd|prize|hackathon|shortlisted|finalist)",
+                    text,
+                    re.IGNORECASE,
                 )
                 if award_match and len(text) < 120:
                     entry["awards"].append(self._create_field(text, 0.8, line))

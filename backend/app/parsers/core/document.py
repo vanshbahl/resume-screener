@@ -1,8 +1,9 @@
-import time
-from typing import List, Dict, Any
 from dataclasses import dataclass, field
-from app.parsers.core.exceptions import ParserWarning
+from typing import Any, Dict, List
+
 from app.parsers.core.config_loader import get_parser_config
+from app.parsers.core.exceptions import ParserWarning
+
 
 @dataclass
 class PipelineContext:
@@ -14,7 +15,11 @@ class PipelineContext:
     config: Dict[str, Any] = field(default_factory=get_parser_config)
 
     def log_warning(self, w_type: str, message: str, line_no: int = None):
-        self.warnings.append(ParserWarning(type=w_type, message=message, stage=self.current_stage, line_no=line_no))
+        self.warnings.append(
+            ParserWarning(
+                type=w_type, message=message, stage=self.current_stage, line_no=line_no
+            )
+        )
 
     def log_error(self, message: str):
         self.recoverable_errors.append(f"[{self.current_stage}] {message}")
@@ -22,11 +27,12 @@ class PipelineContext:
     def record_stage_time(self, stage_name: str, duration_ms: float):
         self.execution_timestamps[stage_name] = duration_ms
 
+
 class BaseDocument:
     def __init__(self, file_path: str, document_id: int = None):
         self.file_path = file_path
         self.document_id = document_id
-        
+
         self.metadata: Dict[str, Any] = {}
         self.raw_lines: List[Dict[str, Any]] = []
         self.cleaned_lines: List[Dict[str, Any]] = []
@@ -39,11 +45,13 @@ class BaseDocument:
         self.validation_results: bool = False
         self.final_json: Dict[str, Any] = {}
 
+
 class ResumeDocument(BaseDocument):
     def __init__(self, file_path: str, resume_id: int = None, job_id: int = None):
         super().__init__(file_path, resume_id)
         self.resume_id = resume_id
         self.job_id = job_id
+
 
 class JobDocument(BaseDocument):
     def __init__(self, file_path: str, job_id: int = None):

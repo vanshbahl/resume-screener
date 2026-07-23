@@ -1,6 +1,8 @@
-from pydantic import BaseModel, Field
-from typing import List, Dict, Any, Optional
 from datetime import datetime
+from typing import Any, Dict, List, Optional
+
+from pydantic import BaseModel, Field
+
 
 # ---------------------------------------------------------
 # Notes
@@ -8,6 +10,7 @@ from datetime import datetime
 class JobNoteCreate(BaseModel):
     content: str
     visibility: str = "public"
+
 
 class JobNoteResponse(BaseModel):
     id: int
@@ -17,8 +20,9 @@ class JobNoteResponse(BaseModel):
     visibility: str
     created_at: datetime
     updated_at: datetime
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Timeline
@@ -30,8 +34,9 @@ class JobTimelineResponse(BaseModel):
     details: Dict[str, Any]
     timestamp: datetime
     user_id: Optional[str] = None
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Job Descriptions
@@ -44,8 +49,9 @@ class JobDescriptionResponse(BaseModel):
     parser_version: Optional[str] = None
     created_at: datetime
     # We do NOT return the full parsed_metadata here
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Candidates Association
@@ -57,8 +63,9 @@ class JobCandidateAssociationResponse(BaseModel):
     association_status: str
     match_score: Optional[float] = None
     created_at: datetime
-    
+
     model_config = {"from_attributes": True}
+
 
 # ---------------------------------------------------------
 # Jobs
@@ -72,6 +79,7 @@ class JobCreate(BaseModel):
     custom_fields: Optional[Dict[str, Any]] = None
     tags: Optional[List[str]] = None
 
+
 class JobUpdate(BaseModel):
     title: Optional[str] = None
     department: Optional[str] = None
@@ -80,15 +88,19 @@ class JobUpdate(BaseModel):
     salary_range: Optional[str] = None
     custom_fields: Optional[Dict[str, Any]] = None
 
+
 class JobStatusUpdate(BaseModel):
     status: str
     reason: Optional[str] = None
 
+
 class JobTagsUpdate(BaseModel):
     tags: List[str]
 
+
 class HiringTeamUpdate(BaseModel):
-    hiring_team: Dict[str, Any] # e.g. {"manager": "uuid", "recruiters": []}
+    hiring_team: Dict[str, Any]  # e.g. {"manager": "uuid", "recruiters": []}
+
 
 class JobResponse(BaseModel):
     id: str
@@ -104,7 +116,7 @@ class JobResponse(BaseModel):
     audit_data: Dict[str, Any]
     created_at: datetime
     updated_at: datetime
-    
+
     descriptions: List[JobDescriptionResponse] = Field(default_factory=list)
-    
+
     model_config = {"from_attributes": True}

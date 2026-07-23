@@ -1,0 +1,14 @@
+# Global rules restricting illegal stage transitions
+
+global_rules:
+  - type: "no_skip_approval"
+    description: "Cannot skip a stage that requires approval unless approved."
+    enabled: true
+    
+  - type: "no_backward_terminal"
+    description: "Cannot transition a workflow out of a terminal stage (e.g., Hired)."
+    enabled: true
+
+  - type: "no_offer_without_interview"
+    description: "Cannot transition to Offer stage without passing an Interview stage."
+    enabled: false # Optional, just an example of custom organizational logic

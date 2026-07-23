@@ -1,17 +1,16 @@
-import re
-from typing import List, Dict, Optional, Any
-from app.parsers.core.base import BaseParserStage
-from app.parsers.core.document import BaseDocument, ResumeDocument, JobDocument, PipelineContext
 
-from app.ai.extractors.contact_extractor import ContactExtractor
-from app.ai.extractors.skills_extractor import SkillsExtractor
-from app.ai.extractors.experience_extractor import ExperienceExtractor
-from app.ai.extractors.project_extractor import ProjectExtractor
-from app.ai.extractors.education_extractor import EducationExtractor
 from app.ai.extractors.achievement_extractor import AchievementExtractor
 from app.ai.extractors.certification_extractor import CertificationExtractor
-from app.ai.extractors.language_extractor import LanguageExtractor
+from app.ai.extractors.contact_extractor import ContactExtractor
+from app.ai.extractors.education_extractor import EducationExtractor
+from app.ai.extractors.experience_extractor import ExperienceExtractor
 from app.ai.extractors.jd_extractor import JDExtractor
+from app.ai.extractors.language_extractor import LanguageExtractor
+from app.ai.extractors.project_extractor import ProjectExtractor
+from app.ai.extractors.skills_extractor import SkillsExtractor
+from app.parsers.core.base import BaseParserStage
+from app.parsers.core.document import (BaseDocument, JobDocument,
+                                       PipelineContext)
 
 
 class EntityExtractionStage(BaseParserStage):
@@ -32,20 +31,38 @@ class EntityExtractionStage(BaseParserStage):
             self._extract_jd(document, context)
         else:
             self._extract_resume(document, context)
-            
+
     def _extract_jd(self, document: JobDocument, context: PipelineContext) -> None:
         # Extract general JD attributes
         jd_data = self.jd_extractor.extract(document.cleaned_lines)
-        
+
         # Extract skills across various sections
-        skills_dict = {"skills": [], "languages": [], "frameworks": [], "tools": [], "concepts": [], "soft_skills": []}
+        skills_dict = {
+            "skills": [],
+            "languages": [],
+            "frameworks": [],
+            "tools": [],
+            "concepts": [],
+            "soft_skills": [],
+        }
         flat_skill_values = set()
-        
-        for section_key in ["requirements", "preferred_qualifications", "skills", "responsibilities"]:
+
+        for section_key in [
+            "requirements",
+            "preferred_qualifications",
+            "skills",
+            "responsibilities",
+        ]:
             section_lines = document.sections.get(section_key, {}).get("lines", [])
             if section_lines:
                 extra = self.skills_extractor.extract(section_lines, context)
-                for cat in ["languages", "frameworks", "tools", "concepts", "soft_skills"]:
+                for cat in [
+                    "languages",
+                    "frameworks",
+                    "tools",
+                    "concepts",
+                    "soft_skills",
+                ]:
                     existing_in_cat = {s["value"] for s in skills_dict.get(cat, [])}
                     for item in extra.get(cat, []):
                         if item["value"] not in existing_in_cat:
@@ -55,18 +72,21 @@ class EntityExtractionStage(BaseParserStage):
                     if item["value"] not in flat_skill_values:
                         skills_dict["skills"].append(item)
                         flat_skill_values.add(item["value"])
-                        
+
         extracted = {
-            "job_metadata": {}, # To be enriched by HF/Spacy
+            "job_metadata": {},  # To be enriched by HF/Spacy
             "salary": jd_data.get("salary"),
             "employment_type": jd_data.get("employment_type"),
             "location_type": jd_data.get("location_type"),
             "experience_requirements": jd_data.get("experience_requirements"),
             "education_requirements": jd_data.get("degree_requirements", []),
             "visa_requirements": jd_data.get("visa_requirements", []),
-            "required_skills": skills_dict.get("skills", []), # We will split required vs preferred in Fusion if needed
-            "preferred_skills": [], 
-            "technologies": skills_dict.get("tools", []) + skills_dict.get("frameworks", []),
+            "required_skills": skills_dict.get(
+                "skills", []
+            ),  # We will split required vs preferred in Fusion if needed
+            "preferred_skills": [],
+            "technologies": skills_dict.get("tools", [])
+            + skills_dict.get("frameworks", []),
             "soft_skills": skills_dict.get("soft_skills", []),
             "tools": skills_dict.get("tools", []),
             "frameworks": skills_dict.get("frameworks", []),
@@ -74,28 +94,37 @@ class EntityExtractionStage(BaseParserStage):
             "languages": skills_dict.get("languages", []),
             "certifications": [],
             "benefits": [],
-            "keywords": []
+            "keywords": [],
         }
         document.extracted_entities = extracted
 
     def _extract_resume(self, document: BaseDocument, context: PipelineContext) -> None:
         pi_lines = document.sections.get("personal_info", {}).get("lines", [])
         if not pi_lines and len(document.raw_lines) > 0:
-            pi_lines = document.raw_lines[:15] # Fallback to first 15 lines
-            
+            pi_lines = document.raw_lines[:15]  # Fallback to first 15 lines
+
         contacts = self.contact_extractor.extract(pi_lines)
-        
+
         # Fallback: If critical contact fields are still missing, scan all cleaned_lines.
         # Some PDFs render contacts after a section header (e.g., after Education), so
         # they never land in the personal_info section.
         missing_critical = not contacts.get("email") or not contacts.get("phone")
         if missing_critical:
             full_contacts = self.contact_extractor.extract(document.cleaned_lines)
-            for field in ["email", "phone", "linkedin", "github", "portfolio", "location"]:
+            for field in [
+                "email",
+                "phone",
+                "linkedin",
+                "github",
+                "portfolio",
+                "location",
+            ]:
                 if not contacts.get(field) and full_contacts.get(field):
                     contacts[field] = full_contacts[field]
-        skills_dict = self.skills_extractor.extract(document.sections.get("skills", {}).get("lines", []), context)
-        
+        skills_dict = self.skills_extractor.extract(
+            document.sections.get("skills", {}).get("lines", []), context
+        )
+
         # ROOT CAUSE #4 FIX: Also scan experience and project lines for skills mentioned in bullet points.
         # Many resumes list technologies inline in job descriptions, not just in the skills section.
         # NOTE: Deduplication uses a global set for the flat `skills` pool only.
@@ -106,7 +135,13 @@ class EntityExtractionStage(BaseParserStage):
             if section_lines:
                 extra = self.skills_extractor.extract(section_lines, context)
                 # Update each category independently
-                for cat in ["languages", "frameworks", "tools", "concepts", "soft_skills"]:
+                for cat in [
+                    "languages",
+                    "frameworks",
+                    "tools",
+                    "concepts",
+                    "soft_skills",
+                ]:
                     existing_in_cat = {s["value"] for s in skills_dict.get(cat, [])}
                     for item in extra.get(cat, []):
                         if item["value"] not in existing_in_cat:
@@ -117,24 +152,37 @@ class EntityExtractionStage(BaseParserStage):
                     if item["value"] not in flat_skill_values:
                         skills_dict["skills"].append(item)
                         flat_skill_values.add(item["value"])
-        
+
         extracted = {
             "personal_info": contacts,
             "summary": None,
             "skills": skills_dict.get("skills", []),
             "languages": skills_dict.get("languages", []),
-            "spoken_languages": self.language_extractor.extract(document.sections.get("languages", {}).get("lines", []) or document.sections.get("skills", {}).get("lines", [])),
+            "spoken_languages": self.language_extractor.extract(
+                document.sections.get("languages", {}).get("lines", [])
+                or document.sections.get("skills", {}).get("lines", [])
+            ),
             "frameworks": skills_dict.get("frameworks", []),
             "tools": skills_dict.get("tools", []),
             "concepts": skills_dict.get("concepts", []),
             "soft_skills": skills_dict.get("soft_skills", []),
-            "education": self.education_extractor.extract(document.sections.get("education", {}).get("lines", []), context),
-            "experience": self.experience_extractor.extract(document.sections.get("experience", {}).get("lines", []), context),
-            "projects": self.project_extractor.extract(document.sections.get("projects", {}).get("lines", []), context),
-            "certifications": self.certification_extractor.extract(document.sections.get("certifications", {}).get("lines", [])),
-            "achievements": self.achievement_extractor.extract(document.sections.get("achievements", {}).get("lines", []))
+            "education": self.education_extractor.extract(
+                document.sections.get("education", {}).get("lines", []), context
+            ),
+            "experience": self.experience_extractor.extract(
+                document.sections.get("experience", {}).get("lines", []), context
+            ),
+            "projects": self.project_extractor.extract(
+                document.sections.get("projects", {}).get("lines", []), context
+            ),
+            "certifications": self.certification_extractor.extract(
+                document.sections.get("certifications", {}).get("lines", [])
+            ),
+            "achievements": self.achievement_extractor.extract(
+                document.sections.get("achievements", {}).get("lines", [])
+            ),
         }
-        
+
         summary_lines = document.sections.get("summary", {}).get("lines", [])
         if summary_lines:
             desc = "\n".join(x["text"] for x in summary_lines)
@@ -144,9 +192,9 @@ class EntityExtractionStage(BaseParserStage):
                 "source": {
                     "page": summary_lines[0]["page"],
                     "section": "summary",
-                    "line": summary_lines[0]["line_no"]
+                    "line": summary_lines[0]["line_no"],
                 },
-                "origin_model": "deterministic"
+                "origin_model": "deterministic",
             }
-            
+
         document.extracted_entities = extracted

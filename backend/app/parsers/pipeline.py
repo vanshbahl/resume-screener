@@ -1,17 +1,19 @@
 import time
 from typing import List
+
 from app.parsers.core.base import BaseParserStage
 from app.parsers.core.document import BaseDocument, PipelineContext
 from app.parsers.core.exceptions import ParserFatalError
 
+
 class ParserPipeline:
     def __init__(self, stages: List[BaseParserStage]):
         self.stages = stages
-        
+
     def run(self, document: BaseDocument) -> BaseDocument:
         context = PipelineContext()
         pipeline_start = time.time()
-        
+
         for stage in self.stages:
             context.current_stage = stage.name
             stage_start = time.time()
@@ -25,16 +27,27 @@ class ParserPipeline:
             finally:
                 duration = (time.time() - stage_start) * 1000
                 context.record_stage_time(stage.name, duration)
-                
+
         pipeline_duration = (time.time() - pipeline_start) * 1000
-        
+
         if document.final_json and "metadata" in document.final_json:
-            document.final_json["metadata"]["processing_time_ms"] = int(pipeline_duration)
+            document.final_json["metadata"]["processing_time_ms"] = int(
+                pipeline_duration
+            )
             document.final_json["metadata"]["warnings"] = [
-                {"type": w.type, "message": w.message, "stage": w.stage, "line": w.line_no}
+                {
+                    "type": w.type,
+                    "message": w.message,
+                    "stage": w.stage,
+                    "line": w.line_no,
+                }
                 for w in context.warnings
             ]
-            document.final_json["metadata"]["recoverable_errors"] = context.recoverable_errors
-            document.final_json["metadata"]["execution_timestamps"] = context.execution_timestamps
-            
+            document.final_json["metadata"][
+                "recoverable_errors"
+            ] = context.recoverable_errors
+            document.final_json["metadata"][
+                "execution_timestamps"
+            ] = context.execution_timestamps
+
         return document

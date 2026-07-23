@@ -1,0 +1,43 @@
+# Custom Fields Configuration
+# Defines additional metadata fields that can be tracked on a Candidate
+
+custom_fields:
+  expected_salary:
+    type: "number"
+    label: "Expected Salary (USD)"
+    required: false
+    
+  current_ctc:
+    type: "number"
+    label: "Current CTC (USD)"
+    required: false
+    
+  notice_period_days:
+    type: "integer"
+    label: "Notice Period (Days)"
+    required: false
+    
+  linkedin_url:
+    type: "url"
+    label: "LinkedIn Profile"
+    required: false
+    
+  github_url:
+    type: "url"
+    label: "GitHub Profile"
+    required: false
+    
+  portfolio_url:
+    type: "url"
+    label: "Portfolio URL"
+    required: false
+    
+  visa_status:
+    type: "string"
+    label: "Visa Status"
+    required: false
+    options:
+      - "Citizen"
+      - "Permanent Resident"
+      - "H1B"
+      - "Requires Sponsorship"

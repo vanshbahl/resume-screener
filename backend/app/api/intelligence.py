@@ -10,8 +10,8 @@ from app.intelligence.feature_vector_service import feature_vector_service
 from app.intelligence.matching_service import matching_service
 from app.intelligence.scoring_service import scoring_service
 from app.intelligence.insight_service import insight_service
-from app.intelligence.gap_analysis_service import gap_analysis_service
-from app.intelligence.recommendation_service import recommendation_service
+from app.decision.services.gap_analysis import gap_analysis_service
+from app.decision.services.recommendations import learning_recommender as recommendation_service
 from app.intelligence.ranking_service import ranking_service
 
 router = APIRouter(prefix="/intelligence", tags=["Intelligence Engine"])

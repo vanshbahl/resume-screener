@@ -1,0 +1,26 @@
+# Standard System Tags Configuration
+
+tags:
+  - id: "tag_backend"
+    name: "Backend"
+    color: "blue"
+    
+  - id: "tag_frontend"
+    name: "Frontend"
+    color: "green"
+    
+  - id: "tag_fullstack"
+    name: "Fullstack"
+    color: "purple"
+    
+  - id: "tag_urgent"
+    name: "Urgent"
+    color: "red"
+    
+  - id: "tag_referral"
+    name: "Referral"
+    color: "yellow"
+    
+  - id: "tag_remote"
+    name: "Remote"
+    color: "gray"

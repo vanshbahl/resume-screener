@@ -1,0 +1,51 @@
+# Candidate Status Pipeline Configuration
+# Defines the ordered pipeline for a Candidate in the ATS
+
+statuses:
+  applied:
+    label: "Applied"
+    description: "Candidate submitted a resume."
+    is_terminal: false
+    order: 1
+    
+  screening:
+    label: "Screening"
+    description: "Recruiter is reviewing the profile."
+    is_terminal: false
+    order: 2
+    
+  technical_interview:
+    label: "Technical Interview"
+    description: "Candidate is completing technical assessments."
+    is_terminal: false
+    order: 3
+    
+  manager_interview:
+    label: "Manager Interview"
+    description: "Hiring Manager is evaluating the candidate."
+    is_terminal: false
+    order: 4
+    
+  offer_extended:
+    label: "Offer Extended"
+    description: "An offer has been made to the candidate."
+    is_terminal: false
+    order: 5
+    
+  hired:
+    label: "Hired"
+    description: "Candidate accepted the offer."
+    is_terminal: true
+    order: 6
+    
+  rejected:
+    label: "Rejected"
+    description: "Candidate was rejected."
+    is_terminal: true
+    order: 7
+    
+  withdrawn:
+    label: "Withdrawn"
+    description: "Candidate withdrew their application."
+    is_terminal: true
+    order: 8

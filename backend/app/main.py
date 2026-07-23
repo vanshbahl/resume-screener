@@ -13,6 +13,9 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.core.config import settings
 from app.core.database import Base, engine, get_db
 from app.models.domain import Job, Resume, ResumeStatus
+from app.candidate.models.candidate import (
+    Candidate, CandidateResume, CandidateTimeline, CandidateNote, CandidateAttachment
+)
 from app.schemas.domain import JobCreate, JobUpdate, JobResponse, ResumeResponse
 from app.parsers.core.document import ResumeDocument
 from app.parsers.pipeline import ParserPipeline
@@ -28,6 +31,7 @@ from app.parsers.stages.validation import ValidationStage
 from app.api.intelligence import router as intelligence_router
 from app.api.search import router as search_router
 from app.api.decision import router as decision_router
+from app.candidate.api.router import router as candidate_router
 
 def get_default_pipeline() -> ParserPipeline:
     return ParserPipeline([
@@ -99,6 +103,7 @@ def read_root():
 app.include_router(intelligence_router)
 app.include_router(search_router)
 app.include_router(decision_router)
+app.include_router(candidate_router)
 
 @app.post("/jobs/", response_model=JobResponse, status_code=status.HTTP_201_CREATED)
 def create_job(job: JobCreate, db: Session = Depends(get_db)):

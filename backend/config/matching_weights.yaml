@@ -1,0 +1,8 @@
+weights:
+  education: 0.1
+  experience: 0.25
+  other: 0.05
+  projects: 0.15
+  responsibilities: 0.1
+  soft_skills: 0.05
+  technical_skills: 0.3

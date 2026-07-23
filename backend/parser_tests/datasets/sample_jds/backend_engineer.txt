@@ -1,0 +1,23 @@
+Senior Backend Engineer
+
+Company Overview
+Tech Innovations Inc. is a leading provider of cloud-based enterprise solutions. We are looking for a Senior Backend Engineer to join our core infrastructure team.
+
+Role & Responsibilities
+- Design, build, and maintain scalable backend services using Python and Go.
+- Collaborate with frontend engineers to integrate React applications with RESTful APIs.
+- Optimize PostgreSQL databases for maximum performance.
+- Deploy and manage containerized applications on AWS using Kubernetes (k8s).
+
+Requirements
+- 5+ years of experience in backend software development.
+- Strong proficiency in Python, Go, and SQL.
+- Experience with Amazon Web Services (AWS) and Kubernetes.
+- Bachelor's degree in Computer Science or a related field.
+- Must have US Citizen or Green Card.
+
+Compensation & Benefits
+- Salary: $130,000 - $160,000 per year.
+- Full-time employment.
+- Remote work option available.
+- Comprehensive health and dental benefits.

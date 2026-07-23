@@ -1,18 +1,65 @@
 import time
 from typing import Dict, List, Any
 from app.parsers.core.base import BaseParserStage
-from app.parsers.core.document import ResumeDocument, PipelineContext
+from app.parsers.core.document import BaseDocument, JobDocument, PipelineContext
 
 class EntityFusionStage(BaseParserStage):
-    def run(self, document: ResumeDocument, context: PipelineContext) -> None:
+    def run(self, document: BaseDocument, context: PipelineContext) -> None:
+        if isinstance(document, JobDocument):
+            self._fuse_jd(document, context)
+        else:
+            self._fuse_resume(document, context)
+            
+    def _fuse_jd(self, document: JobDocument, context: PipelineContext) -> None:
+        start_time = time.time()
+        extracted = document.extracted_entities
+        spacy_ents = document.spacy_entities
+        hf_ents = document.hf_entities
+        
+        entities_added = 0
+        entities_modified = 0
+        
+        # JD Company extraction using AI (if missing)
+        jm = extracted.get("job_metadata", {})
+        if not jm.get("company"):
+            best_org = None
+            best_conf = 0.0
+            best_source = "spacy"
+            
+            # Usually company name is mentioned early in the JD
+            for ent in spacy_ents.get("ORG", []):
+                if ent["source"]["line"] <= 10 and ent["confidence"] > best_conf:
+                    best_org = ent
+                    best_conf = ent["confidence"]
+                    best_source = "spacy"
+                    
+            for ent in hf_ents.get("ORG", []):
+                if ent["source"]["line"] <= 10 and ent["confidence"] > best_conf:
+                    best_org = ent
+                    best_conf = ent["confidence"]
+                    best_source = "huggingface"
+                    
+            if best_org:
+                jm["company"] = {
+                    "value": best_org["value"],
+                    "confidence": best_org["confidence"],
+                    "source": best_org["source"],
+                    "origin_model": best_source
+                }
+                entities_added += 1
+                
+        extracted["job_metadata"] = jm
+        document.normalized_entities = extracted
+        
+        document.metadata["entities_added_by_ai"] = document.metadata.get("entities_added_by_ai", 0) + entities_added
+        document.metadata["entities_modified_by_ai"] = document.metadata.get("entities_modified_by_ai", 0) + entities_modified
+
+    def _fuse_resume(self, document: BaseDocument, context: PipelineContext) -> None:
         start_time = time.time()
         
         extracted = document.extracted_entities
         spacy_ents = document.spacy_entities
         hf_ents = document.hf_entities
-        
-        # We will iterate through key extracted sections (e.g. experience, education) 
-        # and merge in AI entities if they provide higher confidence or new information.
         
         entities_added = 0
         entities_modified = 0

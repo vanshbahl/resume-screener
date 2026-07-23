@@ -1,0 +1,5 @@
+tiers:
+  bachelors: 40
+  high_school: 10
+  masters: 70
+  phd: 100

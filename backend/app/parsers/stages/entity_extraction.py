@@ -1,7 +1,7 @@
 import re
 from typing import List, Dict, Optional, Any
 from app.parsers.core.base import BaseParserStage
-from app.parsers.core.document import ResumeDocument, PipelineContext
+from app.parsers.core.document import BaseDocument, ResumeDocument, JobDocument, PipelineContext
 
 from app.ai.extractors.contact_extractor import ContactExtractor
 from app.ai.extractors.skills_extractor import SkillsExtractor
@@ -11,6 +11,7 @@ from app.ai.extractors.education_extractor import EducationExtractor
 from app.ai.extractors.achievement_extractor import AchievementExtractor
 from app.ai.extractors.certification_extractor import CertificationExtractor
 from app.ai.extractors.language_extractor import LanguageExtractor
+from app.ai.extractors.jd_extractor import JDExtractor
 
 
 class EntityExtractionStage(BaseParserStage):
@@ -24,8 +25,60 @@ class EntityExtractionStage(BaseParserStage):
         self.achievement_extractor = AchievementExtractor()
         self.certification_extractor = CertificationExtractor()
         self.language_extractor = LanguageExtractor()
+        self.jd_extractor = JDExtractor()
 
-    def run(self, document: ResumeDocument, context: PipelineContext) -> None:
+    def run(self, document: BaseDocument, context: PipelineContext) -> None:
+        if isinstance(document, JobDocument):
+            self._extract_jd(document, context)
+        else:
+            self._extract_resume(document, context)
+            
+    def _extract_jd(self, document: JobDocument, context: PipelineContext) -> None:
+        # Extract general JD attributes
+        jd_data = self.jd_extractor.extract(document.cleaned_lines)
+        
+        # Extract skills across various sections
+        skills_dict = {"skills": [], "languages": [], "frameworks": [], "tools": [], "concepts": [], "soft_skills": []}
+        flat_skill_values = set()
+        
+        for section_key in ["requirements", "preferred_qualifications", "skills", "responsibilities"]:
+            section_lines = document.sections.get(section_key, {}).get("lines", [])
+            if section_lines:
+                extra = self.skills_extractor.extract(section_lines, context)
+                for cat in ["languages", "frameworks", "tools", "concepts", "soft_skills"]:
+                    existing_in_cat = {s["value"] for s in skills_dict.get(cat, [])}
+                    for item in extra.get(cat, []):
+                        if item["value"] not in existing_in_cat:
+                            skills_dict[cat].append(item)
+                            existing_in_cat.add(item["value"])
+                for item in extra.get("skills", []):
+                    if item["value"] not in flat_skill_values:
+                        skills_dict["skills"].append(item)
+                        flat_skill_values.add(item["value"])
+                        
+        extracted = {
+            "job_metadata": {}, # To be enriched by HF/Spacy
+            "salary": jd_data.get("salary"),
+            "employment_type": jd_data.get("employment_type"),
+            "location_type": jd_data.get("location_type"),
+            "experience_requirements": jd_data.get("experience_requirements"),
+            "education_requirements": jd_data.get("degree_requirements", []),
+            "visa_requirements": jd_data.get("visa_requirements", []),
+            "required_skills": skills_dict.get("skills", []), # We will split required vs preferred in Fusion if needed
+            "preferred_skills": [], 
+            "technologies": skills_dict.get("tools", []) + skills_dict.get("frameworks", []),
+            "soft_skills": skills_dict.get("soft_skills", []),
+            "tools": skills_dict.get("tools", []),
+            "frameworks": skills_dict.get("frameworks", []),
+            "concepts": skills_dict.get("concepts", []),
+            "languages": skills_dict.get("languages", []),
+            "certifications": [],
+            "benefits": [],
+            "keywords": []
+        }
+        document.extracted_entities = extracted
+
+    def _extract_resume(self, document: BaseDocument, context: PipelineContext) -> None:
         pi_lines = document.sections.get("personal_info", {}).get("lines", [])
         if not pi_lines and len(document.raw_lines) > 0:
             pi_lines = document.raw_lines[:15] # Fallback to first 15 lines

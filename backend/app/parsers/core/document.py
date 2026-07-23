@@ -22,11 +22,10 @@ class PipelineContext:
     def record_stage_time(self, stage_name: str, duration_ms: float):
         self.execution_timestamps[stage_name] = duration_ms
 
-class ResumeDocument:
-    def __init__(self, file_path: str, resume_id: int = None, job_id: int = None):
+class BaseDocument:
+    def __init__(self, file_path: str, document_id: int = None):
         self.file_path = file_path
-        self.resume_id = resume_id
-        self.job_id = job_id
+        self.document_id = document_id
         
         self.metadata: Dict[str, Any] = {}
         self.raw_lines: List[Dict[str, Any]] = []
@@ -39,3 +38,14 @@ class ResumeDocument:
         self.normalized_entities: Dict[str, Any] = {}
         self.validation_results: bool = False
         self.final_json: Dict[str, Any] = {}
+
+class ResumeDocument(BaseDocument):
+    def __init__(self, file_path: str, resume_id: int = None, job_id: int = None):
+        super().__init__(file_path, resume_id)
+        self.resume_id = resume_id
+        self.job_id = job_id
+
+class JobDocument(BaseDocument):
+    def __init__(self, file_path: str, job_id: int = None):
+        super().__init__(file_path, job_id)
+        self.job_id = job_id

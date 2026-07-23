@@ -1,0 +1,48 @@
+{
+  "job_metadata": {
+    "title": "Senior Backend Engineer",
+    "company": "Tech Innovations Inc."
+  },
+  "salary": "$130,000 - $160,000",
+  "employment_type": "Full-Time",
+  "location": "Remote",
+  "experience_requirements": "5+ years",
+  "education_requirements": [
+    "Bachelor's"
+  ],
+  "visa_requirements": [
+    "US Citizen",
+    "Green Card"
+  ],
+  "required_skills": [
+    "Python",
+    "Go",
+    "SQL",
+    "AWS",
+    "Kubernetes"
+  ],
+  "preferred_skills": [],
+  "technologies": [
+    "AWS",
+    "Kubernetes",
+    "PostgreSQL",
+    "React"
+  ],
+  "soft_skills": [],
+  "tools": [
+    "AWS",
+    "Kubernetes",
+    "PostgreSQL"
+  ],
+  "frameworks": [
+    "React"
+  ],
+  "concepts": [
+    "RESTful APIs"
+  ],
+  "languages": [
+    "Python",
+    "Go",
+    "SQL"
+  ]
+}

@@ -1,0 +1,8 @@
+Docker:
+  aliases:
+  - dockerize
+  family: DevOps
+Kubernetes:
+  aliases:
+  - k8s
+  family: DevOps

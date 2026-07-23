@@ -1,0 +1,9 @@
+Microservices:
+  aliases:
+  - micro-services
+  family: Architecture
+REST:
+  aliases:
+  - restful
+  - rest api
+  family: Architecture

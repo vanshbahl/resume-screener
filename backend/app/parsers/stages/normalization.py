@@ -1,9 +1,9 @@
 import re
 from app.parsers.core.base import BaseParserStage
-from app.parsers.core.document import ResumeDocument, PipelineContext
+from app.parsers.core.document import BaseDocument, PipelineContext
 
 class NormalizationStage(BaseParserStage):
-    def run(self, document: ResumeDocument, context: PipelineContext) -> None:
+    def run(self, document: BaseDocument, context: PipelineContext) -> None:
         # extracted_entities has already been mutated in-place by EntityFusionStage.
         # We perform light normalization before validation.
         entities = document.extracted_entities

@@ -1,0 +1,13 @@
+FastAPI:
+  aliases:
+  - fast api
+  family: Backend
+  prerequisites:
+  - Python
+React:
+  aliases:
+  - reactjs
+  - react.js
+  family: Frontend
+  prerequisites:
+  - JavaScript

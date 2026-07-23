@@ -1,14 +1,14 @@
 import time
 from typing import List
 from app.parsers.core.base import BaseParserStage
-from app.parsers.core.document import ResumeDocument, PipelineContext
+from app.parsers.core.document import BaseDocument, PipelineContext
 from app.parsers.core.exceptions import ParserFatalError
 
 class ParserPipeline:
     def __init__(self, stages: List[BaseParserStage]):
         self.stages = stages
         
-    def run(self, document: ResumeDocument) -> ResumeDocument:
+    def run(self, document: BaseDocument) -> BaseDocument:
         context = PipelineContext()
         pipeline_start = time.time()
         

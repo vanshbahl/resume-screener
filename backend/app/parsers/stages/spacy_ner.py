@@ -1,11 +1,11 @@
 import time
 from typing import Dict, Any
 from app.parsers.core.base import BaseParserStage
-from app.parsers.core.document import ResumeDocument, PipelineContext
+from app.parsers.core.document import BaseDocument, PipelineContext
 from app.parsers.ml.model_manager import model_manager
 
 class SpacyNERStage(BaseParserStage):
-    def run(self, document: ResumeDocument, context: PipelineContext) -> None:
+    def run(self, document: BaseDocument, context: PipelineContext) -> None:
         start_time = time.time()
         
         nlp = model_manager.get_spacy()

@@ -1,0 +1,15 @@
+Java:
+  aliases:
+  - java 8
+  - java 11
+  family: Backend
+JavaScript:
+  aliases:
+  - js
+  - es6
+  family: Frontend
+Python:
+  aliases:
+  - py
+  - python3
+  family: Backend

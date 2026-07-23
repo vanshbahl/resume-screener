@@ -1,0 +1,9 @@
+MongoDB:
+  aliases:
+  - mongo
+  family: Database
+PostgreSQL:
+  aliases:
+  - postgres
+  - psql
+  family: Database

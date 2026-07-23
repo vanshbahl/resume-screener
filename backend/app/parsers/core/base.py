@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from app.parsers.core.document import ResumeDocument, PipelineContext
+from app.parsers.core.document import BaseDocument, PipelineContext
 
 class BaseParserStage(ABC):
     @property
@@ -7,5 +7,5 @@ class BaseParserStage(ABC):
         return self.__class__.__name__
 
     @abstractmethod
-    def run(self, document: ResumeDocument, context: PipelineContext) -> None:
+    def run(self, document: BaseDocument, context: PipelineContext) -> None:
         pass

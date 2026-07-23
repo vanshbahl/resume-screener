@@ -7,9 +7,18 @@ class SourceInfo(BaseModel):
     section: str
     line: int
 
+class EntityEvidence(BaseModel):
+    detectors: List[str] = Field(default_factory=list)
+    sources: List[str] = Field(default_factory=list)
+    confidence_breakdown: Dict[str, float] = Field(default_factory=dict)
+    original_values: List[str] = Field(default_factory=list)
+    normalized_from: Optional[str] = None
+    merge_reason: Optional[str] = None
+
 class ExtractedField(BaseModel):
     value: Any
     confidence: float = 0.0
+    evidence: Optional[EntityEvidence] = None
     source: Optional[SourceInfo] = None
     origin_model: str = "deterministic"
 
@@ -84,8 +93,8 @@ class SpokenLanguageEntry(BaseModel):
     confidence: float = 0.0
 
 class Metadata(BaseModel):
-    parser_version: str = "1.2.0"
-    schema_version: str = "1.0.0"
+    parser_version: str = "1.3.0"
+    schema_version: str = "1.1.0"
     parsed_at: str
     processing_time_ms: int = 0
     ai_inference_time_ms: int = 0
@@ -95,7 +104,14 @@ class Metadata(BaseModel):
     entities_detected: int = 0
     entities_added_by_ai: int = 0
     entities_modified_by_ai: int = 0
-    parsing_confidence: float = 0.0
+    
+    # New Phase 2.3 Quality Metrics
+    parser_confidence: float = 0.0
+    extraction_coverage: float = 0.0
+    normalization_coverage: float = 0.0
+    validation_score: float = 100.0
+    entity_quality_score: float = 0.0
+    
     model_versions: Dict[str, str] = Field(default_factory=dict)
     resume_id: Optional[int] = None
     job_id: Optional[int] = None
@@ -120,56 +136,4 @@ class ParsedResumeSchema(BaseModel):
 
 def validate_and_score(parsed_dict: dict) -> dict:
     schema = ParsedResumeSchema(**parsed_dict)
-    
-    total_confidence = 0.0
-    total_fields = 0
-    entities_detected = 0
-    
-    def add_score(field: Optional[ExtractedField], weight=1.0):
-        nonlocal total_confidence, total_fields, entities_detected
-        total_fields += weight
-        if field and field.value:
-            total_confidence += (field.confidence * weight)
-            entities_detected += 1
-            
-    # Core fields are heavily weighted
-    add_score(schema.personal_info.name, weight=2.0)
-    add_score(schema.personal_info.email, weight=2.0)
-    add_score(schema.personal_info.phone, weight=1.5)
-    
-    # Penalize if name or email is missing
-    penalty = 0.0
-    if not schema.personal_info.name or not schema.personal_info.name.value:
-        penalty += 0.2
-    if not schema.personal_info.email or not schema.personal_info.email.value:
-        penalty += 0.1
-    
-    if schema.skills or schema.languages or schema.frameworks or schema.tools or schema.concepts or schema.soft_skills:
-        all_skills = schema.skills + schema.languages + schema.frameworks + schema.tools + schema.concepts + schema.soft_skills
-        skill_conf = sum(s.confidence for s in all_skills) / len(all_skills)
-        total_confidence += skill_conf
-        entities_detected += len(all_skills)
-    total_fields += 1
-    
-    if schema.experience:
-        exp_conf = sum(e.confidence for e in schema.experience) / len(schema.experience)
-        total_confidence += exp_conf
-        entities_detected += len(schema.experience)
-        # Check if experience descriptions are missing
-        for exp in schema.experience:
-            if not exp.description or not exp.description.value:
-                penalty += 0.05
-    total_fields += 1
-        
-    if schema.education:
-        edu_conf = sum(e.confidence for e in schema.education) / len(schema.education)
-        total_confidence += edu_conf
-        entities_detected += len(schema.education)
-    total_fields += 1
-        
-    base_confidence = total_confidence / total_fields if total_fields else 0.0
-    final_confidence = max(0.0, base_confidence - penalty)
-    
-    schema.metadata.parsing_confidence = round(final_confidence, 2)
-    schema.metadata.entities_detected = entities_detected
     return schema.model_dump()

@@ -1,0 +1,8 @@
+AWS:
+  aliases:
+  - amazon web services
+  family: Cloud
+GCP:
+  aliases:
+  - google cloud platform
+  family: Cloud

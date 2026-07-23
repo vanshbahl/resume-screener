@@ -1,0 +1,3 @@
+ranking_factors:
+  diversity_bonus: 5
+  score_threshold: 50

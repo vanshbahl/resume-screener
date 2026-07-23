@@ -8,6 +8,18 @@ sections:
   achievements: "^(achievements?|awards?|honors?|publications?|accomplishments?|recognitions?|honors & awards?)$"
   languages: "^(languages?|spoken languages?|language proficiency)$"
 
+jd_sections:
+  responsibilities: "^(responsibilities|what you'll do|what you will do|role & responsibilities|key responsibilities|your role|the role|duties|your impact)$"
+  requirements: "^(requirements|what you need|what you'll need|who you are|qualifications|qualifications & skills|minimum qualifications|essential skills)$"
+  preferred_qualifications: "^(preferred qualifications|nice to have|bonus points|preferred skills|desired skills|pluses|bonus)$"
+  skills: "^(skills?|technical skills?|core competencies|technologies|skill set|tools? & technologies|competencies|key skills?|programming skills?|it skills?|software skills?|areas of expertise)$"
+  about_us: "^(about us|our company|who we are|about the company|company overview|why join us)$"
+  benefits: "^(benefits|perks|what we offer|compensation & benefits|perks & benefits)$"
+  experience: "^(experience|professional experience|work experience|employment)$"
+  education: "^(education|academic background|educational requirements|degree requirements)$"
+  compensation: "^(compensation|salary|pay|salary range|compensation & benefits)$"
+  employment_type: "^(employment type|job type|job category)$"
+
 skill_categories:
   languages: "^(languages?|programming languages?|coding languages?)$"
   frameworks: "^(frameworks?|libraries|frameworks? & libraries|frontend|backend)$"

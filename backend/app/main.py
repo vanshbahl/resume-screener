@@ -25,6 +25,7 @@ from app.parsers.stages.hf_ner import HuggingFaceNERStage
 from app.parsers.stages.entity_fusion import EntityFusionStage
 from app.parsers.stages.normalization import NormalizationStage
 from app.parsers.stages.validation import ValidationStage
+from app.api.intelligence import router as intelligence_router
 
 def get_default_pipeline() -> ParserPipeline:
     return ParserPipeline([
@@ -92,6 +93,8 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 @app.get("/")
 def read_root():
     return {"message": f"Welcome to {settings.PROJECT_NAME}"}
+
+app.include_router(intelligence_router)
 
 @app.post("/jobs/", response_model=JobResponse, status_code=status.HTTP_201_CREATED)
 def create_job(job: JobCreate, db: Session = Depends(get_db)):

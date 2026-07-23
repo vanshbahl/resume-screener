@@ -10,6 +10,7 @@ from app.models.domain import Job, Resume, ResumeEmbedding, ResumeStatus
 from app.schemas.domain import JobCreate, JobUpdate, JobResponse, ResumeResponse
 from app.parsers.pdf_parser import extract_text_from_pdf
 from app.parsers.text_cleaner import clean_text
+from app.parsers.json_generator import generate_structured_json
 
 # In a real app we'd use Alembic. For V1 MVP local dev without Alembic ready, we can uncomment this:
 # Base.metadata.create_all(bind=engine)
@@ -86,7 +87,16 @@ def process_resume_background(resume_id: int, file_path: str, job_id: int):
         raw_pdf_text = extract_text_from_pdf(file_path)
         clean_pdf_text = clean_text(raw_pdf_text)
         
+        # Milestone 4: Generate Structured JSON
+        structured_data = generate_structured_json(clean_pdf_text)
+        
+        # Milestone 5: Persist everything (Text, JSON, Metadata)
+        # We merge the structured_data into the existing metadata created during upload
+        existing_metadata = resume.parsed_metadata or {}
+        existing_metadata["structured_data"] = structured_data
+        
         resume.raw_text = clean_pdf_text
+        resume.parsed_metadata = existing_metadata
         resume.status = ResumeStatus.PROCESSED
         
         db.commit()
@@ -160,3 +170,23 @@ def get_rankings(job_id: int, db: Session = Depends(get_db)):
     ).order_by(Resume.final_score.desc()).all()
     
     return resumes
+
+@app.get("/resumes/{resume_id}", response_model=ResumeResponse)
+def get_resume(resume_id: int, db: Session = Depends(get_db)):
+    """Retrieves full details of a specific resume."""
+    resume = db.query(Resume).filter(Resume.id == resume_id).first()
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found")
+    return resume
+
+@app.get("/resumes/{resume_id}/parsed")
+def get_parsed_resume(resume_id: int, db: Session = Depends(get_db)):
+    """Retrieves only the structured JSON representation of the resume."""
+    resume = db.query(Resume).filter(Resume.id == resume_id).first()
+    if not resume:
+        raise HTTPException(status_code=404, detail="Resume not found")
+        
+    if not resume.parsed_metadata or "structured_data" not in resume.parsed_metadata:
+        raise HTTPException(status_code=404, detail="Structured data not available for this resume yet.")
+        
+    return resume.parsed_metadata["structured_data"]

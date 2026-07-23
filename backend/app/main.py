@@ -28,6 +28,7 @@ from app.workflow.api.router import router as workflow_router
 from app.workspace.api.router import router as workspace_router
 from app.interview.api.router import router as interview_router
 from app.analytics.api.router import router as analytics_router
+from app.identity.api.router import router as identity_router
 
 
 def get_default_pipeline() -> ParserPipeline:
@@ -56,6 +57,7 @@ logger = logging.getLogger(__name__)
 async def lifespan(app: FastAPI):
     logger.info("Starting up... Creating database tables if they do not exist.")
     try:
+        import app.models.domain # Ensure all models are registered
         Base.metadata.create_all(bind=engine)
         logger.info("Database tables created successfully.")
     except Exception as e:
@@ -107,6 +109,11 @@ def read_root():
     return {"message": f"Welcome to {settings.PROJECT_NAME}"}
 
 
+@app.get("/health")
+def health_check():
+    return {"status": "ok"}
+
+
 app.include_router(intelligence_router)
 app.include_router(search_router)
 app.include_router(decision_router)
@@ -116,3 +123,4 @@ app.include_router(workflow_router)
 app.include_router(workspace_router)
 app.include_router(interview_router)
 app.include_router(analytics_router)
+app.include_router(identity_router)

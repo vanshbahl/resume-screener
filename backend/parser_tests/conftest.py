@@ -20,6 +20,8 @@ def postgres_container():
 def db_engine(postgres_container):
     engine = create_engine(postgres_container.get_connection_url())
     # Create all tables (in a real scenario with complex migrations, we'd run alembic upgrade head here)
+    import app.models.domain
+    print("REGISTERED TABLES:", list(Base.metadata.tables.keys()))
     Base.metadata.create_all(bind=engine)
     yield engine
     engine.dispose()

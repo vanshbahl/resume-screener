@@ -2,11 +2,12 @@ from fastapi import FastAPI, UploadFile, File, BackgroundTasks, Depends, HTTPExc
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 import os
+import uuid
 
 from app.core.config import settings
 from app.core.database import Base, engine, get_db
 from app.models.domain import Job, Resume, ResumeEmbedding, ResumeStatus
-from app.schemas.domain import JobCreate, JobResponse, ResumeResponse
+from app.schemas.domain import JobCreate, JobUpdate, JobResponse, ResumeResponse
 from app.services.pipeline import process_resume, generate_embeddings
 from app.services.scoring import score_resume
 
@@ -39,6 +40,37 @@ def create_job(job: JobCreate, db: Session = Depends(get_db)):
 def get_jobs(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     jobs = db.query(Job).offset(skip).limit(limit).all()
     return jobs
+
+@app.get("/jobs/{job_id}", response_model=JobResponse)
+def get_job(job_id: int, db: Session = Depends(get_db)):
+    job = db.query(Job).filter(Job.id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    return job
+
+@app.put("/jobs/{job_id}", response_model=JobResponse)
+def update_job(job_id: int, job_update: JobUpdate, db: Session = Depends(get_db)):
+    job = db.query(Job).filter(Job.id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    
+    update_data = job_update.model_dump(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(job, key, value)
+        
+    db.commit()
+    db.refresh(job)
+    return job
+
+@app.delete("/jobs/{job_id}", status_code=204)
+def delete_job(job_id: int, db: Session = Depends(get_db)):
+    job = db.query(Job).filter(Job.id == job_id).first()
+    if not job:
+        raise HTTPException(status_code=404, detail="Job not found")
+    
+    db.delete(job)
+    db.commit()
+    return None
 
 def process_resume_background(resume_id: int, file_path: str, job_id: int):
     # This runs outside the HTTP request. Must create its own DB session.
@@ -89,6 +121,9 @@ def process_resume_background(resume_id: int, file_path: str, job_id: int):
     finally:
         db.close()
 
+MAX_FILE_SIZE = 10 * 1024 * 1024  # 10 MB
+ALLOWED_MIME_TYPES = ["application/pdf"]
+
 @app.post("/jobs/{job_id}/resumes/", response_model=ResumeResponse)
 async def upload_resume(
     job_id: int, 
@@ -100,12 +135,35 @@ async def upload_resume(
     if not job:
         raise HTTPException(status_code=404, detail="Job not found")
         
-    os.makedirs("uploads", exist_ok=True)
-    file_path = f"uploads/{file.filename}"
-    with open(file_path, "wb") as f:
-        f.write(await file.read())
+    if file.content_type not in ALLOWED_MIME_TYPES:
+        raise HTTPException(status_code=400, detail="Only PDF files are allowed.")
         
-    db_resume = Resume(job_id=job_id, filename=file.filename)
+    file_bytes = await file.read()
+    file_size = len(file_bytes)
+    
+    if file_size == 0:
+        raise HTTPException(status_code=400, detail="File is empty.")
+    if file_size > MAX_FILE_SIZE:
+        raise HTTPException(status_code=400, detail="File size exceeds the 10MB limit.")
+        
+    unique_filename = f"{uuid.uuid4().hex}.pdf"
+    os.makedirs("uploads", exist_ok=True)
+    file_path = os.path.join("uploads", unique_filename)
+    
+    with open(file_path, "wb") as f:
+        f.write(file_bytes)
+        
+    initial_metadata = {
+        "original_filename": file.filename,
+        "content_type": file.content_type,
+        "size_bytes": file_size
+    }
+        
+    db_resume = Resume(
+        job_id=job_id, 
+        filename=unique_filename,
+        parsed_metadata=initial_metadata
+    )
     db.add(db_resume)
     db.commit()
     db.refresh(db_resume)

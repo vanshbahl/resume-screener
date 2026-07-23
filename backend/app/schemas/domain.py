@@ -11,6 +11,11 @@ class JobBase(BaseModel):
 class JobCreate(JobBase):
     pass
 
+class JobUpdate(BaseModel):
+    title: Optional[str] = None
+    description: Optional[str] = None
+    required_skills: Optional[List[str]] = None
+
 class JobResponse(JobBase):
     id: int
     created_at: datetime

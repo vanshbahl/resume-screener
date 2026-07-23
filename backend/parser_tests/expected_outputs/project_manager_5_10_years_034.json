@@ -1,0 +1,826 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "Samesh Ortiz",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "email": {
+      "value": "samesh.ortiz@outlook.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "phone": {
+      "value": "+44191 496 0444",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "location": {
+      "value": "North Philipside, Canada",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "github": null,
+    "linkedin": {
+      "value": "linkedin.com/in/sameshortiz",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "portfolio": null,
+    "website": null
+  },
+  "summary": {
+    "value": "Facere incidunt eos. Nobis dicta ad cupiditate eos aspernatur sapiente est.",
+    "confidence": 1.0,
+    "source": {
+      "page": 1,
+      "section": "summary",
+      "line": 0
+    },
+    "origin_model": "ground_truth"
+  },
+  "skills": [
+    {
+      "value": "Ruby",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Rust",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C#",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Java",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Node.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "React",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Django",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Git",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ansible",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "GitHub Actions",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "languages": [
+    {
+      "value": "Ruby",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Rust",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C#",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Java",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "frameworks": [
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Node.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "React",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Django",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "tools": [
+    {
+      "value": "Git",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ansible",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "GitHub Actions",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "concepts": [],
+  "soft_skills": [],
+  "spoken_languages": [],
+  "experience": [
+    {
+      "company": {
+        "value": "Suresh-Lanka Group",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Project Manager Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "April 2022",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "Present",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Improved visualize integrated ROI by 28%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Integrated matrix enterprise relationships by 41%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Delivered grow revolutionary portals by 30%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Elliott-Hernandez Global",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Project Manager Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "December 2018",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "April 2020",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Led repurpose mission-critical infrastructures by 22%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Delivered seize transparent applications by 21%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Maintained engage leading-edge architectures by 11%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Integrated deploy collaborative networks.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Knight PLC Technologies",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Senior Project Manager Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "September 2016",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "December 2018",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Led innovate B2B initiatives by 36%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Maintained reinvent frictionless e-tailers.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Maintained enable revolutionary e-commerce.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Reduced innovate user-centric solutions by 37%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Improved orchestrate back-end vortals.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Fisher-Baxter Global",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Senior Project Manager Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "October 2012",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "December 2015",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Automated target value-added e-business by 36%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Automated mesh next-generation initiatives.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Increased orchestrate B2B networks by 44%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Delivered benchmark mission-critical platforms by 15%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Led revolutionize mission-critical technologies by 32%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": {
+        "value": "Pre-Emptive Object-Oriented Portal",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Implemented integrate virtual niches. Optimized orchestrate wireless paradigms.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Flask",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Java",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Django",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Spring Boot",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Managed System-Worthy Encoding",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Scaled extend collaborative niches.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "PHP",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "C#",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "value": "University of Waterloo",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "degree": {
+        "value": "B.S. Information Technology",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "graduation_year": {
+        "value": "2020",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "cgpa": null
+    }
+  ],
+  "metadata": {
+    "parsing_confidence": 1.0,
+    "entities_detected": 100,
+    "sections_detected": [
+      "personal_info",
+      "experience",
+      "projects",
+      "education",
+      "skills"
+    ],
+    "parsing_time_ms": 0,
+    "entities_added_by_ai": 0
+  }
+}

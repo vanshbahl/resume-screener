@@ -1,0 +1,829 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "Theresa Smith",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "email": {
+      "value": "theresa.smith@gmail.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "phone": {
+      "value": "+441134960371",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "location": {
+      "value": "South Janet, Singapore",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "github": {
+      "value": "github.com/theresa96",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "linkedin": {
+      "value": "linkedin.com/in/theresasmith",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "portfolio": null,
+    "website": null
+  },
+  "summary": {
+    "value": "Culpa quas quia mollitia commodi laboriosam. Dicta suscipit sint dolor beatae.",
+    "confidence": 1.0,
+    "source": {
+      "page": 1,
+      "section": "summary",
+      "line": 0
+    },
+    "origin_model": "ground_truth"
+  },
+  "skills": [
+    {
+      "value": "JavaScript",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Go",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ruby",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Flask",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Angular",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Laravel",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Docker",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Figma",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "languages": [
+    {
+      "value": "JavaScript",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Go",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ruby",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "frameworks": [
+    {
+      "value": "Flask",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Angular",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Laravel",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "tools": [
+    {
+      "value": "Docker",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Figma",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "concepts": [],
+  "soft_skills": [],
+  "spoken_languages": [],
+  "experience": [
+    {
+      "company": {
+        "value": "Duncan-Thompson Inc.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Marketing Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "January 2022",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "Present",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Developed benchmark 24/7 interfaces by 31%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Improved implement revolutionary applications by 39%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed syndicate B2C relationships.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Nigam Ltd Systems",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Marketing Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "November 2020",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "May 2021",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Maintained streamline synergistic experiences by 30%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Maintained scale sticky channels.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Streamlined enhance turn-key schemas.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed engineer cross-media systems by 20%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Smith Inc Corp.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Senior Marketing Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "June 2016",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "August 2017",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Improved unleash visionary schemas by 35%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Improved incubate holistic solutions by 34%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Managed reinvent cross-media vortals.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Collaborated target efficient metrics by 10%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Increased leverage innovative deliverables by 43%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Toor Group Inc.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Senior Marketing Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "April 2014",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "June 2015",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Integrated reinvent vertical e-business.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Integrated revolutionize web-enabled vortals by 29%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed optimize integrated solutions.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Automated innovate rich schemas by 20%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Led re-intermediate front-end vortals by 29%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": {
+        "value": "Cloned 6Thgeneration Capacity",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Optimized cultivate robust solutions. Led synthesize dynamic platforms.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": {
+        "value": "github.com/fake/cloned6thgenerationcapacity",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "technologies": [
+        {
+          "value": "Laravel",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Node.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Flask",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Re-Engineered Secondary Info-Mediaries",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Optimized synthesize dot-com markets.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Next.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Kotlin",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "TypeScript",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Face-To-Face Real-Time Structure",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Created implement best-of-breed experiences.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Laravel",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Go",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "value": "University of Michigan",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "degree": {
+        "value": "Ph.D. Machine Learning",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "graduation_year": {
+        "value": "2024",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "cgpa": null
+    }
+  ],
+  "metadata": {
+    "parsing_confidence": 1.0,
+    "entities_detected": 100,
+    "sections_detected": [
+      "personal_info",
+      "experience",
+      "projects",
+      "education",
+      "skills"
+    ],
+    "parsing_time_ms": 0,
+    "entities_added_by_ai": 0
+  }
+}

@@ -1,0 +1,786 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "Jacob Khalsa",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "email": {
+      "value": "jacob.khalsa@gmail.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "phone": {
+      "value": "9596292330",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "location": {
+      "value": "Katihar, India",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "github": null,
+    "linkedin": {
+      "value": "linkedin.com/in/jacobkhalsa",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "portfolio": null,
+    "website": null
+  },
+  "summary": {
+    "value": "Cumque voluptatem eos nemo veritatis maiores tempore. Consequatur quibusdam illum animi. Sint consectetur sint dolorum quae. Quis perspiciatis laudantium neque eaque.",
+    "confidence": 1.0,
+    "source": {
+      "page": 1,
+      "section": "summary",
+      "line": 0
+    },
+    "origin_model": "ground_truth"
+  },
+  "skills": [
+    {
+      "value": "C#",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C++",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "PHP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Go",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Next.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Angular",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "FastAPI",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Jira",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Terraform",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "GCP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "languages": [
+    {
+      "value": "C#",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C++",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "PHP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Go",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "frameworks": [
+    {
+      "value": "Next.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Angular",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "FastAPI",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "tools": [
+    {
+      "value": "Jira",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Terraform",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "GCP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "concepts": [],
+  "soft_skills": [],
+  "spoken_languages": [],
+  "experience": [
+    {
+      "company": {
+        "value": "Seth-Borra LLC",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "DevOps Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "July 2023",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "Present",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Maintained generate e-business interfaces.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed extend efficient relationships.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Collaborated synthesize world-class applications.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Improved cultivate e-business bandwidth.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Warrior Group Technologies",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "DevOps Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "December 2020",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "December 2022",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Integrated brand killer models by 26%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Maintained harness front-end supply-chains.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Collaborated maximize end-to-end networks.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Led generate cross-platform methodologies.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed integrate mission-critical functionalities.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": {
+        "value": "Optimized Dedicated Solution",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Implemented matrix seamless communities. Spearheaded evolve bricks-and-clicks portals.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Ruby",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Express",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Rust",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Spring Boot",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Multi-Layered Static Projection",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Created streamline impactful functionalities. Spearheaded drive bleeding-edge e-commerce.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Next.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Go",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Cross-Group Tertiary Attitude",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Led architect compelling partnerships.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": {
+        "value": "github.com/fake/cross-grouptertiaryattitude",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "technologies": [
+        {
+          "value": "FastAPI",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Next.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": ".NET",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "TypeScript",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Reverse-Engineered Directional Model",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Architected grow value-added synergies. Spearheaded facilitate 24/7 e-commerce.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Node.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Vue",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "value": "Massachusetts Institute of Technology",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "degree": {
+        "value": "M.S. Cyber Security",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "graduation_year": {
+        "value": "2020",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "cgpa": {
+        "value": "3.57",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      }
+    }
+  ],
+  "metadata": {
+    "parsing_confidence": 1.0,
+    "entities_detected": 100,
+    "sections_detected": [
+      "personal_info",
+      "experience",
+      "projects",
+      "education",
+      "skills"
+    ],
+    "parsing_time_ms": 0,
+    "entities_added_by_ai": 0
+  }
+}

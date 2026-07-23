@@ -1,0 +1,727 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "Kabir Smith",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "email": {
+      "value": "kabir.smith@yahoo.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "phone": {
+      "value": "0131 4960135",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "location": {
+      "value": "Robertmouth, United States",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "github": {
+      "value": "github.com/kabir74",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "linkedin": {
+      "value": "linkedin.com/in/kabirsmith",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "portfolio": null,
+    "website": null
+  },
+  "summary": {
+    "value": "Eos sed iusto sint nesciunt velit architecto suscipit. Blanditiis perspiciatis minus impedit sit corrupti voluptatibus.",
+    "confidence": 1.0,
+    "source": {
+      "page": 1,
+      "section": "summary",
+      "line": 0
+    },
+    "origin_model": "ground_truth"
+  },
+  "skills": [
+    {
+      "value": "Swift",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "PHP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C++",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ruby",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Rust",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Node.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Express",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "FastAPI",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Flask",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ansible",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Docker",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Git",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Figma",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "languages": [
+    {
+      "value": "Swift",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "PHP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C++",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Kotlin",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ruby",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Rust",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "frameworks": [
+    {
+      "value": "Node.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Express",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "FastAPI",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Flask",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "tools": [
+    {
+      "value": "Ansible",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Docker",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Git",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Figma",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "concepts": [],
+  "soft_skills": [],
+  "spoken_languages": [],
+  "experience": [],
+  "projects": [
+    {
+      "name": {
+        "value": "Open-Source Non-Volatile Knowledgebase",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Designed harness viral infrastructures.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Next.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "JavaScript",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "C++",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Managed Responsive Conglomeration",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Scaled whiteboard leading-edge synergies.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": {
+        "value": "github.com/fake/managedresponsiveconglomeration",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "technologies": [
+        {
+          "value": "C#",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "FastAPI",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Ruby",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Grass-Roots Demand-Driven Task-Force",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Built maximize granular models.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": {
+        "value": "github.com/fake/grass-rootsdemand-driventask-force",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "technologies": [
+        {
+          "value": "FastAPI",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Node.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Rust",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "De-Engineered Reciprocal Internet Solution",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Deployed brand wireless e-commerce. Designed synergize clicks-and-mortar paradigms.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": {
+        "value": "github.com/fake/de-engineeredreciprocalinternetsolution",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "technologies": [
+        {
+          "value": "FastAPI",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Java",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Laravel",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "value": "University of Oxford",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "degree": {
+        "value": "B.A. Business Administration",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "graduation_year": {
+        "value": "2021",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "cgpa": {
+        "value": "3.51",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      }
+    },
+    {
+      "institution": {
+        "value": "Imperial College London",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "degree": {
+        "value": "M.S. Artificial Intelligence",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "graduation_year": {
+        "value": "2025",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "cgpa": null
+    }
+  ],
+  "metadata": {
+    "parsing_confidence": 1.0,
+    "entities_detected": 100,
+    "sections_detected": [
+      "personal_info",
+      "experience",
+      "projects",
+      "education",
+      "skills"
+    ],
+    "parsing_time_ms": 0,
+    "entities_added_by_ai": 0
+  }
+}

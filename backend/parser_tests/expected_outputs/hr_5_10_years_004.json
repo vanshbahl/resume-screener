@@ -1,0 +1,707 @@
+{
+  "personal_info": {
+    "name": {
+      "value": "Yashoda Buch",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "email": {
+      "value": "yashoda.buch@gmail.com",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "phone": {
+      "value": "+919136193990",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "location": {
+      "value": "Gurgaon, India",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "personal_info",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    "github": null,
+    "linkedin": null,
+    "portfolio": null,
+    "website": null
+  },
+  "summary": null,
+  "skills": [
+    {
+      "value": "PHP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Rust",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Go",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C#",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Next.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Spring Boot",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Jira",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ansible",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "languages": [
+    {
+      "value": "PHP",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Rust",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Go",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "C#",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "frameworks": [
+    {
+      "value": "Next.js",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Spring Boot",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Vue",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "tools": [
+    {
+      "value": "Jira",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    },
+    {
+      "value": "Ansible",
+      "confidence": 1.0,
+      "source": {
+        "page": 1,
+        "section": "skills",
+        "line": 0
+      },
+      "origin_model": "ground_truth"
+    }
+  ],
+  "concepts": [],
+  "soft_skills": [],
+  "spoken_languages": [],
+  "experience": [
+    {
+      "company": {
+        "value": "Armstrong, Saunders and Smith Global",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "HR Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "May 2023",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "Present",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Streamlined unleash turn-key action-items by 13%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Maintained strategize end-to-end web services by 16%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Managed monetize ubiquitous vortals.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Increased implement ubiquitous e-business by 16%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Lewis, Baker and Mahoney Solutions",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "HR Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "May 2021",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "November 2022",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Streamlined matrix interactive relationships.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed leverage visionary users.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Collaborated monetize value-added web services by 14%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Streamlined monetize sticky channels by 45%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Led embrace sticky schemas.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "company": {
+        "value": "Lalla PLC Solutions",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "title": {
+        "value": "Senior HR Professional",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "start_date": {
+        "value": "February 2020",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "end_date": {
+        "value": "March 2021",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "experience",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "responsibilities": [
+        {
+          "value": "Improved morph scalable infrastructures.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Collaborated brand efficient paradigms by 13%.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Developed facilitate end-to-end functionalities.",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "experience",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": {
+        "value": "Realigned 24/7 Budgetary Management",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Engineered matrix B2C users. Designed e-enable out-of-the-box applications.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Vue",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Ruby",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Angular",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Digitized Intermediate Capacity",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Created monetize bricks-and-clicks paradigms.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": null,
+      "technologies": [
+        {
+          "value": "Django",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Laravel",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    },
+    {
+      "name": {
+        "value": "Expanded Systemic Encryption",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "description": {
+        "value": "Developed transform synergistic schemas.",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "link": {
+        "value": "github.com/fake/expandedsystemicencryption",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "projects",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "technologies": [
+        {
+          "value": "Django",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        },
+        {
+          "value": "Next.js",
+          "confidence": 1.0,
+          "source": {
+            "page": 1,
+            "section": "projects",
+            "line": 0
+          },
+          "origin_model": "ground_truth"
+        }
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": {
+        "value": "University of Michigan",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "degree": {
+        "value": "B.S. Information Technology",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "graduation_year": {
+        "value": "2018",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      },
+      "cgpa": {
+        "value": "3.81",
+        "confidence": 1.0,
+        "source": {
+          "page": 1,
+          "section": "education",
+          "line": 0
+        },
+        "origin_model": "ground_truth"
+      }
+    }
+  ],
+  "metadata": {
+    "parsing_confidence": 1.0,
+    "entities_detected": 100,
+    "sections_detected": [
+      "personal_info",
+      "experience",
+      "projects",
+      "education",
+      "skills"
+    ],
+    "parsing_time_ms": 0,
+    "entities_added_by_ai": 0
+  }
+}

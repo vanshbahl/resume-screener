@@ -1,19 +1,31 @@
 from app.schemas.intelligence import FeatureVector, GapAnalysis
+from app.intelligence.ontology_service import ontology_service
 
 class GapAnalysisService:
     def analyze_gap(self, candidate_id: str, job_id: str, candidate_vec: FeatureVector, req_vec: FeatureVector, pref_vec: FeatureVector = None) -> GapAnalysis:
-        """Analyzes the delta between FeatureVectors to generate a deterministic Gap Report."""
+        """Upgraded deterministic Gap Report supporting leadership and soft skill gaps."""
         
         missing_critical = []
-        for cat in ["skills", "frameworks", "tools", "concepts", "languages", "databases", "cloud"]:
+        for cat in ["skills", "frameworks", "tools", "concepts", "languages", "databases", "cloud", "soft_skills"]:
             req_items = set(getattr(req_vec, cat, []))
             cand_items = set(getattr(candidate_vec, cat, []))
+            
+            # Ontology check: if we require X, do we have something in the same family?
             missing = req_items.difference(cand_items)
-            missing_critical.extend(list(missing))
+            for m in list(missing):
+                resolved = False
+                m_family = ontology_service.get_semantic_family(m)
+                if m_family:
+                    for c in cand_items:
+                        if ontology_service.get_semantic_family(c) == m_family:
+                            resolved = True
+                            break
+                if not resolved:
+                    missing_critical.append(m)
             
         missing_pref = []
         if pref_vec:
-            for cat in ["skills", "frameworks", "tools", "concepts", "languages", "databases", "cloud"]:
+            for cat in ["skills", "frameworks", "tools", "concepts", "languages", "databases", "cloud", "soft_skills"]:
                 pref_items = set(getattr(pref_vec, cat, []))
                 cand_items = set(getattr(candidate_vec, cat, []))
                 missing = pref_items.difference(cand_items)

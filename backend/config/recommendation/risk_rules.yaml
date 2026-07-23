@@ -1,0 +1,11 @@
+job_hopping:
+  max_jobs_per_5_years: 4
+  severity: "high"
+  
+skill_mismatch:
+  min_core_skills_percent: 30.0
+  severity: "medium"
+  
+overqualification:
+  max_excess_experience_years: 7.0
+  severity: "low"

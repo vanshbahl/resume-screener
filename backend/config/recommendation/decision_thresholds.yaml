@@ -1,0 +1,9 @@
+thresholds:
+  strong_hire: 85.0
+  hire: 70.0
+  consider: 55.0
+  needs_review: 40.0
+  
+risk_adjustments:
+  high_risk_penalty: -15.0
+  critical_risk_rejection: true

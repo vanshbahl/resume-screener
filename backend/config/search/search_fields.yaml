@@ -1,0 +1,21 @@
+search_fields:
+  candidate:
+    exact_match:
+      - skills
+      - frameworks
+      - tools
+      - databases
+      - cloud
+      - languages
+      - certifications
+    range_match:
+      - years_experience
+    text_match:
+      - summary
+      - education_level
+  job:
+    exact_match:
+      - required_skills
+      - preferred_skills
+    range_match:
+      - experience_requirements

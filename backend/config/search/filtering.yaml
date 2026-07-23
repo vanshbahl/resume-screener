@@ -1,0 +1,7 @@
+filtering:
+  strict_bounds: true
+  experience:
+    default_min: 0.0
+    default_max: 50.0
+  education:
+    allow_higher: true # if bachelors requested, allow masters

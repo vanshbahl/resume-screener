@@ -1,0 +1,5 @@
+weights:
+  exact_match: 1.0
+  ontology_alias_match: 0.95
+  ontology_family_match: 0.75
+  keyword_text_match: 0.50

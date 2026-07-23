@@ -1,0 +1,8 @@
+ranking_strategies:
+  default:
+    use_scoring_service: true
+    fallback: "experience_desc"
+  experience_heavy:
+    use_scoring_service: false
+    primary_sort: "years_experience"
+    order: "desc"

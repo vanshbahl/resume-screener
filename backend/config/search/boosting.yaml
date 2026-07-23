@@ -1,0 +1,10 @@
+boosting_rules:
+  - field: education_level
+    value: "phd"
+    boost_multiplier: 1.15
+  - field: leadership_score
+    condition: ">0"
+    boost_multiplier: 1.10
+  - field: certifications
+    condition: "not_empty"
+    boost_multiplier: 1.05

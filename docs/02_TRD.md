@@ -5,6 +5,7 @@
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 1.0     | Initial MVP Document Creation |
 | 2026-07-23 | 2.5     | Updated TRD for Phase 3 Backend Completion |
+| 2026-07-26 | 3.0     | Realigned System Components for Resume Intelligence Platform |
 
 ## 1. Architecture Overview
 The platform utilizes a monolithic, domain-driven architecture. The FastAPI application serves REST endpoints organized by strict business boundaries (Candidate, Job, Workflow, Workspace, Interview, Analytics, Identity, Communication, AI). Operations are strongly decoupled, utilizing Timeline Event logs and the Communication Hub to synchronize distributed state changes, while relying on `MemoryCacheRepository` to speed up analytical read operations.
@@ -17,19 +18,29 @@ The platform utilizes a monolithic, domain-driven architecture. The FastAPI appl
 - **NLP / ML**: `spaCy` (`en_core_web_trf`), HuggingFace NER (`dslim/bert-base-NER`), `sentence-transformers` (`BAAI/bge-small-en-v1.5`), `RapidFuzz`.
 
 ## 3. System Components
+
+The architecture is categorized into Current Product, Supporting Infrastructure, and Future Capabilities:
+
+**Current Product (Resume Intelligence Core)**
 - **API Routers**: Organized per domain (e.g., `app/candidate/api/router.py`).
 - **Pipeline Service**: Orchestrates text extraction and NLP via an Object-Oriented Pipeline (`BaseParserStage`).
-- **Intelligence Engine**: Evaluates candidate metrics deterministically via Matching, Scoring, and Gap Analysis.
-- **Core Domains**: 
-  - `Job` and `Candidate` layers act as foundational models.
-  - `Workflow Engine` orchestrates customizable hiring pipelines.
-  - `Interview Management` handles scheduling, panels, and dynamic JSONB feedback scorecards.
-  - `Workspace` provides caching and user-specific states.
-  - `Analytics` aggregates data from all layers to calculate KPIs and build exportable CSV reports.
-  - `Identity` provides Organizations, Users, Roles, and Multi-Tenant RBAC security.
-  - `Communication` acts as a centralized notification hub for all asynchronous messaging.
-  - `AI Platform` provides Copilot orchestration, memory management, and deterministic tool execution.
-- **Data Layer**: Manages relational records, JSONB metadata, and vector embeddings via standard Repository patterns.
+- **Intelligence Engine**: Evaluates user metrics deterministically via Matching, Scoring, and Gap Analysis.
+- **Candidate Domain**: Now serves as the foundation for Resume Profile Management and tracking.
+- **AI Platform**: Provides orchestrator logic for AI Feedback and follow-up questions.
+- **Search Engine**: Vector-based semantic retrieval for resume benchmarking and ranking.
+
+**Supporting Infrastructure**
+- **Workspace**: Provides caching and user-specific dashboard feeds.
+- **Analytics**: Aggregates data from all layers to calculate platform engagement KPIs and build CSV reports.
+- **Identity**: Provides User Accounts, Roles, Organizations, and Multi-Tenant RBAC security.
+- **Communication**: Acts as a centralized notification hub for all asynchronous messaging (Email, In-App).
+
+**Future Capabilities (Implemented)**
+- **Job Domain**: Serves as the foundation for future Job Description Benchmarking Engines.
+- **Workflow Engine**: A robust pipeline state machine preserved for future internal tracking and user career roadmaps.
+- **Interview Management**: Implements scheduling, panels, and dynamic JSONB feedback scorecards, preserved for a future Mock Interview Platform.
+
+- **Data Layer**: Manages relational records, JSONB metadata, and vector embeddings via standard Repository patterns across all domains.
 
 ## 4. AI Components
 - **Embedder**: `BAAI/bge-small-en-v1.5` (~130MB). Generates 384-dimensional dense vectors.

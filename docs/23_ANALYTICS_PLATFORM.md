@@ -1,6 +1,6 @@
-# Analytics & Reporting Platform (Phase 3.6)
+# Phase 3.6: Resume Intelligence Analytics
 
-The **Analytics Platform** sits at the top level of the ATS hierarchy, querying and aggregating transactional data from Candidates, Jobs, Workflows, Interviews, and Workspaces to produce real-time insights and exportable reports.
+The **Analytics Platform** sits at the top level of the hierarchy, querying and aggregating transactional data to produce real-time insights for platform engagement.
 
 ## Architecture
 
@@ -8,10 +8,10 @@ The Analytics system adheres to the overall Domain-Driven Design (DDD) of the pl
 
 ### Core Modules
 - **`AnalyticsRepository`**: Performs direct SQLAlchemy aggregations (`func.count`, date filtering) against foreign domains.
-- **`KPIService`**: Calculates high-level scalars (Time to Hire, Offer Acceptance Rate).
-- **`TrendService`**: Calculates time-series distributions (Hires Over Time, Active Jobs By Month).
+- **`KPIService`**: Calculates high-level scalars (Active Users, Resumes Scored).
+- **`TrendService`**: Calculates time-series distributions (Uploads Over Time, Average Score Trends).
 - **`DashboardService`**: Allows saving of customized UI layouts via `DashboardConfig`.
-- **`ReportService`**: Provides structured tabular queries (Candidate Pipeline, Job Status).
+- **`ReportService`**: Provides structured tabular queries (User Engagement, Benchmark Summaries).
 - **`ExportService`**: Converts `ReportService` responses into downloadable CSVs.
 
 ## Caching Strategy
@@ -30,7 +30,7 @@ if cached:
 ## Data Export
 
 Rather than heavily coupling data extraction to third-party libraries like `pandas`, the MVP relies on Python's native `csv` stream serialization.
-1. The client requests a tabular JSON report (`/analytics/reports/candidate`).
+1. The client requests a tabular JSON report (`/analytics/reports/engagement`).
 2. If they need a CSV, they hit the `/export` endpoint with the exact same filter body.
 3. The server generates the tabular data, converts it via `io.StringIO` and `csv.writer`, and returns a `PlainTextResponse(media_type="text/csv")`.
 

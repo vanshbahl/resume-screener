@@ -1,6 +1,6 @@
-# AI Document Intelligence Platform
+# AI Resume Intelligence Platform
 
-A high-performance, offline-capable AI Resume Screening and Enterprise Applicant Tracking System (ATS) backend built for privacy and scale.
+A high-performance, offline-capable AI Resume Intelligence Platform built for privacy and scale. It helps students and job seekers understand how competitive their resume is compared to industry expectations and other users.
 
 [![CI/CD Pipeline](https://github.com/vanshbahl/resume-screener/actions/workflows/ci.yml/badge.svg)](https://github.com/vanshbahl/resume-screener/actions/workflows/ci.yml)
 ![Coverage](https://img.shields.io/badge/coverage-68%25-brightgreen.svg)
@@ -12,37 +12,63 @@ A high-performance, offline-capable AI Resume Screening and Enterprise Applicant
 
 ## Table of Contents
 - [Overview](#overview)
-- [Features](#features)
+- [Primary Workflow](#primary-workflow)
+- [Platform Architecture](#platform-architecture)
 - [Current Status](#current-status)
-- [Architecture Overview](#architecture-overview)
 - [Tech Stack](#tech-stack)
 - [Folder Structure](#folder-structure)
 - [Screenshots](#screenshots)
 - [Documentation](#documentation)
 - [Getting Started](#getting-started)
 - [Roadmap](#roadmap)
-- [Future Plans](#future-plans)
 - [Contributing](#contributing)
 - [License](#license)
 - [Author](#author)
 
 ## Overview
-The AI Document Intelligence Platform is designed to automate candidate evaluation and manage the entire hiring lifecycle. By utilizing offline open-source models, it securely parses documents and scores candidates without external LLM API costs or privacy risks. The robust backend provides comprehensive tools for job matching, interview scheduling, pipeline workflow management, and organizational analytics.
+The AI Resume Intelligence Platform is designed to empower job seekers by providing deep, actionable insights into their resumes. By utilizing offline open-source models, it securely parses documents, scores resumes, and offers personalized feedback without external LLM API costs or privacy risks. The robust backend intelligence engine powers everything from semantic benchmarking to AI-driven career recommendations.
 
-## Features
-- **Offline AI Pipeline**: Entirely local extraction and NLP execution using `bge-small-en-v1.5`, `PaddleOCR`, and `spaCy`.
-- **Intelligent Core**: Math-based candidate ranking, feature vectors, semantic similarity, and deterministic gap analysis.
-- **Enterprise ATS Domains**: Independent modules for Job Management, Candidate Management, Workflow Pipelines, Interview Logistics, and Analytics.
-- **Privacy First**: No data leaves your servers. No external LLM calls.
-- **Identity & Security**: Multi-tenant RBAC, Organizations, and Audit Logging built-in.
-- **AI Copilot**: Provider-agnostic AI agent orchestrator with memory and deterministic tool execution.
-- **Generic Architecture**: Built with Domain-Driven Design (DDD) to effortlessly expand to additional document types.
+## Primary Workflow
+The platform is built around a streamlined user journey:
+1. **User Uploads Resume**
+2. **Resume is Parsed** (Offline PDF ingestion)
+3. **System Extracts Structured Information**
+4. **AI Follow-up** (Intelligently asks for missing information)
+5. **Generate Resume Intelligence Report**
+6. **Provide Overall Score**
+7. **Show Industry Benchmark**
+8. **Show Strengths & Weaknesses**
+9. **Provide Actionable Recommendations**
+10. **Rank Resume against the Platform's Dataset**
+
+## Platform Architecture
+Our strict Domain-Driven Design (DDD) separates the backend into clean, decoupled modules. Rather than forcing every backend module into the primary user flow, we categorize our architecture cleanly:
+
+### 1. Current Product (Resume Intelligence)
+These modules form the core of the AI Resume Intelligence Platform:
+- **Resume Upload & Parsing**: The core pipeline for extracting PDF resumes (`app/parsers/`).
+- **Resume Intelligence & Scoring**: The engine responsible for semantic extraction and gap analysis (`app/intelligence/`).
+- **Resume Benchmarking & Ranking**: Utilizing the Vector database to rank resumes against the platform dataset (`app/search/`).
+- **AI Feedback & Follow-ups**: Using local AI models to ask missing questions and provide personalized recommendations (`app/ai/`).
+- **Resume Profile Management**: Unified tracking of applicant status, metadata, and resumes (`app/candidate/`).
+
+### 2. Supporting Infrastructure
+These modules run silently behind the scenes to power the platform:
+- **Authentication & Identity**: User Accounts and stateless JWT authentication (`app/identity/`).
+- **User Notifications**: Email and in-app alerts (`app/communication/`).
+- **Platform Analytics**: Engagement and usage metrics (`app/analytics/`).
+- **Search Engine**: The high-performance retrieval system.
+- **User Workspace**: Managing user dashboard feeds (`app/workspace/`).
+
+### 3. Future Capabilities
+These modules are fully implemented in the backend (originally built as an ATS foundation), but are not the primary focus of the B2C Resume Intelligence platform today. They provide a robust foundation for future features:
+- **Interview Platform**: Designed for scheduling, it can be repurposed later for Mock Interviews (`app/interview/`).
+- **Internal Processing Pipeline**: Originally a workflow engine, this remains preserved for future internal tracking and career roadmaps (`app/workflow/`).
+- **Organizations & Teams**: Included in the Identity module, providing a foundation for future B2B university cohorts or team collaboration.
+- **Job Description Benchmarking Engine**: Originally built for recruiters, this forms the underlying schema for future JD benchmarking (`app/job/`).
 
 ## Current Status
-**Phase 3 Complete (v2.5 Release Candidate 2)**: The platform has achieved complete stability across the core Applicant Tracking System. We have fully implemented Candidate Management, Job Management, configurable Pipeline Workflow Engines, the Recruiter Workspace, Interview Management, Analytics & Reporting, Identity & Access Control (RBAC), the Communication Hub, and the AI Copilot Platform. The system is backed by a robust PostgreSQL testing infrastructure and automated CI/CD quality gates.
-
-## Architecture Overview
-The system relies on a monolithic FastAPI backend that processes AI tasks asynchronously while serving REST endpoints. A PostgreSQL database stores relational domain data alongside `JSONB` for unstructured extracted entities (resumes, scorecards, layouts) and `VECTOR` types for dense semantic embeddings. A strict Domain-Driven structure keeps the core modules decoupled.
+**Phase 3 Complete (v2.5 Release Candidate 2)**: The platform has achieved complete stability across the core backend engine. The intelligence modules, supporting infrastructure, and future capability schemas are fully implemented, backed by a robust PostgreSQL testing infrastructure and automated CI/CD quality gates.
 
 ## Tech Stack
 - **Frontend (Planned)**: React, TypeScript, TailwindCSS, shadcn/ui, Vite
@@ -55,36 +81,36 @@ The system relies on a monolithic FastAPI backend that processes AI tasks asynch
 /
 ├── backend/
 │   ├── app/
-│   │   ├── intelligence/    # Matching, Scoring, Gap Analysis
-│   │   ├── search/          # Candidate & Job Search Engine
+│   │   ├── intelligence/    # Resume Scoring, Gap Analysis
+│   │   ├── search/          # Resume Benchmarking & Ranking
 │   │   ├── parsers/         # OOP Document Ingestion Pipeline
-│   │   ├── candidate/       # Candidate Domain
-│   │   ├── job/             # Job Domain
-│   │   ├── workflow/        # Configurable Hiring Pipelines & Timelines
-│   │   ├── interview/       # Scheduling, Panels, & Scorecards
-│   │   ├── workspace/       # Recruiter Dashboards & Queues
-│   │   ├── analytics/       # Aggregations, KPIs, CSV Reports
-│   │   ├── identity/        # Users, Organizations, Auth, RBAC
-│   │   ├── communication/   # Notification Hub, Email, SMS Templates
-│   │   ├── ai/              # AI Agents, Tools, Memory, Prompts
+│   │   ├── candidate/       # Resume Profile Management
+│   │   ├── job/             # Job Description Benchmarking
+│   │   ├── workflow/        # Internal Processing Pipelines
+│   │   ├── interview/       # Future Mock Interview Platform
+│   │   ├── workspace/       # User Dashboard & Feeds
+│   │   ├── analytics/       # Platform Engagement Analytics
+│   │   ├── identity/        # User Accounts & Auth
+│   │   ├── communication/   # User Notifications
+│   │   ├── ai/              # AI Feedback, Copilot, Prompts
 │   │   ├── models/          # Shared SQLAlchemy Base
 │   │   └── main.py          # FastAPI Entrypoint
 │   ├── config/           # YAML Rules & Configs
-│   └── parser_tests/     # Comprehensive PyTest Integration & Benchmarking Suite
+│   └── parser_tests/     # Comprehensive PyTest Integration Suite
 ├── docs/                 # Project Documentation
 ├── docker-compose.yml    # Database Deployment
 └── README.md
 ```
 
 ## Screenshots
-*(Frontend Implementation Pending Phase 5)*
+*(Frontend Implementation Pending Phase 4)*
 
 ## Documentation
 - [01_PRD.md](docs/01_PRD.md) - Product Requirements
 - [02_TRD.md](docs/02_TRD.md) - Technical Requirements
 - [03_UI_UX_DESIGN.md](docs/03_UI_UX_DESIGN.md) - Design System
 - [04_APP_FLOW.md](docs/04_APP_FLOW.md) - Application Flow & Mermaid Diagrams
-- [05_BACKEND_SCHEMA.md](docs/05_BACKEND_SCHEMA.md) - DB & Pipeline Architecture
+- [05_BACKEND_SCHEMA.md](docs/05_BACKEND_SCHEMA.md) - DB Architecture
 - [06_IMPLEMENTATION_PLAN.md](docs/06_IMPLEMENTATION_PLAN.md) - Project Roadmap
 
 ## Getting Started
@@ -111,9 +137,9 @@ To prevent repository bloat and accidental data leaks, our `.gitignore` explicit
 ## Roadmap
 See [06_IMPLEMENTATION_PLAN.md](docs/06_IMPLEMENTATION_PLAN.md) for detailed milestone tracking.
 
-## Future Plans
-- Full React Frontend Dashboard implementation.
-- Distributed Celery/Redis worker node architecture.
+- **Phase 4**: Resume Intelligence Frontend (Dashboards, AI Feedback UI)
+- **Phase 5**: Resume Intelligence (Scoring Engine, Insights)
+- **Phase 6**: AI Enhancements (Resume Rewriting, Job-specific Optimization)
 
 ## Contributing
 Contributions are welcome! Please read `CONTRIBUTING.md` for details on our code of conduct and the process for submitting pull requests.

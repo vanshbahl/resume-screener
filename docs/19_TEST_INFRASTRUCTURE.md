@@ -1,7 +1,7 @@
 # Test Infrastructure (Phase 1)
 
 ## Overview
-This document outlines the production-grade test environment implemented for the Recruitment Intelligence Engine.
+This document outlines the production-grade test environment implemented for the AI Resume Intelligence Platform.
 
 In order to ensure that automated tests accurately mirror the production environment (which relies heavily on PostgreSQL features like `JSONB`), the testing infrastructure strictly uses **PostgreSQL**. The previously used in-memory SQLite setup has been entirely deprecated to avoid schema compilation errors and behavioral discrepancies.
 
@@ -18,7 +18,7 @@ In order to ensure that automated tests accurately mirror the production environ
 
 3. **Factory Boy**:
    - Instead of writing verbose and repetitive database setup code for every test, we utilize `factory_boy`.
-   - Factories are located in `backend/parser_tests/factories/` and provide a clean API for generating fake domain entities (Candidates, Jobs, Workflows) with randomized data using `Faker`.
+   - Factories are located in `backend/parser_tests/factories/` and provide a clean API for generating fake domain entities with randomized data using `Faker`.
 
 4. **Coverage & Markers**:
    - `pytest.ini` is configured to track test coverage using `pytest-cov`, generating Terminal, HTML, and XML output for the `app` module.

@@ -1,7 +1,7 @@
-# 25. Communication & Notification Hub
+# 25. User Notification Hub
 
 ## Overview
-The Communication & Notification Hub is a centralized platform for managing all communications across the Recruitment Intelligence Platform. Instead of domains sending emails, SMS, or webhooks directly, domains publish communication events which the Hub processes.
+The User Notification Hub is a centralized platform for managing all communications across the AI Resume Intelligence Platform. It acts as **Supporting Infrastructure**. Instead of domains sending emails, SMS, or webhooks directly, domains publish communication events which the Hub processes.
 
 ## Architecture
 The platform is organized into the following layers:

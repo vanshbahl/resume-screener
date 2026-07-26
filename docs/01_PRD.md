@@ -4,80 +4,83 @@
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 1.0     | Initial MVP Document Creation |
-| 2026-07-23 | 2.5     | Updated to reflect Phase 3 ATS completion |
+| 2026-07-26 | 3.0     | Shifted vision to Resume Intelligence Platform |
 
 ## 1. Vision
-To build a scalable, offline-capable, and privacy-first Document Intelligence Platform and Applicant Tracking System (ATS) that eliminates the manual burden of sourcing, tracking, and evaluating candidates throughout the entire hiring lifecycle.
+To build a scalable, offline-capable, and privacy-first AI Resume Intelligence Platform that empowers students and job seekers to understand how competitive their resume is compared to industry expectations, bypassing the "ATS black box" with transparent, actionable feedback.
 
 ## 2. Goals
-- Automate resume screening against specific job descriptions.
+- Provide intelligent parsing, scoring, and benchmarking for uploaded resumes.
+- Offer personalized feedback and AI follow-up questions for missing resume sections.
 - Eliminate dependency on paid third-party LLMs (OpenAI, Claude) to ensure data privacy and zero inference costs.
-- Provide a robust Enterprise Backend supporting Candidates, Jobs, Workflows, Interviews, and Analytics.
-- Lay a generic foundation capable of parsing Invoices and Purchase Orders in the future.
+- Provide a robust backend supporting the core intelligence engine, with scalable infrastructure for user accounts, notifications, and analytics.
+- Lay a generic foundation capable of advanced career insights and resume optimization in the future.
 
 ## 3. Scope
-**In Scope (MVP):**
+**In Scope (Current Product):**
 - PDF Resume ingestion and hybrid AI text extraction.
 - Hard skill extraction, dense vector generation, and semantic similarity scoring.
-- Deterministic candidate ranking and recommendation engine.
-- Complete ATS Backend (Jobs, Candidates, Workflows, Interviews, Workspaces, Analytics).
+- Resume intelligence reporting, scoring, and benchmarking.
+- Robust backend infrastructure (User Accounts, Platform Analytics, Notifications).
 - Local PostgreSQL + pgvector storage.
 - Automated CI/CD Testing Infrastructure.
 
 **Out of Scope (MVP):**
-- Complex frontend web dashboard (Planned for Phase 5).
-- Multi-node distributed workers (Celery).
-- Invoice/PO processing.
+- Complex B2B/Enterprise hiring pipelines (Implemented in backend schema but not exposed in primary UI).
+- Real-time Mock Interviews (Implemented in backend schema but scheduled for future phases).
 
 ## 4. User Personas
-**1. Recruiter / HR Manager (Primary)**
-- Needs to rapidly filter 100s of resumes for a role and track them across a custom hiring pipeline.
-- Requires transparent, explainable scoring metrics.
-- Utilizes customized analytics dashboards and CSV reports.
+**1. Student / Job Seeker (Primary)**
+- Needs to rapidly evaluate their resume's strength against industry benchmarks.
+- Requires transparent, explainable scoring metrics and actionable recommendations.
+- Utilizes the platform to uncover missing skills or formatting issues before applying for jobs.
 
 **2. System Administrator (Secondary)**
 - Needs an application that is easy to deploy via Docker and test via CI/CD.
 - Prefers offline AI models to comply with strict internal data policies.
 
 ## 5. Functional Requirements
-- **FR1:** System must allow users to create Jobs with specific requirements and track Candidates applying to them.
-- **FR2:** System must extract text from resumes, utilize local NLP to parse entities, and map them to Candidate Profiles.
-- **FR3:** System must execute semantic similarity scoring and heuristic gap analysis.
-- **FR4:** System must manage Candidates moving through dynamic Workflow Pipelines (e.g. Screen -> Technical -> Offer).
-- **FR5:** System must manage Interview scheduling, panel mapping, and JSONB scorecards.
-- **FR6:** System must provide cross-domain Analytics (Time-to-Hire, Conversion Rates).
+- **FR1:** System must allow users to upload their resume for processing.
+- **FR2:** System must extract text from resumes, utilize local NLP to parse entities, and generate structured profiles.
+- **FR3:** System must execute semantic similarity scoring, identify gaps, and intelligently ask follow-up questions for missing information.
+- **FR4:** System must generate an overall score, highlight strengths/weaknesses, and rank the resume against the dataset.
+- **FR5:** System must provide robust authentication, account management, and platform notifications.
 
 ## 6. Non-functional Requirements
-- **Performance:** Complex aggregations must be locally cached to ensure fast dashboard load times.
+- **Performance:** Vector rankings and parsing must execute efficiently to ensure fast dashboard load times.
 - **Privacy:** 100% of data processing must occur locally. No data leaves the VPC/Host.
-- **Maintainability:** The architecture must adhere to strict Domain-Driven Design (DDD) to support future RBAC.
+- **Maintainability:** The architecture must adhere to strict Domain-Driven Design (DDD) to support future features.
 
 ## 7. Success Metrics
 - Fully isolated domains working in harmony with zero duplicate logic.
-- >80% accuracy on skill matching vs manual human review.
+- High accuracy on skill extraction and benchmarking recommendations.
 - API requests execute efficiently with scalable database indexing and cached read models.
 
 ## 8. Risks
 - **Model Size:** Downloading and caching Hugging Face models requires significant initial bandwidth and disk space.
-- **Complexity:** Keeping decoupled domains synchronized requires careful timeline and event logging.
+- **Complexity:** Managing the transition of parsed data through the scoring pipelines requires robust architectural boundaries.
 
 ## 9. Feature Status
+### Current Product
 - ✅ Basic PDF Upload & Text Extraction
 - ✅ Hybrid AI Parsing (spaCy + Hugging Face)
 - ✅ Automated Parser Benchmarking
-- ✅ Deterministic Candidate Matching & Ranking
-- ✅ Configurable Recommendation & Decision Engine
-- ✅ Candidate & Job Management Domains
-- ✅ Configurable Workflow Pipelines & Timeline Audit Logging
-- ✅ Interview Management (Logistics, Scorecards)
-- ✅ Recruiter Workspace & Caching
-- ✅ Analytics & Reporting Platform (Dashboards, CSV Exports)
-- ✅ Identity, Organizations & Access Control (Multi-Tenancy & RBAC)
-- ✅ Communication & Notification Hub
-- ✅ AI Platform & Copilot (Agents, Tools, Orchestrator)
-- ⚪ Frontend React Dashboard (Phase 4)
+- ✅ Resume Benchmarking & Ranking (Search Engine)
+- ✅ AI Feedback & Follow-ups (Copilot Platform)
+- ⚪ Resume Intelligence Frontend (Phase 4)
+
+### Supporting Infrastructure
+- ✅ User Workspace (Dashboards & Caching)
+- ✅ Resume Intelligence Analytics (Dashboards, CSV Exports)
+- ✅ User Accounts & Identity (Multi-Tenancy & RBAC)
+- ✅ User Notifications (Communication Hub)
+
+### Future Capabilities (Implemented Backend)
+- ✅ Internal Processing Pipelines (Workflow Engine)
+- ✅ Future Mock Interview Platform (Interview Management)
+- ✅ Job Description Benchmarking Engine (Job Management)
 
 ## 10. Future Scope
 - Frontend User Interface construction.
-- Generic Invoice and Purchase order parsing using GLiNER.
-- Real-time event-sourcing for extreme analytic scaling.
+- Resume optimization, job-specific rewriting, and career roadmaps.
+- Future mock interview platform leveraging existing interview schemas.

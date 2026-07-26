@@ -1,26 +1,28 @@
-# Interview Management Domain (Phase 3.5)
+# Phase 3.5: Future Mock Interview Platform
 
-The **Interview Management Domain** owns the entire lifecycle of an interview, serving as the scheduling, evaluating, and coordination backend for the Applicant Tracking System.
+The Interview Management Domain is fully implemented in the backend, but is currently categorized as a **Future Capability** for the Resume Intelligence Platform.
+
+Originally designed for recruiter scheduling, this robust schema is preserved to power a future **Mock Interview Platform** where users can schedule AI-driven or peer-to-peer practice interviews.
 
 ## Architecture & Entities
 
-This domain is completely decoupled from the Workflow engine's internal logic, interacting purely through synchronized `TimelineEvents` or by invoking the Workflow service directly on definitive outcomes (e.g., rejecting a candidate).
+This domain is completely decoupled from the Workflow engine's internal logic, interacting purely through synchronized `TimelineEvents`.
 
 ### Core Models
-- **`Interview`**: Represents the interview instance. Maps 1:1 with a Candidate and Job. 
-- **`InterviewSchedule`**: Handles logistical timing, meeting links, and locations. Validates that `end_time` strictly follows `start_time`.
-- **`InterviewPanel`**: Maps specific users to the interview and their expected roles (e.g., `Lead`, `Shadow`).
-- **`InterviewFeedback`**: Aggregates a single interviewer's qualitative assessment (strengths, weaknesses, overall recommendation).
+- **`Interview`**: Represents the interview instance. Maps 1:1 with a User and a target Job Benchmark. 
+- **`InterviewSchedule`**: Handles logistical timing, meeting links, and locations.
+- **`InterviewPanel`**: Maps specific users or AI agents to the interview and their expected roles.
+- **`InterviewFeedback`**: Aggregates qualitative assessment (strengths, weaknesses, overall recommendation).
 - **`InterviewScorecard`**: Attached to `Feedback`, utilizing a `JSONB` criteria column to allow highly configurable templates without strict DDL constraints.
-- **`InterviewTemplate`**: Configuration profiles allowing organizations to pre-define duration, standard panel requirements, and scorecard structures based on `interview_type`.
+- **`InterviewTemplate`**: Configuration profiles allowing pre-defined duration and scorecard structures based on `interview_type`.
 
 ## Lifecycle
 
 1. **Creation**: An interview is instantiated (optionally from a Template).
-2. **Panel Assignment**: Interviewers are assigned via the `/panel` endpoint.
+2. **Panel Assignment**: Interviewers (AI or Peer) are assigned via the `/panel` endpoint.
 3. **Scheduling**: A schedule is mapped, emitting a `TimelineEvent` indicating the interview is formally planned.
 4. **Execution**: During/After the interview, panel members submit their `Feedback` and `Scorecard`.
-5. **Completion**: A recruiter or hiring manager reviews the feedback and invokes the `/complete` endpoint, marking an `outcome`. If the outcome is definitive (e.g., `FAIL`), it triggers a workflow stage transition automatically.
+5. **Completion**: The user reviews the feedback, generating an overall score.
 
 ## API Structure
 All logic operates through the `/interviews` router with highly normalized nested resources:
@@ -33,5 +35,5 @@ All logic operates through the `/interviews` router with highly normalized neste
 - `POST /interviews/{id}/feedback`
 - `POST /interviews/{id}/complete`
 
-## Future Extensions
-Because the scheduling schema separates `timezone` and generic string-based `meeting_url`s, implementing OAuth-based Google Calendar or Outlook synchronization simply involves a background worker calling the `SchedulingService` and mapping the generated payload back to the DB schema.
+## Future Capability Utilization
+This module is not exposed in the primary Phase 4 B2C UI, but remains active in the backend for future expansion into comprehensive career preparation services.

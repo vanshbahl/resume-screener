@@ -4,30 +4,33 @@
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 2.5     | Updated schema for Phase 3 ATS Completion |
+| 2026-07-26 | 3.0     | Updated context for Resume Intelligence Platform |
 
 ## 1. Folder Structure
 ```text
 /backend
 ├── app/
-│   ├── analytics/       # Aggregations, KPIs, CSV Exports
-│   ├── candidate/       # Candidate Models & Logic
+│   ├── analytics/       # Platform Engagement Analytics
+│   ├── candidate/       # Resume Profile Management Models & Logic
 │   ├── intelligence/    # Intelligence Core (Matching, Scoring, Gap Analysis)
-│   ├── interview/       # Scheduling, Panels, & Scorecards
-│   ├── job/             # Job Models & Logic
-│   ├── search/          # Candidate & Job Retrieval Engine
-│   ├── workflow/        # Configurable Pipelines & Timeline Events
-│   ├── workspace/       # Caching, Dashboards, & Notifications
+│   ├── interview/       # Future Mock Interview Platform (Scheduling, Panels)
+│   ├── job/             # Job Description Benchmarking Models & Logic
+│   ├── search/          # Resume Benchmarking & Ranking Engine
+│   ├── workflow/        # Internal Processing Pipelines
+│   ├── workspace/       # Caching, User Dashboards, & Feeds
 │   ├── identity/        # Users, Organizations, Auth, RBAC
-│   ├── communication/   # Notification Hub, Email, SMS Templates
-│   ├── ai/              # AI Agents, Tools, Memory, Prompts
+│   ├── communication/   # User Notification Hub
+│   ├── ai/              # AI Feedback, Copilot, Memory, Prompts
 │   ├── parsers/         # Document Processing Engine
 │   ├── models/          # Shared SQLAlchemy Base & Enums
 │   └── main.py          # FastAPI Entrypoint
-├── config/              # YAML rules (Workflow Pipelines, Parser Logic)
+├── config/              # YAML rules
 └── parser_tests/        # Comprehensive PyTest Integration Suite
 ```
 
 ## 2. Entity Relationships (ER Diagram)
+*Note: The core schema was originally built to support an ATS. While the product vision is now a B2C Resume Intelligence Platform, the robust underlying schema (including Workflows, Jobs, and Interviews) remains intact to support complex future features like Job Benchmarking and Mock Interviews.*
+
 ```mermaid
 erDiagram
     JOB ||--o{ WORKFLOW_INSTANCE : "contains"
@@ -67,26 +70,26 @@ erDiagram
 ```
 
 ## 3. Database Tables
-- **candidates / jobs**: Foundational models utilizing `JSONB` metadata and `VECTOR` types for semantic search.
-- **workflow_instances**: The connective tissue linking Candidates to Jobs via configurable pipelines.
-- **interviews**: Manage scheduling and customized `JSONB` scorecards.
+- **candidates / jobs**: Foundational models utilizing `JSONB` metadata and `VECTOR` types for semantic search. `candidates` tracks user resume profiles, while `jobs` tracks benchmark targets.
+- **workflow_instances**: The connective tissue linking user profiles to processing states via configurable pipelines.
+- **interviews**: Preserved for future mock interview scheduling and customized `JSONB` scorecards.
 - **dashboard_configs / saved_reports**: Analytics tables persisting JSON dashboard layouts and user-specific report filters.
 
 ## 4. Cross-Domain Operations
 The backend utilizes strict Domain-Driven Design (DDD). 
 - To avoid tight coupling, domains broadcast state changes using the `TimelineService` (part of Workflow).
-- When a Candidate is hired, an event is logged in the timeline, which can asynchronously trigger caching updates in the `Workspace` or recalculations in `Analytics`.
+- When a resume profile finishes processing, an event is logged in the timeline, which can asynchronously trigger caching updates in the `Workspace` or recalculations in `Analytics`.
 
 ## 5. API Modules
-- `/candidates/*`: CRUD and parsing for resumes.
-- `/jobs/*`: CRUD for roles.
-- `/workflow/*`: Pipeline transitions, approvals, assignments.
-- `/interviews/*`: Scheduling, panels, feedback execution.
-- `/workspace/*`: Cached notifications, activities, dashboard feeds.
-- `/analytics/*`: Csv reports, KPIs, time-series trends.
+- `/candidates/*`: CRUD and parsing for user resumes.
+- `/jobs/*`: CRUD for job benchmark roles.
+- `/workflow/*`: Pipeline transitions, internal processing states.
+- `/interviews/*`: Preserved for future mock interviews.
+- `/workspace/*`: Cached notifications, activities, user dashboard feeds.
+- `/analytics/*`: Platform KPIs, engagement trends.
 - `/identity/*`: Auth, Organizations, Users, Roles, Auditing.
 - `/communication/*`: Message Hub, Notifications, Templates.
-- `/ai/*`: Copilot Chats, Feedback, Trace Observability.
+- `/ai/*`: Copilot AI Feedback, Trace Observability.
 
 ## 6. Storage & Caching
 - **Relational**: PostgreSQL.

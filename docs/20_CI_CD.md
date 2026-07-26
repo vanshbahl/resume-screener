@@ -1,6 +1,6 @@
 # CI/CD Pipeline Infrastructure
 
-The Recruitment Intelligence Platform uses GitHub Actions for continuous integration, security scanning, and deployment readiness verification. 
+The AI Resume Intelligence Platform uses GitHub Actions for continuous integration, security scanning, and deployment readiness verification. 
 
 ## Overview
 

@@ -4,13 +4,14 @@
 | Date       | Version | Description                   |
 | ---------- | ------- | ----------------------------- |
 | 2026-07-23 | 2.5     | Updated to reflect Phase 3 Domain Architecture |
+| 2026-07-26 | 3.0     | Updated for Resume Intelligence Platform |
 
 ## 1. Overall System Architecture
 ```mermaid
 graph TD
-    subgraph Frontend [React Web Client - Planned Phase 5]
+    subgraph Frontend [React Web Client - Phase 4]
         UI[User Interface]
-        Dash[Recruiter Dashboards]
+        Dash[User Dashboards]
     end
 
     subgraph API [FastAPI Server - Core API]
@@ -22,15 +23,15 @@ graph TD
     end
 
     subgraph Domains [Business Logic]
-        C[Candidate Service]
-        J[Job Service]
-        W[Workflow Engine]
-        I[Interview Logistics]
-        A[Analytics Aggregator]
+        C[Resume Profile Management]
+        J[JD Benchmarking - Future]
+        W[Internal Pipelines - Future]
+        I[Mock Interviews - Future]
+        A[Platform Analytics]
         INT[Intelligence & Parsing Engine]
         ID[Identity & RBAC]
-        COM[Communication Hub]
-        AI[AI Copilot Platform]
+        COM[User Notifications]
+        AI[Resume Copilot]
     end
 
     subgraph Database [PostgreSQL]
@@ -55,34 +56,30 @@ graph TD
 ## 2. Core Object Lifecycle
 ```mermaid
 journey
-    title Candidate Hiring Journey
+    title Resume Processing Journey
     section Ingestion
-      Parser extracts Resume: 5: Candidate
+      User Uploads Resume: 5: User
+      Parser extracts Resume: 5: System
       Vector Mapping & Intelligence: 5: System
-    section Workflow Pipeline
-      Candidate enters Job Pipeline: 5: Recruiter
-      Moved to Technical Screen: 4: Recruiter
-    section Interview
-      Schedule Interview: 4: Recruiter
-      Interviewer fills JSON Scorecard: 5: Interviewer
-    section Hire
-      Final Decision Engine: 5: System
-      Analytics & KPIs update: 5: System
+    section AI Feedback
+      Detect Missing Information: 4: AI Copilot
+      User provides clarifications: 4: User
+    section Reporting
+      Generate Resume Score: 5: System
+      Benchmark vs Industry: 5: System
+      Provide Actionable Feedback: 5: System
 ```
 
-## 3. Workflow Engine State Transitions
+## 3. Resume Processing State Transitions
 ```mermaid
 stateDiagram-v2
-    [*] --> Applied
-    Applied --> Screening
-    Screening --> Interview
-    Interview --> Offer
-    Interview --> Rejected
-    Offer --> Hired
-    Offer --> Withdrawn
-    Hired --> [*]
-    Rejected --> [*]
-    Withdrawn --> [*]
+    [*] --> Uploaded
+    Uploaded --> Parsing
+    Parsing --> AwaitingClarification
+    AwaitingClarification --> Scoring
+    Parsing --> Scoring
+    Scoring --> Completed
+    Completed --> [*]
 ```
 
 ## 4. Analytics Aggregation Flow

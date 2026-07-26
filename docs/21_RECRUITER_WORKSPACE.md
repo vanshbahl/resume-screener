@@ -1,17 +1,17 @@
-# Recruiter Workspace (Phase 3.4)
+# Phase 3.4: User Workspace
 
-The **Recruiter Workspace** is the core entry point for talent acquisition operations. Rather than duplicating existing Candidate and Job logic, it acts as an **Orchestration and Aggregation** layer over the existing Domain-Driven systems.
+The **User Workspace** is part of the **Supporting Infrastructure** for the AI Resume Intelligence Platform. It acts as an orchestration and aggregation layer, feeding data to the user's dashboard.
 
 ## Architecture
 
 The Workspace is composed of several high-level services that consume underlying Domain models:
 
-1. **DashboardService**: Aggregates open jobs, active pipelines, and system-wide metrics.
-2. **WorkQueueService**: Sorts and filters Candidate and Job pipelines into actionable segments (e.g. "Pending Review", "Interviews Today").
-3. **ActivityFeedService**: Consolidates `TimelineEvent` objects from candidates, jobs, and workflows into a unified Chronological feed.
-4. **SavedSearchService / FavoriteService**: Provides personalization and bookmarks for recruiters.
-5. **QuickActionService**: Normalizes common operations (like advancing a candidate stage) and proxies them to the `WorkflowService` or `CandidateService`.
-6. **AnalyticsService**: Exposes lightweight recruiter-level throughput metrics.
+1. **DashboardService**: Aggregates the user's active processing pipelines and system-wide notifications.
+2. **WorkQueueService**: Sorts and filters active processes (e.g. "Awaiting AI Follow-up", "Completed Reports").
+3. **ActivityFeedService**: Consolidates `TimelineEvent` objects from profiles, benchmarks, and workflows into a unified chronological feed.
+4. **SavedSearchService / FavoriteService**: Provides personalization and bookmarks for users.
+5. **QuickActionService**: Normalizes common operations and proxies them to the appropriate domain service.
+6. **AnalyticsService**: Exposes lightweight user-level engagement metrics.
 
 ## Caching
 
@@ -40,4 +40,3 @@ This schema ensures we are ready to scale to:
 - Mobile Application views.
 - Redis-backed distributed caches.
 - Granular WebSocket Notification streams.
-- Multi-tenant organization support.

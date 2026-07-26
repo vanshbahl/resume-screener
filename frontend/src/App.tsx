@@ -1,26 +1,19 @@
 import { Navigation } from "./components/landing/Navigation";
-import { HeroExperience } from "./components/landing/HeroExperience";
-import { TransformationStory } from "./components/landing/TransformationStory";
-import { HowItWorks } from "./components/landing/HowItWorks";
-import { InteractiveDemo } from "./components/landing/InteractiveDemo";
-import { WhyItMatters } from "./components/landing/WhyItMatters";
-import { FinalUploadCTA } from "./components/landing/FinalUploadCTA";
-import { Footer } from "./components/landing/Footer";
+import { SceneChaos } from "./components/landing/SceneChaos";
+import { SceneUnderstanding } from "./components/landing/SceneUnderstanding";
+import { SceneConfidence } from "./components/landing/SceneConfidence";
+import { DragProvider } from "./components/landing/DragContext";
 
 function App() {
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-indigo-200 selection:text-indigo-900">
+    <DragProvider>
       <Navigation />
       <main>
-        <HeroExperience />
-        <TransformationStory />
-        <HowItWorks />
-        <InteractiveDemo />
-        <WhyItMatters />
-        <FinalUploadCTA />
+        <SceneChaos />
+        <SceneUnderstanding />
+        <SceneConfidence />
       </main>
-      <Footer />
-    </div>
+    </DragProvider>
   );
 }
 

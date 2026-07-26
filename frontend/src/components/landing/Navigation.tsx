@@ -1,65 +1,70 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState } from "react";
-import { FileSearch } from "lucide-react";
-import { cn } from "../../lib/utils";
+
+/*
+ * Navigation — near-invisible.
+ * Logo on the left. A single "Upload" link on the right.
+ * No nav links. The page is too short to need them.
+ */
 
 export function Navigation() {
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setScrolled(latest > 50);
+    setScrolled(latest > 60);
   });
 
   return (
     <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 flex justify-center py-6 px-6 transition-all duration-500",
-        scrolled ? "py-4" : "py-8"
-      )}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-6 py-6"
     >
-      <div
-        className={cn(
-          "flex items-center justify-between w-full max-w-6xl transition-all duration-500 rounded-full px-6 py-3",
-          scrolled ? "bg-white/70 backdrop-blur-md shadow-sm border border-slate-200/50" : "bg-transparent"
-        )}
-      >
+      <div className="flex items-center justify-between w-full max-w-5xl">
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer group">
-          <div className="bg-indigo-600 p-2 rounded-xl text-white group-hover:scale-105 transition-transform duration-300">
-            <FileSearch size={18} strokeWidth={2.5} />
+        <div className="flex items-center gap-2.5">
+          <div
+            className="w-6 h-6 rounded-md flex items-center justify-center"
+            style={{ background: "var(--color-intelligence)" }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+            </svg>
           </div>
-          <span className="font-semibold text-lg tracking-tight text-slate-900">
+          <span
+            className="text-sm font-medium tracking-tight"
+            style={{
+              color: scrolled ? "rgba(255,255,255,0.8)" : "var(--color-ink)",
+              transition: "color 0.6s ease",
+            }}
+          >
             Resume Intelligence
           </span>
         </div>
 
-        {/* Links */}
-        <nav className="hidden md:flex items-center gap-8">
-          <a href="#how-it-works" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
-            How it Works
-          </a>
-          <a href="#demo" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
-            Live Demo
-          </a>
-          <a href="#why-it-matters" className="text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
-            Insights
-          </a>
-        </nav>
-
-        {/* CTA */}
-        <button className="relative overflow-hidden group px-6 py-2.5 rounded-full bg-slate-900 text-white font-medium text-sm transition-all hover:bg-slate-800 shadow-[0_0_0_0_rgba(79,70,229,0)] hover:shadow-[0_0_20px_0_rgba(79,70,229,0.3)]">
-          <span className="relative z-10 flex items-center gap-2">
-            Upload Resume
-          </span>
-          <div className="absolute inset-0 bg-indigo-600 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-[0.16,1,0.3,1] z-0" />
-          <span className="absolute inset-0 z-10 flex items-center justify-center gap-2 translate-y-[-100%] group-hover:translate-y-0 transition-transform duration-300 ease-[0.16,1,0.3,1] text-white font-medium text-sm">
-            Upload Resume
-          </span>
-        </button>
+        {/* Single CTA */}
+        <a
+          href="#upload"
+          className="text-xs font-mono uppercase tracking-[0.15em] pb-0.5"
+          style={{
+            color: scrolled ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)",
+            borderBottom: `1px solid ${scrolled ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)"}`,
+            transition: "color 0.6s ease, border-color 0.6s ease",
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = scrolled ? "rgba(255,255,255,0.8)" : "var(--color-ink)";
+            e.currentTarget.style.borderColor = scrolled ? "rgba(255,255,255,0.4)" : "var(--color-ink)";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = scrolled ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.35)";
+            e.currentTarget.style.borderColor = scrolled ? "rgba(255,255,255,0.1)" : "rgba(0,0,0,0.1)";
+          }}
+        >
+          Upload
+        </a>
       </div>
     </motion.header>
   );

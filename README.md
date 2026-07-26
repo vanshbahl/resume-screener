@@ -71,7 +71,7 @@ These modules are fully implemented in the backend (originally built as an ATS f
 **Phase 3 Complete (v2.5 Release Candidate 2)**: The platform has achieved complete stability across the core backend engine. The intelligence modules, supporting infrastructure, and future capability schemas are fully implemented, backed by a robust PostgreSQL testing infrastructure and automated CI/CD quality gates.
 
 ## Tech Stack
-- **Frontend (Planned)**: React, TypeScript, TailwindCSS, shadcn/ui, Vite
+- **Frontend**: React, TypeScript, TailwindCSS, Framer Motion, Vite
 - **Backend API**: FastAPI, Pydantic, SQLAlchemy, Alembic, PyYAML
 - **Database & Testing**: PostgreSQL with `pgvector`, Pytest, GitHub Actions
 - **AI / NLP**: `spaCy`, `sentence-transformers`, `PaddleOCR`, `RapidFuzz`
@@ -97,13 +97,14 @@ These modules are fully implemented in the backend (originally built as an ATS f
 │   │   └── main.py          # FastAPI Entrypoint
 │   ├── config/           # YAML Rules & Configs
 │   └── parser_tests/     # Comprehensive PyTest Integration Suite
+├── frontend/             # React SPA (Vite, Tailwind, Framer Motion)
 ├── docs/                 # Project Documentation
 ├── docker-compose.yml    # Database Deployment
 └── README.md
 ```
 
 ## Screenshots
-*(Frontend Implementation Pending Phase 4)*
+*(Dashboard UI Pending Phase 4. Landing page implementation complete.)*
 
 ## Documentation
 - [01_PRD.md](docs/01_PRD.md) - Product Requirements
@@ -117,12 +118,14 @@ These modules are fully implemented in the backend (originally built as an ATS f
 
 ### Prerequisites
 - Docker (for PostgreSQL + pgvector)
+- Node.js & npm (for Frontend)
 - Python 3.11+
 
 ### Local Setup
 1. Start the database: `docker compose up -d`
 2. Run Backend: `cd backend && source venv/bin/activate && pip install -r requirements.txt && uvicorn app.main:app --reload`
-3. Run Tests: `cd backend && PYTHONPATH=. pytest parser_tests/`
+3. Run Frontend: `cd frontend && npm install && npm run dev`
+4. Run Tests: `cd backend && PYTHONPATH=. pytest parser_tests/`
 
 ## Git Configuration
 This repository strictly tracks source code, documentation, and configuration files.
@@ -137,7 +140,7 @@ To prevent repository bloat and accidental data leaks, our `.gitignore` explicit
 ## Roadmap
 See [06_IMPLEMENTATION_PLAN.md](docs/06_IMPLEMENTATION_PLAN.md) for detailed milestone tracking.
 
-- **Phase 4**: Resume Intelligence Frontend (Dashboards, AI Feedback UI)
+- **Phase 4**: Resume Intelligence Frontend (Landing Page Complete, Dashboards Pending)
 - **Phase 5**: Resume Intelligence (Scoring Engine, Insights)
 - **Phase 6**: AI Enhancements (Resume Rewriting, Job-specific Optimization)
 

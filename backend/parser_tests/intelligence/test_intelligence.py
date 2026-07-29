@@ -142,7 +142,7 @@ class TestAnalyzer:
         parsed["personal_info"]["github"] = None
         gaps = detect_gaps(parsed)
         gap_types = [g.gap_type for g in gaps]
-        assert "missing_link" in gap_types
+        assert "missing_github" in gap_types or "missing_link" in gap_types
 
 
 # ---------------------------------------------------------------------------

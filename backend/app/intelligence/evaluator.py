@@ -9,11 +9,24 @@ from typing import Any, Dict, List
 from app.intelligence.models import ProjectDetail
 
 
+def _extract_val(field: Any) -> str:
+    if not field:
+        return ""
+    if isinstance(field, dict):
+        val = field.get("value")
+        if isinstance(val, str):
+            return val.strip()
+        if isinstance(val, dict):
+            return str(val.get("value", "")).strip()
+        return str(val or "").strip()
+    return str(field).strip()
+
+
 def _infer_domains(normalized_skills: List[str]) -> tuple[str, List[str], List[str]]:
     """Infers primary domain, secondary domains, and target roles based on skill clusters."""
     skills_set = {s.lower() for s in normalized_skills}
 
-    backend_keywords = {"python", "fastapi", "django", "postgresql", "node", "java", "golang", "rest api", "sql", "docker", "microservices"}
+    backend_keywords = {"python", "fastapi", "django", "postgresql", "node", "java", "golang", "rest api", "sql", "docker", "microservices", "api"}
     frontend_keywords = {"react", "typescript", "javascript", "html", "css", "vue", "next.js", "tailwind", "redux"}
     data_keywords = {"python", "pandas", "numpy", "machine learning", "pytorch", "tensorflow", "scikit-learn", "sql", "spark"}
     cloud_keywords = {"aws", "kubernetes", "docker", "terraform", "ci/cd", "linux", "cloud", "ansible"}
@@ -49,40 +62,49 @@ def _infer_domains(normalized_skills: List[str]) -> tuple[str, List[str], List[s
 
 def _evaluate_project(proj: Dict[str, Any]) -> ProjectDetail:
     """Evaluates technical depth, scale, complexity, and tech stack maturity of a project."""
-    name = str(proj.get("name", {}).get("value", "") if isinstance(proj.get("name"), dict) else proj.get("name", "Project"))
-    desc = str(proj.get("description", {}).get("value", "") if isinstance(proj.get("description"), dict) else proj.get("description", ""))
+    name = _extract_val(proj.get("name")) or "Untitled Project"
+    desc = _extract_val(proj.get("description"))
 
-    desc_lower = desc.lower()
+    # Also collect technologies list if present
+    tech_list: List[str] = []
+    raw_techs = proj.get("technologies", [])
+    if isinstance(raw_techs, list):
+        for t in raw_techs:
+            v = _extract_val(t)
+            if v:
+                tech_list.append(v)
+
+    combined_text = f"{desc} {' '.join(tech_list)}".lower()
 
     # Complexity heuristic
     complexity = "Medium"
-    if any(k in desc_lower for k in ["microservices", "distributed", "kubernetes", "real-time", "kafka", "high-scale", "enterprise"]):
+    if any(k in combined_text for k in ["microservices", "distributed", "kubernetes", "real-time", "kafka", "high-scale", "enterprise", "vector"]):
         complexity = "Enterprise"
-    elif any(k in desc_lower for k in ["pipeline", "api", "database", "authentication", "docker"]):
+    elif any(k in combined_text for k in ["pipeline", "api", "database", "authentication", "docker", "fastapi", "react", "postgresql"]):
         complexity = "High"
-    elif len(desc) < 30:
+    elif len(combined_text) < 15:
         complexity = "Low"
 
     # Scale heuristic
     scale = "Medium"
-    if any(k in desc_lower for k in ["thousand", "million", "cluster", "distributed", "large scale"]):
+    if any(k in combined_text for k in ["thousand", "million", "cluster", "distributed", "large scale", "high concurrency"]):
         scale = "Large Scale"
-    elif "api" in desc_lower:
+    elif any(k in combined_text for k in ["api", "database", "service"]):
         scale = "Medium"
     else:
         scale = "Small"
 
     # Modernity heuristic
     modernity = "Modern"
-    if any(k in desc_lower for k in ["fastapi", "react", "next.js", "pytorch", "transformers", "vector"]):
+    if any(k in combined_text for k in ["fastapi", "react", "next.js", "pytorch", "transformers", "vector", "typescript"]):
         modernity = "Cutting-Edge"
-    elif any(k in desc_lower for k in ["jquery", "cobol", "php 5", "asp.net"]):
+    elif any(k in combined_text for k in ["jquery", "cobol", "php 5", "asp.net"]):
         modernity = "Legacy"
 
     return ProjectDetail(
-        name=name if name else "Untitled Project",
+        name=name,
         complexity=complexity,
-        technical_depth=f"Built using key technologies identified in: {desc[:60]}..." if desc else "Project details provided.",
+        technical_depth=f"Built using: {', '.join(tech_list)}" if tech_list else (desc[:80] or "Technical details provided."),
         business_impact="Demonstrated implementation of core functionality." if desc else None,
         scale=scale,
         modernity=modernity,
@@ -120,10 +142,10 @@ def evaluate_qualitative_profile(
     strengths = []
     weaknesses = []
 
-    if len(normalized_skills) >= 8:
+    if len(normalized_skills) >= 6:
         strengths.append(f"Broad technical skill set across {len(normalized_skills)} technologies.")
-    if total_yoe >= 3.0:
-        strengths.append(f"Solid industry experience with {total_yoe} years of tenure.")
+    if total_yoe >= 1.0:
+        strengths.append(f"Industry work experience with {total_yoe} years of tenure.")
     if len(evaluated_projects) >= 2:
         strengths.append(f"Demonstrated hands-on experience through {len(evaluated_projects)} documented projects.")
 

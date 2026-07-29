@@ -4,11 +4,12 @@ from fastapi import (APIRouter, BackgroundTasks, Depends, File, HTTPException,
                      UploadFile)
 from sqlalchemy.orm import Session
 
-from app.candidate.repositories.candidate import candidate_repo
+from app.candidate.repositories.candidate import candidate_repo, resume_repo
 from app.candidate.schemas.candidate import (CandidateCreate,
                                              CandidateNoteCreate,
                                              CandidateNoteResponse,
                                              CandidateResponse,
+                                             CandidateResumeDetailResponse,
                                              CandidateResumeResponse,
                                              CandidateStatusUpdate,
                                              CandidateTagsUpdate,
@@ -98,6 +99,19 @@ async def upload_resume(
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@router.get(
+    "/{candidate_id}/resume/{resume_id}",
+    response_model=CandidateResumeDetailResponse,
+)
+def get_resume_detail(
+    candidate_id: str, resume_id: str, db: Session = Depends(get_db)
+):
+    resume = resume_repo.get(db, resume_id)
+    if not resume or resume.candidate_id != candidate_id:
+        raise HTTPException(status_code=404, detail="Resume not found")
+    return resume
 
 
 # --- Timeline ---

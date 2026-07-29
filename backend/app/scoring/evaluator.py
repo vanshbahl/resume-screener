@@ -17,7 +17,6 @@ def evaluate_contact_structure(
     traces: List[ScoreTraceItem] = []
     raw_points = 0.0
 
-    # Detected gaps check
     gap_types = {g.gap_type for g in profile.detected_gaps}
 
     contact_rules = rules.get("contact_structure", [])
@@ -26,16 +25,16 @@ def evaluate_contact_structure(
         pts = float(rule["points"])
         desc = rule["description"]
 
-        if r_id == "RULE_CONTACT_EMAIL" and "missing_contact" not in gap_types:
+        if r_id == "RULE_CONTACT_EMAIL" and "missing_email" not in gap_types:
             raw_points += pts
             traces.append(ScoreTraceItem(rule_id=r_id, category=ScoringCategory.CONTACT_STRUCTURE, delta_type=ScoreDeltaType.BONUS, points=pts, reason=desc))
-        elif r_id == "RULE_CONTACT_PHONE" and "missing_contact" not in gap_types:
+        elif r_id == "RULE_CONTACT_PHONE" and "missing_phone" not in gap_types:
             raw_points += pts
             traces.append(ScoreTraceItem(rule_id=r_id, category=ScoringCategory.CONTACT_STRUCTURE, delta_type=ScoreDeltaType.BONUS, points=pts, reason=desc))
-        elif r_id == "RULE_CONTACT_LINKEDIN" and not any(g.gap_type == "missing_link" and "LinkedIn" in g.description for g in profile.detected_gaps):
+        elif r_id == "RULE_CONTACT_LINKEDIN" and "missing_linkedin" not in gap_types:
             raw_points += pts
             traces.append(ScoreTraceItem(rule_id=r_id, category=ScoringCategory.CONTACT_STRUCTURE, delta_type=ScoreDeltaType.BONUS, points=pts, reason=desc))
-        elif r_id == "RULE_CONTACT_GITHUB" and not any(g.gap_type == "missing_link" and "GitHub" in g.description for g in profile.detected_gaps):
+        elif r_id == "RULE_CONTACT_GITHUB" and "missing_github" not in gap_types:
             raw_points += pts
             traces.append(ScoreTraceItem(rule_id=r_id, category=ScoringCategory.CONTACT_STRUCTURE, delta_type=ScoreDeltaType.BONUS, points=pts, reason=desc))
 
@@ -68,7 +67,7 @@ def evaluate_education(
     raw_points += pts
     traces.append(ScoreTraceItem(rule_id=r_id, category=ScoringCategory.EDUCATION, delta_type=ScoreDeltaType.BONUS, points=pts, reason=desc))
 
-    if profile.education_summary.graduation_status.lower() == "completed":
+    if profile.education_summary.graduation_status.lower() in ("completed", "unknown"):
         for b in edu_cfg.get("bonuses", []):
             if b["rule_id"] == "RULE_EDU_STATUS_COMPLETED":
                 b_pts = float(b["points"])
@@ -102,6 +101,10 @@ def evaluate_experience(
     if yoe_pts > 0:
         raw_points += yoe_pts
         traces.append(ScoreTraceItem(rule_id=r_id_yoe, category=ScoringCategory.EXPERIENCE, delta_type=ScoreDeltaType.BONUS, points=yoe_pts, reason=f"Earned {yoe_pts} points for {yoe} YOE"))
+    elif yoe == 0 and profile.projects:
+        # Candidate has project experience / internships
+        raw_points += 40.0
+        traces.append(ScoreTraceItem(rule_id=r_id_yoe, category=ScoringCategory.EXPERIENCE, delta_type=ScoreDeltaType.BONUS, points=40.0, reason="Project & internship technical experience recognized"))
 
     trajectory = profile.experience_summary.growth_trajectory
     traj_cfg = exp_cfg.get("trajectory_bonuses", {}).get(trajectory)

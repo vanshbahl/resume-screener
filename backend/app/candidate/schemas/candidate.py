@@ -62,8 +62,22 @@ class CandidateResumeResponse(BaseModel):
     filename: str
     parser_version: Optional[str] = None
     created_at: datetime
-    # We do NOT return the full parsed_metadata here to keep responses light.
-    # It can be fetched via a dedicated /parsed endpoint if needed.
+
+    model_config = {"from_attributes": True}
+
+
+class CandidateResumeDetailResponse(BaseModel):
+    id: str
+    candidate_id: str
+    is_active: bool
+    filename: str
+    parsed_metadata: Optional[Dict[str, Any]] = None
+    resume_analysis: Optional[Dict[str, Any]] = None
+    candidate_profile: Optional[Dict[str, Any]] = None
+    resume_score: Optional[Dict[str, Any]] = None
+    parser_version: Optional[str] = None
+    file_hash: Optional[str] = None
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 

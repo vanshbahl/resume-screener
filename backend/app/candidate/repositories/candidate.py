@@ -28,6 +28,23 @@ class CandidateResumeRepository(BaseRepository[CandidateResume]):
             .first()
         )
 
+    def get_by_hash(
+        self, db: Session, file_hash: str
+    ) -> Optional[CandidateResume]:
+        """Return any resume (across all candidates) with the given SHA-256 hash.
+
+        This global lookup is intentional: we want to avoid re-running the
+        parser pipeline for identical file bytes regardless of which candidate
+        uploaded them. Candidate identity is always preserved — the caller
+        creates a new record for the uploading candidate and copies the parsed
+        data from the matched record.
+        """
+        return (
+            db.query(self.model)
+            .filter(self.model.file_hash == file_hash)
+            .first()
+        )
+
     def deactivate_all_for_candidate(self, db: Session, candidate_id: str):
         db.query(self.model).filter(self.model.candidate_id == candidate_id).update(
             {"is_active": False}

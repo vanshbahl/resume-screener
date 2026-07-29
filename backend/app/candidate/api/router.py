@@ -19,6 +19,7 @@ from app.candidate.services.note_service import note_service
 from app.candidate.services.resume_service import resume_service
 from app.candidate.services.timeline_service import timeline_service
 from app.core.database import get_db
+from app.parsers.pdf_validator import PDFValidationError
 
 router = APIRouter(prefix="/candidates", tags=["Candidate Management"])
 
@@ -81,19 +82,18 @@ async def upload_resume(
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
 ):
-    if file.content_type != "application/pdf":
-        raise HTTPException(status_code=400, detail="Only PDF files are allowed")
-
     file_bytes = await file.read()
     try:
         resume = resume_service.upload_resume(
             db, candidate_id, file_bytes, file.filename, file.content_type
         )
-        # Background task for parsing
+        # Background task for parsing — runs after the response is returned.
         background_tasks.add_task(
             resume_service.process_resume, next(get_db()), resume.id
         )
         return resume
+    except PDFValidationError as e:
+        raise HTTPException(status_code=400, detail=e.detail)
     except ValueError as e:
         raise HTTPException(status_code=404, detail=str(e))
     except Exception as e:

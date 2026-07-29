@@ -1,0 +1,17 @@
+parser:
+  feature_flags:
+    # Enable PaddleOCR fallback for scanned/image-only PDFs.
+    # When false, OCR never runs regardless of text sparsity.
+    ocr_fallback: true
+    # Enable spaCy transformer NER stage.
+    # Disable to avoid loading ~500 MB spaCy model in lightweight environments.
+    spacy_ner: true
+    # Enable HuggingFace BERT NER stage.
+    # Disable to avoid loading ~400 MB HF model in lightweight environments.
+    hf_ner: true
+    # Enable AI entity fusion stage (requires spacy_ner and/or hf_ner to be useful).
+    entity_fusion: true
+    # Compute resume completeness score after parsing.
+    completeness: true
+    # Compute resume health report after parsing.
+    health_report: true

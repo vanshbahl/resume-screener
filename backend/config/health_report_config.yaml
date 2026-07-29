@@ -1,0 +1,14 @@
+health_report:
+  # Minimum number of unique skills required to avoid a "skills_sparse" flag.
+  min_skills_count: 5
+  # Minimum number of distinct bullet-point lines expected per experience entry.
+  # Entries with fewer lines are flagged as "experience_thin_description".
+  min_experience_bullets: 2
+  # Minimum number of education entries expected.
+  min_education_entries: 1
+  # Overall health thresholds (based on weighted section score average).
+  overall_health_thresholds:
+    excellent: 90
+    good: 70
+    fair: 50
+    # Below fair is "poor"

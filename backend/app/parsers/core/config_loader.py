@@ -43,4 +43,7 @@ def get_parser_config() -> dict:
         "date_patterns": load_config("date_patterns.yaml").get("date_patterns", {}),
         "skills_kb": load_config("skills_kb.yaml").get("categories", {}),
         "normalization": load_normalization_configs(),
+        "feature_flags": load_config("parser_feature_flags.yaml")
+        .get("parser", {})
+        .get("feature_flags", {}),
     }

@@ -3,6 +3,7 @@ from datetime import datetime
 from app.parsers.core.base import BaseParserStage
 from app.parsers.core.document import (BaseDocument, JobDocument,
                                        PipelineContext)
+from app.parsers.core.version import PARSER_VERSION, SCHEMA_VERSION
 from app.parsers.job_validator import validate_and_score_jd
 from app.parsers.resume_validator import validate_and_score
 
@@ -40,8 +41,8 @@ class ValidationStage(BaseParserStage):
             "keywords": extracted.get("keywords", []),
             "raw_data": {"sections": document.sections},
             "metadata": {
-                "parser_version": "1.3.0",
-                "schema_version": "1.0.0",
+                "parser_version": PARSER_VERSION,
+                "schema_version": SCHEMA_VERSION,
                 "parsed_at": datetime.utcnow().isoformat() + "Z",
                 "processing_time_ms": 0,
                 "ai_inference_time_ms": document.metadata.get(
@@ -86,10 +87,15 @@ class ValidationStage(BaseParserStage):
             "projects": extracted.get("projects", []),
             "certifications": extracted.get("certifications", []),
             "achievements": extracted.get("achievements", []),
+            # Phase 1: new entity types
+            "leadership": extracted.get("leadership", []),
+            "volunteer": extracted.get("volunteer", []),
+            "activities": extracted.get("activities", []),
+            "publications": extracted.get("publications", []),
             "raw_data": {"sections": document.sections},
             "metadata": {
-                "parser_version": "1.3.0",
-                "schema_version": "1.0.0",
+                "parser_version": PARSER_VERSION,
+                "schema_version": SCHEMA_VERSION,
                 "parsed_at": datetime.utcnow().isoformat() + "Z",
                 "processing_time_ms": 0,
                 "ai_inference_time_ms": document.metadata.get(
@@ -107,6 +113,8 @@ class ValidationStage(BaseParserStage):
                 ),
                 "parsing_confidence": 0.0,
                 "model_versions": document.metadata.get("model_versions", {}),
+                "ocr_triggered": document.metadata.get("ocr_triggered", False),
+                "feature_flags_active": document.metadata.get("feature_flags_active", []),
                 "resume_id": getattr(document, "resume_id", None),
                 "job_id": getattr(document, "job_id", None),
             },

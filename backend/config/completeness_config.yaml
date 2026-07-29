@@ -1,0 +1,31 @@
+completeness:
+  # Fields are grouped into three tiers with different scoring implications:
+  #
+  # required:    Absence deducts the full field weight from the score.
+  #              These are the fields every resume must have.
+  # recommended: Absence reduces score proportionally. Presence is expected
+  #              for competitive candidates.
+  # optional:    Presence adds bonus points; absence has no penalty.
+  #
+  # All weights must sum to 100.
+  fields:
+    required:
+      contact_name:    15
+      email:           15
+      education:       15
+      experience:      15
+      skills:          10
+    recommended:
+      github:          8
+      projects:        8
+      linkedin:        6
+      certifications:  5
+      spoken_languages: 3
+    optional:
+      summary:         3
+      achievements:    3
+      volunteer:       2
+      leadership:      2
+      publications:    2
+      activities:      2
+      portfolio:       2

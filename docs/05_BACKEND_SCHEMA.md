@@ -47,6 +47,8 @@ erDiagram
     CANDIDATE {
         int id PK
         jsonb parsed_metadata
+        jsonb resume_analysis
+        string file_hash
         vector feature_vector
     }
     
@@ -70,7 +72,7 @@ erDiagram
 ```
 
 ## 3. Database Tables
-- **candidates / jobs**: Foundational models utilizing `JSONB` metadata and `VECTOR` types for semantic search. `candidates` tracks user resume profiles, while `jobs` tracks benchmark targets.
+- **candidates / jobs**: Foundational models utilizing `JSONB` metadata and `VECTOR` types for semantic search. `candidates` tracks user resume profiles (including deduplication via `file_hash` and quality metrics in `resume_analysis`), while `jobs` tracks benchmark targets.
 - **workflow_instances**: The connective tissue linking user profiles to processing states via configurable pipelines.
 - **interviews**: Preserved for future mock interview scheduling and customized `JSONB` scorecards.
 - **dashboard_configs / saved_reports**: Analytics tables persisting JSON dashboard layouts and user-specific report filters.

@@ -2,6 +2,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, Field
 
+from app.parsers.core.version import PARSER_VERSION, SCHEMA_VERSION
+
 
 class SourceInfo(BaseModel):
     page: int
@@ -103,9 +105,44 @@ class SpokenLanguageEntry(BaseModel):
     confidence: float = 0.0
 
 
+class GenericActivityEntry(BaseModel):
+    """Shared schema for Leadership, Volunteer Work, and Activities.
+
+    A single reusable model for three structurally identical entity types.
+    The originating section (leadership / volunteer / activities) is recorded
+    via the source.section field on each ExtractedField.
+    """
+
+    organization: Optional[ExtractedField] = None
+    role: Optional[ExtractedField] = None
+    cause: Optional[ExtractedField] = None  # semantic hint for volunteer entries
+    start_date: Optional[ExtractedField] = None
+    end_date: Optional[ExtractedField] = None
+    description: Optional[ExtractedField] = None
+    confidence: float = 0.0
+
+
+class PublicationEntry(BaseModel):
+    """Flexible schema for academic and professional publications.
+
+    All fields are Optional because publication formats on resumes are
+    highly inconsistent (APA, MLA, informal one-liners). Capture whatever
+    can be deterministically parsed; the rest is left for the AI layer.
+    """
+
+    title: Optional[ExtractedField] = None
+    authors: List[ExtractedField] = Field(default_factory=list)
+    venue: Optional[ExtractedField] = None  # journal, conference, book, or preprint server
+    year: Optional[ExtractedField] = None
+    doi: Optional[ExtractedField] = None
+    url: Optional[ExtractedField] = None
+    description: Optional[ExtractedField] = None
+    confidence: float = 0.0
+
+
 class Metadata(BaseModel):
-    parser_version: str = "1.3.0"
-    schema_version: str = "1.1.0"
+    parser_version: str = PARSER_VERSION
+    schema_version: str = SCHEMA_VERSION
     parsed_at: str
     processing_time_ms: int = 0
     ai_inference_time_ms: int = 0
@@ -116,12 +153,16 @@ class Metadata(BaseModel):
     entities_added_by_ai: int = 0
     entities_modified_by_ai: int = 0
 
-    # New Phase 2.3 Quality Metrics
+    # Quality Metrics
     parser_confidence: float = 0.0
     extraction_coverage: float = 0.0
     normalization_coverage: float = 0.0
     validation_score: float = 100.0
     entity_quality_score: float = 0.0
+
+    # Pipeline traceability
+    ocr_triggered: bool = False
+    feature_flags_active: List[str] = Field(default_factory=list)
 
     model_versions: Dict[str, str] = Field(default_factory=dict)
     resume_id: Optional[int] = None
@@ -143,6 +184,11 @@ class ParsedResumeSchema(BaseModel):
     projects: List[ProjectEntry] = Field(default_factory=list)
     certifications: List[CertificationEntry] = Field(default_factory=list)
     achievements: List[AchievementEntry] = Field(default_factory=list)
+    # Phase 1 new entity types
+    leadership: List[GenericActivityEntry] = Field(default_factory=list)
+    volunteer: List[GenericActivityEntry] = Field(default_factory=list)
+    activities: List[GenericActivityEntry] = Field(default_factory=list)
+    publications: List[PublicationEntry] = Field(default_factory=list)
     raw_data: Dict[str, Any] = Field(default_factory=dict)
     metadata: Metadata
 

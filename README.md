@@ -141,7 +141,7 @@ To prevent repository bloat and accidental data leaks, our `.gitignore` explicit
 See [06_IMPLEMENTATION_PLAN.md](docs/06_IMPLEMENTATION_PLAN.md) for detailed milestone tracking.
 
 - **Phase 4**: Resume Intelligence Frontend (Landing Page Complete, Dashboards Pending)
-- **Phase 5**: Resume Intelligence (Scoring Engine, Insights)
+- **Phase 5**: Resume Intelligence (Backend Scoring Engine Complete, Insights & UI Pending)
 - **Phase 6**: AI Enhancements (Resume Rewriting, Job-specific Optimization)
 
 ## Contributing

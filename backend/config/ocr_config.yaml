@@ -1,0 +1,15 @@
+ocr:
+  # Master switch. When false, OCR fallback never runs regardless of text sparsity.
+  # This flag is also controlled by parser_feature_flags.yaml — both must be true.
+  enabled: true
+  # Trigger OCR fallback when total extracted characters across the entire document
+  # fall below this threshold. 100 chars is conservative: a scanned page typically
+  # yields 0-5 chars from PyMuPDF's native extractor.
+  min_text_chars: 100
+  # fitz.Matrix scale factor for rendering PDF pages to images.
+  # 2.0 doubles the resolution — significantly improves OCR accuracy on small text.
+  render_scale: 2.0
+  # PaddleOCR language model to load.
+  language: "en"
+  # Enable automatic image rotation correction.
+  use_angle_cls: true

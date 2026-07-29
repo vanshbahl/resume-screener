@@ -4,9 +4,11 @@ from app.ai.extractors.certification_extractor import CertificationExtractor
 from app.ai.extractors.contact_extractor import ContactExtractor
 from app.ai.extractors.education_extractor import EducationExtractor
 from app.ai.extractors.experience_extractor import ExperienceExtractor
+from app.ai.extractors.generic_activity_extractor import GenericActivityExtractor
 from app.ai.extractors.jd_extractor import JDExtractor
 from app.ai.extractors.language_extractor import LanguageExtractor
 from app.ai.extractors.project_extractor import ProjectExtractor
+from app.ai.extractors.publication_extractor import PublicationExtractor
 from app.ai.extractors.skills_extractor import SkillsExtractor
 from app.parsers.core.base import BaseParserStage
 from app.parsers.core.document import (BaseDocument, JobDocument,
@@ -25,6 +27,11 @@ class EntityExtractionStage(BaseParserStage):
         self.certification_extractor = CertificationExtractor()
         self.language_extractor = LanguageExtractor()
         self.jd_extractor = JDExtractor()
+        # Phase 1: new entity extractors
+        self.leadership_extractor = GenericActivityExtractor(section_key="leadership")
+        self.volunteer_extractor = GenericActivityExtractor(section_key="volunteer")
+        self.activity_extractor = GenericActivityExtractor(section_key="activities")
+        self.publication_extractor = PublicationExtractor()
 
     def run(self, document: BaseDocument, context: PipelineContext) -> None:
         if isinstance(document, JobDocument):
@@ -180,6 +187,19 @@ class EntityExtractionStage(BaseParserStage):
             ),
             "achievements": self.achievement_extractor.extract(
                 document.sections.get("achievements", {}).get("lines", [])
+            ),
+            # Phase 1: new entity types
+            "leadership": self.leadership_extractor.extract(
+                document.sections.get("leadership", {}).get("lines", [])
+            ),
+            "volunteer": self.volunteer_extractor.extract(
+                document.sections.get("volunteer", {}).get("lines", [])
+            ),
+            "activities": self.activity_extractor.extract(
+                document.sections.get("activities", {}).get("lines", [])
+            ),
+            "publications": self.publication_extractor.extract(
+                document.sections.get("publications", {}).get("lines", [])
             ),
         }
 

@@ -7,6 +7,10 @@ sections:
   certifications: "^(certifications?|licenses?|courses?|professional certifications?|credentials?)$"
   achievements: "^(achievements?|awards?|honors?|publications?|accomplishments?|recognitions?|honors & awards?)$"
   languages: "^(languages?|spoken languages?|language proficiency)$"
+  leadership: "^(leadership|leadership experience|leadership roles?|positions? of responsibility|extracurricular leadership|student leadership)$"
+  volunteer: "^(volunteer|volunteering|volunteer experience|community service|social work|ngo|non-profit|community involvement)$"
+  activities: "^(activities|extracurricular|extracurricular activities|clubs?|hobbies|interests|co-curricular|campus activities)$"
+  publications: "^(publications?|research|research papers?|papers?|journal articles?|conference papers?|preprints?|academic publications?)$"
 
 jd_sections:
   responsibilities: "^(responsibilities|what you'll do|what you will do|role & responsibilities|key responsibilities|your role|the role|duties|your impact)$"

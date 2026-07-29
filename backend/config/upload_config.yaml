@@ -1,0 +1,5 @@
+upload:
+  # Maximum PDF file size in bytes (default: 10 MB)
+  max_size_bytes: 10485760
+  # Maximum number of pages allowed in an uploaded PDF
+  max_pages: 10

@@ -22,6 +22,7 @@ from app.candidate.models.candidate import CandidateResume
 from app.candidate.repositories.candidate import candidate_repo, resume_repo
 from app.candidate.services.timeline_service import timeline_service
 from app.intelligence.service import resume_intelligence_service
+from app.scoring.service import resume_scoring_service
 from app.parsers.completeness import analyze_completeness
 from app.parsers.core.config_loader import load_config
 from app.parsers.core.document import ResumeDocument
@@ -201,6 +202,7 @@ class ResumeService:
                 "parsed_metadata": copied_metadata,
                 "resume_analysis": copy.deepcopy(source_resume.resume_analysis),
                 "candidate_profile": copy.deepcopy(source_resume.candidate_profile),
+                "resume_score": copy.deepcopy(source_resume.resume_score),
                 "parser_version": PARSER_VERSION,
                 "file_hash": file_hash,
                 "is_active": True,
@@ -334,6 +336,14 @@ class ResumeService:
             )
             candidate_profile_json = profile.model_dump(mode="json")
 
+            # --- Phase 3 Deterministic Scoring Engine ---
+            score_res = resume_scoring_service.calculate_score(
+                candidate_id=resume.candidate_id,
+                resume_id=resume.id,
+                profile=profile,
+            )
+            resume_score_json = score_res.model_dump(mode="json")
+
             resume = resume_repo.update(
                 db,
                 resume,
@@ -341,6 +351,7 @@ class ResumeService:
                     "parsed_metadata": new_metadata,
                     "resume_analysis": resume_analysis or None,
                     "candidate_profile": candidate_profile_json,
+                    "resume_score": resume_score_json,
                     "parser_version": PARSER_VERSION,
                 },
             )

@@ -1,0 +1,107 @@
+scoring:
+  version: "3.0.0"
+  weights:
+    contact_structure: 0.10
+    education: 0.15
+    experience: 0.25
+    projects: 0.20
+    skills: 0.20
+    writing_quality: 0.10
+
+  rules:
+    contact_structure:
+      - rule_id: "RULE_CONTACT_EMAIL"
+        points: 30.0
+        description: "Valid email address provided"
+      - rule_id: "RULE_CONTACT_PHONE"
+        points: 20.0
+        description: "Valid phone number provided"
+      - rule_id: "RULE_CONTACT_LINKEDIN"
+        points: 25.0
+        description: "LinkedIn profile URL present"
+      - rule_id: "RULE_CONTACT_GITHUB"
+        points: 25.0
+        description: "GitHub or code repository link present"
+
+    education:
+      qualifications:
+        phd:
+          points: 100.0
+          rule_id: "RULE_EDU_QUAL_PHD"
+          description: "Doctorate / Ph.D. degree"
+        masters:
+          points: 90.0
+          rule_id: "RULE_EDU_QUAL_MASTERS"
+          description: "Master's degree"
+        bachelors:
+          points: 80.0
+          rule_id: "RULE_EDU_QUAL_BACHELORS"
+          description: "Bachelor's degree"
+        diploma:
+          points: 60.0
+          rule_id: "RULE_EDU_QUAL_DIPLOMA"
+          description: "Associate / Diploma degree"
+        high_school:
+          points: 40.0
+          rule_id: "RULE_EDU_QUAL_HIGHSCHOOL"
+          description: "High school education"
+      bonuses:
+        - rule_id: "RULE_EDU_STATUS_COMPLETED"
+          points: 10.0
+          description: "Degree fully completed"
+
+    experience:
+      yoe_base_multiplier: 15.0  # 15 pts per year
+      yoe_cap: 80.0
+      yoe_rule_id: "RULE_EXP_TENURE"
+      trajectory_bonuses:
+        Accelerated:
+          points: 20.0
+          rule_id: "RULE_EXP_TRAJECTORY_ACCELERATED"
+          description: "Accelerated career growth trajectory"
+        Steady:
+          points: 10.0
+          rule_id: "RULE_EXP_TRAJECTORY_STEADY"
+          description: "Steady career growth trajectory"
+        Early Career:
+          points: 5.0
+          rule_id: "RULE_EXP_TRAJECTORY_EARLY"
+          description: "Early career trajectory"
+      penalties:
+        - rule_id: "RULE_EXP_EMPLOYMENT_GAP"
+          points: -15.0
+          description: "Unexplained employment gap (>6 months) detected"
+
+    projects:
+      points_per_project: 25.0
+      project_cap: 70.0
+      project_rule_id: "RULE_PROJ_VOLUME"
+      complexity_bonuses:
+        Enterprise:
+          points: 15.0
+          rule_id: "RULE_PROJ_COMPLEXITY_ENTERPRISE"
+          description: "Enterprise / high-scale project complexity"
+        High:
+          points: 10.0
+          rule_id: "RULE_PROJ_COMPLEXITY_HIGH"
+          description: "High project technical depth"
+        Medium:
+          points: 5.0
+          rule_id: "RULE_PROJ_COMPLEXITY_MEDIUM"
+          description: "Medium project complexity"
+
+    skills:
+      points_per_skill: 5.0
+      skills_cap: 80.0
+      skill_rule_id: "RULE_SKILL_PORTFOLIO"
+      certification_bonus_per_item: 10.0
+      certification_cap: 20.0
+      certification_rule_id: "RULE_SKILL_CERTIFICATION_BONUS"
+
+    writing_quality:
+      metrics_present_bonus: 40.0
+      metrics_rule_id: "RULE_QUALITY_METRICS_PRESENT"
+      no_critical_gaps_bonus: 30.0
+      no_gaps_rule_id: "RULE_QUALITY_NO_CRITICAL_GAPS"
+      project_descriptions_bonus: 30.0
+      project_desc_rule_id: "RULE_QUALITY_PROJECT_DESCRIPTIONS"
